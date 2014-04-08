@@ -1,0 +1,283 @@
+-- Copyright (c) 2007 Horacio Hernan Moraldo
+--
+-- This software is provided 'as-is', without any express or
+-- implied warranty. In no event will the authors be held liable
+-- for any damages arising from the use of this software.
+--
+-- Permission is granted to anyone to use this software for any
+-- purpose, including commercial applications, and to alter it and
+-- redistribute it freely, subject to the following restrictions:
+--
+-- 1. The origin of this software must not be misrepresented; you
+-- must not claim that you wrote the original software. If you use
+-- this software in a product, an acknowledgment in the product
+-- documentation would be appreciated but is not required.
+--
+-- 2. Altered source versions must be plainly marked as such, and
+-- must not be misrepresented as being the original software.
+--
+-- 3. This notice may not be removed or altered from any source
+-- distribution.
+--
+
+-- DATA LISTS FOR THE MAIN MENU
+
+-- MAIN MENU BUTTONS
+mainMenuButtons={
+	createLightableButton(
+		"btnStart", -- name
+		186, 162, -- x, y
+		"srfBackIntroButton", -- surfaceNormal
+		0, 51, 215, 51, -- xS, yS, wS, hS
+		langText("Comenzar", "Start"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton", -- surfaceSelected
+		0, 0, 215, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Comienza el juego", "Starts the game"), -- toolTipText
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) switchingToMenu="startGame_pseudoMenu" end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnInstructions", -- name
+		186, 213, -- x, y
+		"srfBackIntroButton", -- surfaceNormal
+		0, 51, 215, 51, -- xS, yS, wS, hS
+		langText("Instrucciones", "Instructions"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton", -- surfaceSelected
+		0, 0, 215, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Ingresa a la pantalla de instrucciones."
+			, "Enters the instructions screen."), -- toolTipText
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) -- onClickEvent
+			switchingToMenu="instructionsMenu"
+		end,
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnStory", -- name
+		186, 264, -- x, y
+		"srfBackIntroButton", -- surfaceNormal
+		0, 51, 215, 51, -- xS, yS, wS, hS
+		langText("Historia", "Story"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton", -- surfaceSelected
+		0, 0, 215, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Ingresa a la pantalla que muestra la historia del juego."
+			, "Enters a screen that tells the story of the game."), -- toolTipText
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) -- onClickEvent
+			switchingToMenu="storyMenu"
+		end,
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnOptions", -- name
+		186, 315, -- x, y
+		"srfBackIntroButton", -- surfaceNormal
+		0, 51, 215, 51, -- xS, yS, wS, hS
+		langText("Opciones", "Options"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton", -- surfaceSelected
+		0, 0, 215, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Ingresa al menú de configuración del programa."
+			, "Enters the game options menu."), -- toolTipText
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) -- onClickEvent
+			switchingToMenu="optionsMenu"
+		end,
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnConcept", -- name
+		186, 366, -- x, y
+		"srfBackIntroButton", -- surfaceNormal
+		0, 51, 215, 51, -- xS, yS, wS, hS
+		langText("Concepto", "Concept"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton", -- surfaceSelected
+		0, 0, 215, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText( -- toolTipText
+			"Ingresa a la pantalla de explicación del Concepto Randomedia.",
+			"Enters a screen explaining the truth about the Randomedia Concept."),
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) -- onClickEvent
+			switchingToMenu="conceptMenu"
+		end,
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnCredits", -- name
+		186, 417, -- x, y
+		"srfBackIntroButton", -- surfaceNormal
+		0, 51, 215, 51, -- xS, yS, wS, hS
+		langText("Créditos", "Credits"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton", -- surfaceSelected
+		0, 0, 215, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Ingresa a la pantalla de créditos del programa."
+			, "Enters the game credits screen."), -- toolTipText
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) -- onClickEvent
+			switchingToMenu="creditsMenu"
+		end,
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnExit", -- name
+		186, 471, -- x, y
+		"srfBackIntroButton", -- surfaceNormal
+		0, 51, 215, 51, -- xS, yS, wS, hS
+		langText("Salir", "Exit"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton", -- surfaceSelected
+		0, 0, 215, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Sale del programa", "Exits the program"), -- toolTipText
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) switchingToMenu="exitingMenu" end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableToolTip(
+		"mainMenuToolTip", -- name
+		nil, -- surface
+		23, 567, 766, 21, -- x, y, w, h
+		0, 0, -- xS, yS
+		"dahFont", -- fontName
+		23, 567, 766, 21, -- xF, yF, wF, hF
+		"center", "center", -- h_align, v_align
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableContentSwitcher(
+		"switcherHighScores", -- name
+		"r_drawFunctionSwitcher", -- drawFunctionVarName
+		560+10, 291, 211-20, 244, -- x, y, w, h
+		function (v) -- onInitMenu
+			r_drawFunctionSwitcher=function (v)
+				local centerT="HIGH SCORES";
+				local leftT="\n\n\n\n";
+				local rightT="\n\n\n\n";
+
+				updateHighScoresList();
+				for i=1, #highScoresList do
+					leftT=leftT .. highScoresList[i].name .. "\n";
+					rightT=rightT .. highScoresList[i].score .. "\n";
+				end;-- for
+
+				menuDrawText("ediaBigFont", centerT, v.x, v.y+10, v.w, v.h,
+					"center", "top");
+				menuDrawText("dahFont", leftT, v.x, v.y, v.w, v.h,
+					"left", "top");
+				menuDrawText("dahFont", rightT, v.x, v.y, v.w, v.h,
+					"right", "top");
+			end-- drawFunction
+		end,-- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onClickEvent
+		function (v) end -- onTickEvent
+		)
+}-- mainMenuButtons
+
+-- MAIN MENU
+mainMenu=createLightableMenu(
+	"mainMenu", -- name
+	"srfMenuBackground", -- backSurface
+	"cursorImage", -- cursorSurface
+	"musWavMenuMusic", -- soundMusic
+	"Choose your destiny", -- toolTipText
+	"r_toolTipText", -- toolTipVarName
+	function (v) end, -- onInitMenu
+	function (v) end, -- onCloseMenu
+	function (v) end, -- onClickEvent
+	function (v) end, -- onTickEvent
+	mainMenuButtons -- controlsList
+	)
+

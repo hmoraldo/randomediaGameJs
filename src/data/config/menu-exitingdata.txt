@@ -1,0 +1,56 @@
+-- Copyright (c) 2007 Horacio Hernan Moraldo
+--
+-- This software is provided 'as-is', without any express or
+-- implied warranty. In no event will the authors be held liable
+-- for any damages arising from the use of this software.
+--
+-- Permission is granted to anyone to use this software for any
+-- purpose, including commercial applications, and to alter it and
+-- redistribute it freely, subject to the following restrictions:
+--
+-- 1. The origin of this software must not be misrepresented; you
+-- must not claim that you wrote the original software. If you use
+-- this software in a product, an acknowledgment in the product
+-- documentation would be appreciated but is not required.
+--
+-- 2. Altered source versions must be plainly marked as such, and
+-- must not be misrepresented as being the original software.
+--
+-- 3. This notice may not be removed or altered from any source
+-- distribution.
+--
+-- DATA LISTS FOR THE EXITING MENU
+
+-- EXITINGMENU
+exitingMenu=createLightableMenu(
+	"exitingMenu", -- name
+	nil, -- backSurface
+	nil, -- cursorSurface
+	nil, -- soundMusic
+	nil, -- toolTipText
+	"r_toolTipText", -- toolTipVarName
+	function (v) end, -- onInitMenu
+	function (v) end, -- onCloseMenu
+	function (v) end, -- onClickEvent
+	function (v) end, -- onTickEvent
+	{ -- controlsList
+		createMenuControl(
+		"ctrlExiting", -- name
+		NULL, -- surface
+		0, 0, -- xSrc, ySrc,
+		0, 0, screenWidth, screenHeight, -- x, y, w, h
+		langText("Copyrith 2003 H. Hernán Moraldo\n\nTodos los derechos reservados",
+			"Copyrith 2003 H. Hernán Moraldo\n\nAll rights reserved"), -- text
+		"dahFont", -- fontName
+		0, 0, screenWidth, screenHeight, -- xF, yF, wF, hF
+		"center", "center", -- h_align, v_align,
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onClickEvent
+		function (v) end, -- onOverEvent
+		function (v) end, -- onOverOutEvent
+		function (v) end -- onTickEvent
+		)
+	}
+	)
+

@@ -1,0 +1,247 @@
+-- Copyright (c) 2007 Horacio Hernan Moraldo
+--
+-- This software is provided 'as-is', without any express or
+-- implied warranty. In no event will the authors be held liable
+-- for any damages arising from the use of this software.
+--
+-- Permission is granted to anyone to use this software for any
+-- purpose, including commercial applications, and to alter it and
+-- redistribute it freely, subject to the following restrictions:
+--
+-- 1. The origin of this software must not be misrepresented; you
+-- must not claim that you wrote the original software. If you use
+-- this software in a product, an acknowledgment in the product
+-- documentation would be appreciated but is not required.
+--
+-- 2. Altered source versions must be plainly marked as such, and
+-- must not be misrepresented as being the original software.
+--
+-- 3. This notice may not be removed or altered from any source
+-- distribution.
+--
+
+-- DATA LISTS FOR THE OPTIONS MENU
+
+-- OPTIONS MENU BUTTONS
+optionsMenuButtons={
+	createMenuControl(
+		"txtTitle", -- name
+		nil, -- surface
+		nil, nil, -- xSrc, ySrc
+		143, 25, 470, 38, -- x, y, w, h
+		"OPTIONS MENU", -- text
+		"ediaBigFont", -- fontName
+		143, 25, 470, 38, -- xF, yF, wF, hF
+		"center", "center", -- h_align, v_align
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onClickEvent
+		function (v) end, -- onOverEvent
+		function (v) end, -- onOverOutEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnLanguage", -- name
+		292, 160, -- x, y
+		"srfBackIntroButton", -- surfaceNormal
+		0, 51, 215, 51, -- xS, yS, wS, hS
+		langText("Lenguaje: Español", "Language: English"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton", -- surfaceSelected
+		0, 0, 215, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Un click en este botón cambia al lenguaje inglés"
+			, "One click over this button switches to Spanish"), -- toolTipText
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) -- onClickEvent
+			if currentLanguage=="spanish" then
+				setCurrentLanguage("english");
+			else
+				setCurrentLanguage("spanish");
+			end-- if
+		end,
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnSoundActive", -- name
+		292, 160+51, -- x, y
+		"srfBackIntroButton", -- surfaceNormal
+		0, 51, 215, 51, -- xS, yS, wS, hS
+		nil, -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton", -- surfaceSelected
+		0, 0, 215, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		nil, -- toolTipText
+		"r_toolTipText", -- toolTipVarName
+		function (v)
+			-- stop showing the tool tip error when initialized
+			v.u_toolTipError=nil;
+		end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v)
+			-- stop showing the tool tip error when deselected
+			v.u_toolTipError=nil;
+		end, -- onDeselEvent
+		function (v) -- onClickEvent
+			-- stop showing the tool tip error when clicked
+			v.u_toolTipError=nil;
+
+			if not programSoundActive then
+				-- do nothing, only show an error message
+				v.u_toolTipError=true
+				v.toolTipText=langText(
+					"ERROR: El sonido no pude ser activado. Si existe " ..
+					"algún otro programa que esté utilizando la placa " ..
+					"de sonido en este momento, ciérrelo, cierre también " ..
+					"el juego y vuelva a intentar.",
+					"ERROR: Sound could not be enabled. If there is " ..
+					"any other program currently using the sound " ..
+					"card, please close it, then close the game, " ..
+					"and try again.")
+			else
+				-- switch sound enabled on or off, as needed
+				setSoundEnabled(not programSoundEnabled);
+
+				if programSoundEnabled then
+					playSoundResource(currentMenu.soundMusic);
+				end
+			end
+		end,
+		function (v) -- onTickEvent
+			-- don't change the tool tip text if it's showing an error text
+			if v.u_toolTipError then return; end;
+
+			if not programSoundActive then
+				-- sound not available by the system
+				v.text=langText("<Sonido no disponible>",
+					"<Sound not available>");
+				v.toolTipText=langText(
+					"Sonido no disponible por estar actualmente en " ..
+					"uso por algún otro programa o no disponer del " ..
+					"hardware adecuado.",
+					"Sound not available, for having the sound card " ..
+					"currently in use by any other program, or not " ..
+					"having the adequate hardware.");
+			else
+				if programSoundEnabled then
+					-- sound available
+					v.text=langText("Sonido: Sí",
+						"Sound: Yes");
+					v.toolTipText=langText(
+					"Utilice este botón para desactivar el sonido.",
+					"Use this button to disable sound.");
+				else
+					-- sound not available by the user options
+					v.text=langText("Sonido: No", "Sound: No");
+					v.toolTipText=langText(
+					"Utilice este botón para reactivar el sonido.",
+					"Use this button to enable sound.");
+				end;
+			end-- if
+		end
+		),
+	createLightableButton(
+		"btnResetScores", -- name
+		292, 160+51*2, -- x, y
+		"srfBackIntroButton", -- surfaceNormal
+		0, 51, 215, 51, -- xS, yS, wS, hS
+		langText("Borrar puntajes", "Reset scores"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton", -- surfaceSelected
+		0, 0, 215, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Borra los puntajes de la lista de los mejores, para volver a empezar",
+			"Resets the high scores list, as for starting once again"), -- toolTipText
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) resetHighScores() end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnBack", -- name
+		292, 160+51*3, -- x, y
+		"srfBackIntroButton", -- surfaceNormal
+		0, 51, 215, 51, -- xS, yS, wS, hS
+		langText("Volver", "Back"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton", -- surfaceSelected
+		0, 0, 215, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Vuelve al menú principal", -- toolTipText
+			"Goes back to the main menu"),
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) switchingToMenu="mainMenu" end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableToolTip(
+		"mainMenuToolTip", -- name
+		nil, -- surface
+		23, 567, 766, 21, -- x, y, w, h
+		0, 0, -- xS, yS
+		"dahFont", -- fontName
+		23, 567, 766, 21, -- xF, yF, wF, hF
+		"center", "center", -- h_align, v_align
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onClickEvent
+		function (v) end -- onTickEvent
+		)
+}-- mainMenuButtons
+
+-- OPTIONS MENU
+optionsMenu=createLightableMenu(
+	"optionsMenu", -- name
+	"srfMenuBackground2", -- backSurface
+	"cursorImage", -- cursorSurface
+	"musWavMenuMusicSpecial", -- soundMusic
+	"Choose your destiny", -- toolTipText
+	"r_toolTipText", -- toolTipVarName
+	function (v) end, -- onInitMenu
+	function (v) end, -- onCloseMenu
+	function (v) end, -- onClickEvent
+	function (v) end, -- onTickEvent
+	optionsMenuButtons -- controlsList
+	)
+

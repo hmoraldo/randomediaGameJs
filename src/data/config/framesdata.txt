@@ -1,0 +1,956 @@
+-- Copyright (c) 2007 Horacio Hernan Moraldo
+--
+-- This software is provided 'as-is', without any express or
+-- implied warranty. In no event will the authors be held liable
+-- for any damages arising from the use of this software.
+--
+-- Permission is granted to anyone to use this software for any
+-- purpose, including commercial applications, and to alter it and
+-- redistribute it freely, subject to the following restrictions:
+--
+-- 1. The origin of this software must not be misrepresented; you
+-- must not claim that you wrote the original software. If you use
+-- this software in a product, an acknowledgment in the product
+-- documentation would be appreciated but is not required.
+--
+-- 2. Altered source versions must be plainly marked as such, and
+-- must not be misrepresented as being the original software.
+--
+-- 3. This notice may not be removed or altered from any source
+-- distribution.
+--
+-- FRAMES DEL PLAYER
+
+imgAvatarStill1=createImage(
+	"srfPlayerJAvatar",-- nombre interno de la imagen donde se guarda
+	5, 7, 105, 135,-- x, y, w, h
+	12, 46, 58, 96,-- cx, cy, cw, cy
+	54, 57+(153*0),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgAvatarStill2=createImage(
+	"srfPlayerJAvatar",-- nombre interno de la imagen donde se guarda
+	5, 160, 105, 135,-- x, y, w, h
+	12, 199, 58, 96,-- cx, cy, cw, cy
+	54, 57+(153*1),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgAvatarStill3=createImage(
+	"srfPlayerJAvatar",-- nombre interno de la imagen donde se guarda
+	5, 313, 105, 135,-- x, y, w, h
+	12, 352, 58, 96,-- cx, cy, cw, cy
+	54, 57+(153*2),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgAvatarShooting1=createImage(
+	"srfPlayerJAvatar",-- nombre interno de la imagen donde se guarda
+	3, 466, 105, 136,-- x, y, w, h
+	17, 504, 58, 97,-- cx, cy, cw, cy
+	54, 57+(153*3),-- handlerX, handlerY
+	107, 511,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgAvatarShooting2=createImage(
+	"srfPlayerJAvatar",-- nombre interno de la imagen donde se guarda
+	1, 619, 105, 135,-- x, y, w, h
+	24, 658, 55, 96,-- cx, cy, cw, cy
+	54, 57+(153*4),-- handlerX, handlerY
+	105, 664,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgAvatarShooting3=createImage(
+	"srfPlayerJAvatar",-- nombre interno de la imagen donde se guarda
+	5, 772, 105, 135,-- x, y, w, h
+	11, 811, 58, 96,-- cx, cy, cw, cy
+	54, 57+(153*5),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgAvatarShooting4=createImage(
+	"srfPlayerJAvatar",-- nombre interno de la imagen donde se guarda
+	5, 925, 106, 135,-- x, y, w, h
+	12, 964, 58, 96,-- cx, cy, cw, cy
+	54, 57+(153*6),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgAvatarGoingDown=createImage(
+	"srfPlayerJAvatar",-- nombre interno de la imagen donde se guarda
+	5, 1078, 105, 141,-- x, y, w, h
+	21, 1117, 43, 102,-- cx, cy, cw, cy
+	54, 57+(153*7),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgAvatarGoingDown2=createImage(
+	"srfPlayerJAvatar",-- nombre interno de la imagen donde se guarda
+	5, 1231, 105, 146,-- x, y, w, h
+	26, 1270, 39, 107,-- cx, cy, cw, cy
+	54, 57+(153*8),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgAvatarGoingUp=createImage(
+	"srfPlayerJAvatar",-- nombre interno de la imagen donde se guarda
+	5, 1384, 105, 136,-- x, y, w, h
+	16, 1423, 47, 97,-- cx, cy, cw, cy
+	54, 57+(153*9),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgAvatarGoingUp2=createImage(
+	"srfPlayerJAvatar",-- nombre interno de la imagen donde se guarda
+	5, 1537, 105, 142,-- x, y, w, h
+	24, 1576, 39, 103,-- cx, cy, cw, cy
+	54, 57+(153*10),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgAvatarTouched=createImage(
+	"srfPlayerJAvatar",-- nombre interno de la imagen donde se guarda
+	6, 1692, 107, 139,-- x, y, w, h
+	25, 1729, 55, 101,-- cx, cy, cw, cy
+	54, 57+(153*11),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	8, 1082-- adherenceX, adherenceY
+	)
+
+imgAvatarTouched2=createImage(
+	"srfPlayerJAvatar",-- nombre interno de la imagen donde se guarda
+	3, 1848, 110, 136,-- x, y, w, h
+	26, 1881, 58, 103,-- cx, cy, cw, cy
+	54, 57+(153*12),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+
+-- FRAMES DEL SHEEP CARRIER
+
+imgSheepCarrierFlying1=createImage(
+	"srfeneSheepCarrier",-- nombre interno de la imagen donde se guarda
+	3, 11, 101, 59,-- x, y, w, h
+	3, 22, 78, 48,-- cx, cy, cw, cy
+	42, 42+(101*0),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepCarrierFlying2=createImage(
+	"srfeneSheepCarrier",-- nombre interno de la imagen donde se guarda
+	3, 109, 82, 62,-- x, y, w, h
+	3, 122, 78, 49,-- cx, cy, cw, cy
+	42, 42+(101*1),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepCarrierFlying3=createImage(
+	"srfeneSheepCarrier",-- nombre interno de la imagen donde se guarda
+	3, 211, 78, 61,-- x, y, w, h
+	3, 223, 78, 49,-- cx, cy, cw, cy
+	42, 42+(101*2),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepCarrierJustCarrying1=createImage(
+	"srfeneSheepCarrier",-- nombre interno de la imagen donde se guarda
+	2, 307, 93, 74,-- x, y, w, h
+	2, 325, 80, 56,-- cx, cy, cw, cy
+	42, 42+(101*3),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	24, 361-- adherenceX, adherenceY
+	)
+
+imgSheepCarrierJustCarrying2=createImage(
+	"srfeneSheepCarrier",-- nombre interno de la imagen donde se guarda
+	1, 413, 103, 67,-- x, y, w, h
+	1, 423, 69, 57,-- cx, cy, cw, cy
+	42, 42+(101*4),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepCarrierNowEscaping1=createImage(
+	"srfeneSheepCarrier",-- nombre interno de la imagen donde se guarda
+	15, 514, 62, 70,-- x, y, w, h
+	14, 524, 47, 60,-- cx, cy, cw, cy
+	42, 42+(101*5),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepCarrierNowEscaping2=createImage(
+	"srfeneSheepCarrier",-- nombre interno de la imagen donde se guarda
+	14, 616, 82, 69,-- x, y, w, h
+	14, 625, 47, 60,-- cx, cy, cw, cy
+	42, 42+(101*6),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepCarrierNowEscaping3=createImage(
+	"srfeneSheepCarrier",-- nombre interno de la imagen donde se guarda
+	14, 716, 90, 70,-- x, y, w, h
+	14, 726, 47, 60,-- cx, cy, cw, cy
+	42, 42+(101*7),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepCarrierWithSheep1=createImage(
+	"srfeneSheepCarrier",-- nombre interno de la imagen donde se guarda
+	3, 819, 101, 84,-- x, y, w, h
+	3, 829, 77, 49,-- cx, cy, cw, cy
+	42, 42+(101*8),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	8, 880-- adherenceX, adherenceY
+	)
+
+imgSheepCarrierWithSheep2=createImage(
+	"srfeneSheepCarrier",-- nombre interno de la imagen donde se guarda
+	3, 917, 82, 87,-- x, y, w, h
+	3, 930, 77, 49,-- cx, cy, cw, cy
+	42, 42+(101*9),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	8, 981-- adherenceX, adherenceY
+	)
+
+imgSheepCarrierWithSheep3=createImage(
+	"srfeneSheepCarrier",-- nombre interno de la imagen donde se guarda
+	3, 1019, 77, 86,-- x, y, w, h
+	3, 1031, 77, 49,-- cx, cy, cw, cy
+	42, 42+(101*10),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	8, 1082-- adherenceX, adherenceY
+	)
+
+imgSheepCarrierWithSheepComingFromATube=createImage(
+	"srfeneSheepCarrier",-- nombre interno de la imagen donde se guarda
+	3, 1122, 100, 79,-- x, y, w, h
+	3, 1122, 100, 79,-- cx, cy, cw, cy
+	42, 42+(101*11),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	8, 1183-- adherenceX, adherenceY
+	)
+
+imgSheepCarrierWithBodyComingFromATube=createImage(
+	"srfeneSheepCarrier",-- nombre interno de la imagen donde se guarda
+	3, 1223, 101, 74,-- x, y, w, h
+	3, 1223, 101, 74,-- cx, cy, cw, cy
+	42, 42+(101*12),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	3, 1223-- adherenceX, adherenceY
+	)
+
+imgSheepCarrierWithBody1=createImage(
+	"srfeneSheepCarrier",-- nombre interno de la imagen donde se guarda
+	3, 1223, 101, 74,-- x, y, w, h
+	3, 1223, 78, 59,-- cx, cy, cw, cy
+	42, 42+(101*12),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	3, 1223-- adherenceX, adherenceY
+	)
+
+imgSheepCarrierWithBody2=createImage(
+	"srfeneSheepCarrier",-- nombre interno de la imagen donde se guarda
+	3, 1321, 85, 77,-- x, y, w, h
+	3, 1334, 78, 49,-- cx, cy, cw, cy
+	42, 42+(101*13),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	3, 1321-- adherenceX, adherenceY
+	)
+
+imgSheepCarrierWithBody3=createImage(
+	"srfeneSheepCarrier",-- nombre interno de la imagen donde se guarda
+	3, 1423, 85, 76,-- x, y, w, h
+	3, 1435, 78, 49,-- cx, cy, cw, cy
+	42, 42+(101*14),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	3, 1423-- adherenceX, adherenceY
+	)
+
+-- FRAMES DE LA CABEZA
+
+imgHeadInvisible=createImage(
+	"srffndHead",-- nombre interno de la imagen donde se guarda
+	14, 24, 0, 0,-- x, y, w, h
+	14, 24, 0, 0,-- cx, cy, cw, cy
+	14, 24+(40*0),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	14, 24-- adherenceX, adherenceY
+	)
+
+imgHeadFront=createImage(
+	"srffndHead",-- nombre interno de la imagen donde se guarda
+	2, 3, 36, 34,-- x, y, w, h
+	2, 3, 36, 34,-- cx, cy, cw, cy
+	14, 24+(40*0),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	13, 19-- adherenceX, adherenceY
+	)
+
+imgHeadRotating1=createImage(
+	"srffndHead",-- nombre interno de la imagen donde se guarda
+	5, 41, 31, 38,-- x, y, w, h
+	5, 41, 31, 38,-- cx, cy, cw, cy
+	14, 24+(40*1),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgHeadRotating2=createImage(
+	"srffndHead",-- nombre interno de la imagen donde se guarda
+	5, 81, 28, 38,-- x, y, w, h
+	5, 81, 28, 38,-- cx, cy, cw, cy
+	14, 24+(40*2),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgHeadRotating3=createImage(
+	"srffndHead",-- nombre interno de la imagen donde se guarda
+	5, 121, 27, 37,-- x, y, w, h
+	5, 121, 27, 37,-- cx, cy, cw, cy
+	14, 24+(40*3),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgHeadRotating4=createImage(
+	"srffndHead",-- nombre interno de la imagen donde se guarda
+	5, 161, 28, 37,-- x, y, w, h
+	5, 161, 28, 37,-- cx, cy, cw, cy
+	14, 24+(40*4),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgHeadRotating5=createImage(
+	"srffndHead",-- nombre interno de la imagen donde se guarda
+	5, 203, 28, 34,-- x, y, w, h
+	5, 203, 28, 34,-- cx, cy, cw, cy
+	14, 24+(40*5),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgHeadRotating6=createImage(
+	"srffndHead",-- nombre interno de la imagen donde se guarda
+	4, 243, 32, 33,-- x, y, w, h
+	4, 243, 32, 33,-- cx, cy, cw, cy
+	14, 24+(40*6),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgHeadRotating7=createImage(
+	"srffndHead",-- nombre interno de la imagen donde se guarda
+	5, 282, 32, 34,-- x, y, w, h
+	5, 282, 32, 34,-- cx, cy, cw, cy
+	14, 24+(40*7),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+
+
+-- CARGA CABEZAS
+
+imgHeadCarrierFlying1=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	6, 69, 89, 63,-- x, y, w, h
+	6, 75, 65, 57,-- cx, cy, cw, cy
+	40, 91+(101*0),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgHeadCarrierFlying2=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	6, 164, 79, 69,-- x, y, w, h
+	6, 176, 65, 57,-- cx, cy, cw, cy
+	40, 91+(101*1),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgHeadCarrierFlying3=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	6, 253, 65, 81,-- x, y, w, h
+	6, 277, 65, 57,-- cx, cy, cw, cy
+	40, 91+(101*2),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgHeadCarrierFlying4=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	6, 359, 67, 76,-- x, y, w, h
+	6, 378, 65, 57,-- cx, cy, cw, cy
+	40, 91+(101*3),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgHeadCarrierFlying5=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	6, 479, 87, 57,-- x, y, w, h
+	6, 479, 65, 57,-- cx, cy, cw, cy
+	40, 91+(101*4),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgHeadCarrierCarryingHeadComingFromATube=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	6, 574, 89, 71,-- x, y, w, h
+	6, 574, 89, 71,-- cx, cy, cw, cy
+	40, 91+(101*5),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	43, 627-- adherenceX, adherenceY
+	)
+
+imgHeadCarrierCarryingHead1=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	6, 574, 89, 71,-- x, y, w, h
+	6, 580, 65, 57,-- cx, cy, cw, cy
+	40, 91+(101*5),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	43, 627-- adherenceX, adherenceY
+	)
+
+imgHeadCarrierCarryingHead2=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	6, 669, 79, 77,-- x, y, w, h
+	6, 681, 65, 57,-- cx, cy, cw, cy
+	40, 91+(101*6),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	43, 728-- adherenceX, adherenceY
+	)
+
+imgHeadCarrierCarryingHead3=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	6, 758, 65, 89,-- x, y, w, h
+	6, 782, 65, 57,-- cx, cy, cw, cy
+	40, 91+(101*7),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	43, 829-- adherenceX, adherenceY
+	)
+
+imgHeadCarrierCarryingHead4=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	6, 864, 67, 84,-- x, y, w, h
+	6, 883, 65, 57,-- cx, cy, cw, cy
+	40, 91+(101*8),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	43, 930-- adherenceX, adherenceY
+	)
+
+imgHeadCarrierCarryingHead5=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	6, 984, 87, 65,-- x, y, w, h
+	6, 984, 65, 57,-- cx, cy, cw, cy
+	40, 91+(101*9),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	43, 1031-- adherenceX, adherenceY
+	)
+
+imgHeadCarrierTouched1=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	6, 1065, 68, 77,-- x, y, w, h
+	6, 1083, 68, 59,-- cx, cy, cw, cy
+	40, 91+(101*10),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	43, 1131-- adherenceX, adherenceY
+	)
+
+imgHeadCarrierTouched2=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	7, 1176, 77, 65,-- x, y, w, h
+	7, 1177, 65, 64,-- cx, cy, cw, cy
+	40, 91+(101*11),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgHeadCarrierTouched3=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	0, 1263, 87, 78,-- x, y, w, h
+	0, 1277, 87, 64,-- cx, cy, cw, cy
+	40, 91+(101*12),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgHeadCarrierEscaping1=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	15, 1377, 73, 65,-- x, y, w, h
+	15, 1377, 48, 65,-- cx, cy, cw, cy
+	40, 91+(101*13),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgHeadCarrierEscaping2=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	15, 1478, 77, 65,-- x, y, w, h
+	15, 1478, 48, 65,-- cx, cy, cw, cy
+	40, 91+(101*14),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgHeadCarrierEscaping3=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	16, 1579, 50, 65,-- x, y, w, h
+	16, 1577, 48, 65,-- cx, cy, cw, cy
+	40, 91+(101*15),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgHeadCarrierEscaping4=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	15, 1680, 49, 65,-- x, y, w, h
+	15, 1680, 48, 65,-- cx, cy, cw, cy
+	40, 91+(101*16),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgHeadCarrierEscaping5=createImage(
+	"srfeneHeadCarrier",-- nombre interno de la imagen donde se guarda
+	15, 1781, 49, 65,-- x, y, w, h
+	15, 1781, 48, 65,-- cx, cy, cw, cy
+	40, 91+(101*17),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+
+-- OVEJAS (BLANCAS)
+
+imgSheepInvisible=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	22, 27, 0, 0,-- x, y, w, h
+	22, 27, 0, 0,-- cx, cy, cw, cy
+	54, 49+(100*0),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	25, 54-- adherenceX, adherenceY
+	)
+
+imgSheepBeingCarried=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	22, 27, 64, 53,-- x, y, w, h
+	22, 27, 64, 53,-- cx, cy, cw, cy
+	54, 49+(100*0),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	25, 54-- adherenceX, adherenceY
+	)
+
+imgSheepFalling1=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	9, 130, 76, 57,-- x, y, w, h
+	9, 130, 76, 57,-- cx, cy, cw, cy
+	54, 49+(100*1),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepFalling2=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	10, 230, 72, 64,-- x, y, w, h
+	10, 230, 72, 64,-- cx, cy, cw, cy
+	54, 49+(100*2),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepAtGround1=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	3, 343, 100, 55,-- x, y, w, h
+	3, 343, 100, 55,-- cx, cy, cw, cy
+	54, 49+(100*3),-- handlerX, handlerY
+	49, 392,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepAtGround2=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	20, 445, 63, 49,-- x, y, w, h
+	20, 445, 63, 49,-- cx, cy, cw, cy
+	54, 49+(100*4),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepAtGround3=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	22, 542, 55, 54,-- x, y, w, h
+	22, 542, 55, 54,-- cx, cy, cw, cy
+	54, 49+(100*5),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepAtGround4=createImage(--blinking 1
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	24, 625, 57, 71,-- x, y, w, h
+	24, 625, 57, 71,-- cx, cy, cw, cy
+	54, 49+(100*6),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepAtGround5=createImage(-- blinking 2
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	24, 725, 57, 71,-- x, y, w, h
+	24, 725, 57, 71,-- cx, cy, cw, cy
+	54, 49+(100*7),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepTakingHead1=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	35, 830, 43, 66,-- x, y, w, h
+	35, 830, 43, 66,-- cx, cy, cw, cy
+	54, 49+(100*8),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	63, 874-- adherenceX, adherenceY
+	)
+
+imgSheepStartingToWalk1=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	34, 927, 50, 69,-- x, y, w, h
+	34, 927, 50, 69,-- cx, cy, cw, cy
+	54, 49+(100*9),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepWalking1=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	37, 1030, 39, 67,-- x, y, w, h
+	37, 1030, 39, 67,-- cx, cy, cw, cy
+	54, 49+(100*10),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepWalking2=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	38, 1128, 38, 69,-- x, y, w, h
+	38, 1128, 38, 69,-- cx, cy, cw, cy
+	54, 49+(100*11),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepWalking3=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	38, 1229, 38, 69,-- x, y, w, h
+	38, 1229, 38, 69,-- cx, cy, cw, cy
+	54, 49+(100*12),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepWalking4=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	38, 1328, 38, 69,-- x, y, w, h
+	38, 1328, 38, 69,-- cx, cy, cw, cy
+	54, 49+(100*13),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepWalking5=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	38, 1429, 38, 69,-- x, y, w, h
+	38, 1429, 38, 69,-- cx, cy, cw, cy
+	54, 49+(100*14),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgSheepWalkingWithHead1=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	37, 1527, 47, 69,-- x, y, w, h
+	37, 1527, 47, 69,-- cx, cy, cw, cy
+	54, 49+(100*15),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	54, 49+(100*15)-- adherenceX, adherenceY
+	)
+
+imgSheepWalkingWithHead2=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	36, 1630, 47, 67,-- x, y, w, h
+	36, 1630, 47, 67,-- cx, cy, cw, cy
+	54, 49+(100*16),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	54, 49+(100*16)-- adherenceX, adherenceY
+	)
+
+imgSheepWalkingWithHead3=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	36, 1728, 47, 69,-- x, y, w, h
+	36, 1728, 47, 69,-- cx, cy, cw, cy
+	54, 49+(100*17),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	54, 49+(100*17)-- adherenceX, adherenceY
+	)
+
+imgSheepWalkingWithHead4=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	36, 1829, 47, 69,-- x, y, w, h
+	36, 1829, 47, 69,-- cx, cy, cw, cy
+	54, 49+(100*18),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	54, 49+(100*18)-- adherenceX, adherenceY
+	)
+
+imgSheepWalkingWithHead5=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	36, 1929, 47, 69,-- x, y, w, h
+	36, 1929, 47, 69,-- cx, cy, cw, cy
+	54, 49+(100*19),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	54, 49+(100*19)-- adherenceX, adherenceY
+	)
+
+imgSheepWalkingWithHead6=createImage(
+	"srffndWhiteSheep",-- nombre interno de la imagen donde se guarda
+	36, 2028, 47, 69,-- x, y, w, h
+	36, 2028, 47, 69,-- cx, cy, cw, cy
+	54, 49+(100*20),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	54, 49+(100*20)-- adherenceX, adherenceY
+	)
+
+
+
+-- CUERPOS (ex ovejas negras)
+
+imgBodyInvisible=createImage(
+	"srffndBlackSheep",-- nombre interno de la imagen donde se guarda
+	3, 629, 0, 0,-- x, y, w, h
+	3, 629, 0, 0,-- cx, cy, cw, cy
+	32, 35+(102*6),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	15, 20+(102*6)-- adherenceX, adherenceY
+	)
+
+imgBodyFalling1=createImage(
+	"srffndBlackSheep",-- nombre interno de la imagen donde se guarda
+	3, 629, 52, 73,-- x, y, w, h
+	3, 629, 52, 73,-- cx, cy, cw, cy
+	32, 35+(102*6),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	15, 20+(102*6)-- adherenceX, adherenceY
+	)
+
+imgBodyTakingAHead=createImage(
+	"srffndBlackSheep",-- nombre interno de la imagen donde se guarda
+	1, 1445, 49, 73,-- x, y, w, h
+	1, 1445, 49, 73,-- cx, cy, cw, cy
+	32, 35+(102*14),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	32, 35+(102*14)-- adherenceX, adherenceY
+	)
+
+imgBodyWalking1=createImage(
+	"srffndBlackSheep",-- nombre interno de la imagen donde se guarda
+	8, 7, 47, 83,-- x, y, w, h
+	8, 7, 47, 83,-- cx, cy, cw, cy
+	32, 35+(102*0),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgBodyWalking2=createImage(
+	"srffndBlackSheep",-- nombre interno de la imagen donde se guarda
+	5, 113, 64, 79,-- x, y, w, h
+	5, 113, 64, 79,-- cx, cy, cw, cy
+	32, 35+(102*1),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgBodyWalking3=createImage(
+	"srffndBlackSheep",-- nombre interno de la imagen donde se guarda
+	8, 214, 59, 80,-- x, y, w, h
+	8, 214, 59, 80,-- cx, cy, cw, cy
+	32, 35+(102*2),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgBodyWalking4=createImage(
+	"srffndBlackSheep",-- nombre interno de la imagen donde se guarda
+	8, 317, 47, 81,-- x, y, w, h
+	8, 317, 47, 81,-- cx, cy, cw, cy
+	32, 35+(102*3),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgBodyWalking5=createImage(
+	"srffndBlackSheep",-- nombre interno de la imagen donde se guarda
+	8, 418, 54, 80,-- x, y, w, h
+	8, 418, 54, 80,-- cx, cy, cw, cy
+	32, 35+(102*4),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgBodyWalking6=createImage(
+	"srffndBlackSheep",-- nombre interno de la imagen donde se guarda
+	8, 519, 49, 83,-- x, y, w, h
+	8, 519, 49, 83,-- cx, cy, cw, cy
+	32, 35+(102*5),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgBodyWalkingWithHead1=createImage(
+	"srffndBlackSheep",-- nombre interno de la imagen donde se guarda
+	10, 823, 45, 83,-- x, y, w, h
+	10, 823, 45, 83,-- cx, cy, cw, cy
+	32, 35+(102*8),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	32, 35+(102*8)-- adherenceX, adherenceY
+	)
+
+imgBodyWalkingWithHead2=createImage(
+	"srffndBlackSheep",-- nombre interno de la imagen donde se guarda
+	5, 929, 64, 79,-- x, y, w, h
+	5, 929, 64, 79,-- cx, cy, cw, cy
+	32, 35+(102*9),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	32, 35+(102*9)-- adherenceX, adherenceY
+	)
+
+imgBodyWalkingWithHead3=createImage(
+	"srffndBlackSheep",-- nombre interno de la imagen donde se guarda
+	10, 1030, 57, 80,-- x, y, w, h
+	10, 1030, 57, 80,-- cx, cy, cw, cy
+	32, 35+(102*10),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	32, 35+(102*10)-- adherenceX, adherenceY
+	)
+
+imgBodyWalkingWithHead4=createImage(
+	"srffndBlackSheep",-- nombre interno de la imagen donde se guarda
+	10, 1133, 45, 81,-- x, y, w, h
+	10, 1133, 45, 81,-- cx, cy, cw, cy
+	32, 35+(102*11),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	32, 35+(102*11)-- adherenceX, adherenceY
+	)
+
+imgBodyWalkingWithHead5=createImage(
+	"srffndBlackSheep",-- nombre interno de la imagen donde se guarda
+	10, 1234, 52, 80,-- x, y, w, h
+	10, 1234, 52, 80,-- cx, cy, cw, cy
+	32, 35+(102*12),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	32, 35+(102*12)-- adherenceX, adherenceY
+	)
+
+imgBodyWalkingWithHead6=createImage(
+	"srffndBlackSheep",-- nombre interno de la imagen donde se guarda
+	10, 1335, 47, 83,-- x, y, w, h
+	10, 1335, 47, 83,-- cx, cy, cw, cy
+	32, 35+(102*13),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	32, 35+(102*13)-- adherenceX, adherenceY
+	)
+
+
+-- FRAMES DE LOS PERROS
+
+-- handler en el hocico hasta que tengo una buena ubicación de los bichos
+
+imgDogGoing1=createImage(
+	"srfbulPlayerFlame",-- nombre interno de la imagen donde se guarda
+	0, 62, 57, 25,-- x, y, w, h
+	0, 62, 57, 18,-- cx, cy, cw, cy
+	56, 67,-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	56, 67-- adherenceX, adherenceY
+	)
+
+imgDogGoing2=createImage(
+	"srfbulPlayerFlame",-- nombre interno de la imagen donde se guarda
+	0, 109, 84, 37,-- x, y, w, h
+	3, 110, 81, 26,-- cx, cy, cw, cy
+	83, 117,-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgDogGoing3=createImage(
+	"srfbulPlayerFlame",-- nombre interno de la imagen donde se guarda
+	3, 161, 84, 37,-- x, y, w, h
+	3, 162, 84, 28,-- cx, cy, cw, cy
+	86, 16+(51*3),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgDogMutating1=createImage(
+	"srfbulPlayerFlame",-- nombre interno de la imagen donde se guarda
+	0, 211, 89, 39,-- x, y, w, h
+	3, 213, 83, 29,-- cx, cy, cw, cy
+	86, 16+(51*4),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgDogMutating2=createImage(
+	"srfbulPlayerFlame",-- nombre interno de la imagen donde se guarda
+	1, 261, 86, 42,-- x, y, w, h
+	4, 261, 83, 36,-- cx, cy, cw, cy
+	86, 16+(51*5),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgDogMutating3=createImage(
+	"srfbulPlayerFlame",-- nombre interno de la imagen donde se guarda
+	1, 310, 89, 45,-- x, y, w, h
+	5, 312, 78, 38,-- cx, cy, cw, cy
+	86, 16+(51*6),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+imgDogMutating4=createImage(
+	"srfbulPlayerFlame",-- nombre interno de la imagen donde se guarda
+	1, 360, 92, 47,-- x, y, w, h
+	10, 362, 73, 45,-- cx, cy, cw, cy
+	86, 16+(51*7),-- handlerX, handlerY
+	0, 0,-- spawnBulletsX, spawnBulletsY
+	0, 0-- adherenceX, adherenceY
+	)
+
+
+
+

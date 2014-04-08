@@ -1,0 +1,178 @@
+-- Copyright (c) 2007 Horacio Hernan Moraldo
+--
+-- This software is provided 'as-is', without any express or
+-- implied warranty. In no event will the authors be held liable
+-- for any damages arising from the use of this software.
+--
+-- Permission is granted to anyone to use this software for any
+-- purpose, including commercial applications, and to alter it and
+-- redistribute it freely, subject to the following restrictions:
+--
+-- 1. The origin of this software must not be misrepresented; you
+-- must not claim that you wrote the original software. If you use
+-- this software in a product, an acknowledgment in the product
+-- documentation would be appreciated but is not required.
+--
+-- 2. Altered source versions must be plainly marked as such, and
+-- must not be misrepresented as being the original software.
+--
+-- 3. This notice may not be removed or altered from any source
+-- distribution.
+--
+-- DATA LISTS FOR THE CONCEPT MENU
+
+-- CONCEPT MENU BUTTONS
+conceptMenuButtons={
+	createMenuControl(
+		"txtTitle", -- name
+		nil, -- surface
+		nil, nil, -- xSrc, ySrc
+		143, 25, 470, 38, -- x, y, w, h
+		langText("CONCEPTO", "CONCEPT"), -- text
+		"ediaBigFont", -- fontName
+		143, 25, 470, 38, -- xF, yF, wF, hF
+		"center", "center", -- h_align, v_align
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onClickEvent
+		function (v) end, -- onOverEvent
+		function (v) end, -- onOverOutEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnBack", -- name
+		28+(752-150)/2, 511+(51-43)/2, -- x, y
+		"srfBackIntroButton3", -- surfaceNormal
+		0, 51, 150, 51, -- xS, yS, wS, hS
+		langText("Volver", "Back"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton3", -- surfaceSelected
+		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Vuelve al menú principal", -- toolTipText
+			"Goes back to the main menu"),
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) switchingToMenu="mainMenu" end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableToolTip(
+		"conceptMenuToolTip", -- name
+		nil, -- surface
+		23, 567, 766, 21, -- x, y, w, h
+		0, 0, -- xS, yS
+		"dahFont", -- fontName
+		23, 567, 766, 21, -- xF, yF, wF, hF
+		"center", "center", -- h_align, v_align
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableContentSwitcher(
+		"switcherText", -- name
+		"r_drawFunctionContents", -- drawFunctionVarName
+		28, 88, 752, 422, -- x, y, w, h
+		function (v) -- onInitMenu
+			r_drawFunctionContents = conceptContent_text1; -- drawFunction
+		end,-- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onClickEvent
+		function (v) end -- onTickEvent
+		)
+}-- conceptMenuButtons
+
+-- CONCEPT MENU
+conceptMenu=createLightableMenu(
+	"conceptMenu", -- name
+	"srfMenuBackground2", -- backSurface
+	"cursorImage", -- cursorSurface
+	"musWavMenuMusic", -- soundMusic
+	"Choose your destiny", -- toolTipText
+	"r_toolTipText", -- toolTipVarName
+	function (v) end, -- onInitMenu
+	function (v) end, -- onCloseMenu
+	function (v) end, -- onClickEvent
+	function (v) end, -- onTickEvent
+	conceptMenuButtons -- controlsList
+	)
+
+
+
+
+
+
+-- CONTENT FUNCTIONS
+
+-- the concept text
+function conceptContent_text1 (v)
+
+	local columnW, columnSepW;
+
+	columnSepW=35;
+	columnW=((752-70)-columnSepW)/2;
+
+	-- first column
+	menuDrawText("dahFont",
+
+selectText(
+"Concepto Randomedia es un primer ejemplo de lo que Moraldo Games pretende sean todos sus juegos: un mecanismo para el entretenimiento ajeno, que sea útil para determinar el avance del conocimiento humano sobre la materia del desarrollo de videojuegos. Esto se logra haciendo que cada juego que se produzca acompañe y ejemplifique la creación de nuevos conceptos teóricos en el área." ..
+
+"\n\n" ..
+
+"En este caso, el juego funcionó como la prueba y experimento para la investigación de dos importantes aspectos sobre el desarrollo de videojuegos: la metodología de diseño y desarrollo de los mismos, y el análisis de lo que determina su capacidad de entretenimiento bajo condiciones específicas. Más precisamente, se hizo lo siguiente:" ..
+
+"\n\n" ..
+
+"- Se investigó el funcionamiento de una original metodología de diseño y desarrollo, basada en la construcción de los juegos partiendo desde altos niveles" ..
+
+"",
+
+"Randomedia Concept is a first example of what Moraldo Games wants its games to be: mechanisms for people's entertainment, that advances the human knowledge on games development in some way.  We believe that's achieved by making every game the company produces work as an example of new theoretical concepts in the area." ..
+
+"\n\n\n" ..
+
+"In this case, the game worked as the test and experiment for the investigation of two very important aspects of game development: the design and development methodology, and the analysis of what makes a game be entertaining under some specific conditions. More exactly, for Concept Randomedia, the following was done:" ..
+
+"\n\n\n" ..
+
+"- An investigation about an original methodology for game design and development, based on the construction of games from higher levels of abstraction, descending until reaching" ..
+
+""),
+
+	v.x+35, v.y+20, columnW, v.h-40, "left", "top");
+
+
+	-- second column
+	menuDrawText("dahFont",
+
+"the specific instances of such games, for reaching extremely innovative base concepts. Randomedia Concept is a first example of the application of this technique, and as such it was very useful for detecting its strong and weak points." ..
+
+"\n\n\n" ..
+
+"- An investigation about the patterns that games share for achieving high levels of playability  with minimal game content. Later, making use of such pattern, Randomedia Concept was designed to be compelling even despite its apparent simplicity." ..
+
+"\n\n\n" ..
+
+"In definitive, that was the real concept behind Randomedia Concept, the excuse for its development: the exploration of new ways of thinking about games. The results of this investigation will be hopefully published in the near future, together with the final release of the game." ..
+
+"",
+
+	v.x+35+columnW+columnSepW, v.y+20, columnW, v.h-40, "left", "top");
+
+
+
+
+
+end

@@ -1,0 +1,137 @@
+-- Copyright (c) 2007 Horacio Hernan Moraldo
+--
+-- This software is provided 'as-is', without any express or
+-- implied warranty. In no event will the authors be held liable
+-- for any damages arising from the use of this software.
+--
+-- Permission is granted to anyone to use this software for any
+-- purpose, including commercial applications, and to alter it and
+-- redistribute it freely, subject to the following restrictions:
+--
+-- 1. The origin of this software must not be misrepresented; you
+-- must not claim that you wrote the original software. If you use
+-- this software in a product, an acknowledgment in the product
+-- documentation would be appreciated but is not required.
+--
+-- 2. Altered source versions must be plainly marked as such, and
+-- must not be misrepresented as being the original software.
+--
+-- 3. This notice may not be removed or altered from any source
+-- distribution.
+--
+-- DATA LISTS FOR THE HIGH SCORES MENU
+
+-- CONCEPT MENU BUTTONS
+highScoresButtons={
+	createMenuControl(
+		"txtTitle", -- name
+		nil, -- surface
+		nil, nil, -- xSrc, ySrc
+		143, 25, 470, 38, -- x, y, w, h
+		"HIGH SCORES", -- text
+		"ediaBigFont", -- fontName
+		143, 25, 470, 38, -- xF, yF, wF, hF
+		"center", "center", -- h_align, v_align
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onClickEvent
+		function (v) end, -- onOverEvent
+		function (v) end, -- onOverOutEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnBack", -- name
+		28+(752-150)/2, 511+(51-43)/2, -- x, y
+		"srfBackIntroButton3", -- surfaceNormal
+		0, 51, 150, 51, -- xS, yS, wS, hS
+		langText("Volver", "Back"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton3", -- surfaceSelected
+		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Tipee su nombre y presione enter para continuar", -- toolTipText
+			"Type your name and press enter to continue"),
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) switchingToMenu="mainMenu" end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableToolTip(
+		"conceptMenuToolTip", -- name
+		nil, -- surface
+		23, 567, 766, 21, -- x, y, w, h
+		0, 0, -- xS, yS
+		"dahFont", -- fontName
+		23, 567, 766, 21, -- xF, yF, wF, hF
+		"center", "center", -- h_align, v_align
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableContentSwitcher(
+		"switcherText", -- name
+		"r_drawFunctionContents", -- drawFunctionVarName
+		28, 88, 752, 422, -- x, y, w, h
+		function (v) -- onInitMenu
+			r_drawFunctionContents = highScoresContent; -- drawFunction
+		end,-- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onClickEvent
+		function (v) end -- onTickEvent
+		)
+}-- highScoresButtons
+
+-- CONCEPT MENU
+highScoresMenu=createLightableMenu(
+	"highScoresMenu", -- name
+	"srfMenuBackground2", -- backSurface
+	"cursorImage", -- cursorSurface
+	"musWavMenuMusicSpecial", -- soundMusic
+	"Choose your destiny", -- toolTipText
+	"r_toolTipText", -- toolTipVarName
+	function (v) end, -- onInitMenu
+	function (v) end, -- onCloseMenu
+	function (v) end, -- onClickEvent
+	function (v) end, -- onTickEvent
+	highScoresButtons -- controlsList
+	)
+
+
+
+
+
+
+-- CONTENT FUNCTIONS
+
+-- the high scores text
+function highScoresContent (v)
+	local centerT="HIGH SCORES";
+	local leftT="\n\n\n\n";
+	local rightT="\n\n\n\n";
+
+	updateHighScoresList();
+	for i=1, #highScoresList do
+		leftT=leftT .. highScoresList[i].name .. "\n";
+		rightT=rightT .. highScoresList[i].score .. "\n";
+	end;-- for
+
+	menuDrawText("ediaBigFont", centerT, v.x, v.y+10, v.w, v.h,
+		"center", "top");
+	menuDrawText("dahFont", leftT, v.x, v.y, v.w, v.h,
+		"left", "top");
+	menuDrawText("dahFont", rightT, v.x, v.y, v.w, v.h,
+		"right", "top");
+end
+

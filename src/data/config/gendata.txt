@@ -1,0 +1,79 @@
+-- Copyright (c) 2007 Horacio Hernan Moraldo
+--
+-- This software is provided 'as-is', without any express or
+-- implied warranty. In no event will the authors be held liable
+-- for any damages arising from the use of this software.
+--
+-- Permission is granted to anyone to use this software for any
+-- purpose, including commercial applications, and to alter it and
+-- redistribute it freely, subject to the following restrictions:
+--
+-- 1. The origin of this software must not be misrepresented; you
+-- must not claim that you wrote the original software. If you use
+-- this software in a product, an acknowledgment in the product
+-- documentation would be appreciated but is not required.
+--
+-- 2. Altered source versions must be plainly marked as such, and
+-- must not be misrepresented as being the original software.
+--
+-- 3. This notice may not be removed or altered from any source
+-- distribution.
+--
+-- GENERAL DATA
+
+-- RESOLUCION EN PANTALLA
+-- en general se recomienda no cambiar en lo más mínimo estos valores,
+-- salvo que se requiera probar el juego en resoluciones de 8 bit...
+screenWidth = 800
+screenHeight = 600
+screenBpp = 16
+
+-- TAMAÑO DE LAS PAREDES VIRTUALES
+leftWallSize = screenHeight
+rightWallSize = screenHeight
+groundWallSize = screenWidth
+
+
+-- COORDENADAS DE LOS WAVE GEN OBJECTS
+
+-- coordenadas del lanza ovejas blancas
+wSheepGenX = 627
+wSheepGenY = 474
+
+-- coordenadas del lanza ovejas negras (arriba)
+bSheepGenX = 651
+bSheepGenY = 15
+
+-- coordenadas del lanza cabezas
+headGenX = 626
+headGenY = 154
+
+-- coordenadas de la salida de la nave del protagonista
+sheepsOutGenX = 0
+sheepsOutGenY = 426
+
+
+-- COORDENADAS DE OBJETOS IMPORTANTES
+
+-- coordenadas del suelo
+yGround = 530
+yGroundForPlayer = 520
+
+
+-- VALOR X MAXIMO Y MINIMO PARA OVEJAS Y CABEZAS CAIDAS
+minXFallenWSheeps = 177
+maxXFallenWSheeps = 606
+minXFallenBSheeps = 177
+maxXFallenBSheeps = 606
+minXFallenHeads = 177
+maxXFallenHeads = 500
+
+
+-- SCORES
+headCarrierScore = 0
+sheepCarrierScore = 0
+headScore = 0
+wSheepScore = 250
+wSheepScoreWithHead = wSheepScore
+bSheepScore = 50
+bSheepScoreWithHead = 1000

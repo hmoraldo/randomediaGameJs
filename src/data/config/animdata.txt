@@ -1,0 +1,1299 @@
+-- Copyright (c) 2007 Horacio Hernan Moraldo
+--
+-- This software is provided 'as-is', without any express or
+-- implied warranty. In no event will the authors be held liable
+-- for any damages arising from the use of this software.
+--
+-- Permission is granted to anyone to use this software for any
+-- purpose, including commercial applications, and to alter it and
+-- redistribute it freely, subject to the following restrictions:
+--
+-- 1. The origin of this software must not be misrepresented; you
+-- must not claim that you wrote the original software. If you use
+-- this software in a product, an acknowledgment in the product
+-- documentation would be appreciated but is not required.
+--
+-- 2. Altered source versions must be plainly marked as such, and
+-- must not be misrepresented as being the original software.
+--
+-- 3. This notice may not be removed or altered from any source
+-- distribution.
+--
+frplJAvatar={
+	-- STILL PLAYER
+	createFrame(
+	"javatarNormal",-- nombre del frame, NULL para ninguno
+	imgAvatarStill1,-- objeto imagen para el dibujado del cuadro
+	"_javatarNormal2",-- siguiente frame, NULL para ninguno
+	0.1,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	"javGrpNormal" -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_javatarNormal2",-- nombre del frame, NULL para ninguno
+	imgAvatarStill2,-- objeto imagen para el dibujado del cuadro
+	"_javatarNormal3",-- siguiente frame, NULL para ninguno
+	0.1,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	"javGrpNormal" -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_javatarNormal3",-- nombre del frame, NULL para ninguno
+	imgAvatarStill3,-- objeto imagen para el dibujado del cuadro
+	"_javatarNormal4",-- siguiente frame, NULL para ninguno
+	0.1,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	"javGrpNormal" -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_javatarNormal4",-- nombre del frame, NULL para ninguno
+	imgAvatarStill2,-- objeto imagen para el dibujado del cuadro
+	"_javatarNormal5",-- siguiente frame, NULL para ninguno
+	0.1,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	"javGrpNormal" -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_javatarNormal5",-- nombre del frame, NULL para ninguno
+	imgAvatarStill1,-- objeto imagen para el dibujado del cuadro
+	"javatarNormal",-- siguiente frame, NULL para ninguno
+	0.1,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	"javGrpNormal" -- nombre del grupo de frames al que pertenece
+	),
+
+	-- GOING UP PLAYER
+	createFrame(
+	"javatarGoingUp",-- nombre del frame, NULL para ninguno
+	imgAvatarGoingUp,-- objeto imagen para el dibujado del cuadro
+	"_javatarGoingUp2",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	"javGrpNormal" -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_javatarGoingUp2",-- nombre del frame, NULL para ninguno
+	imgAvatarGoingUp2,-- objeto imagen para el dibujado del cuadro
+	"_javatarGoingUp3",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	"javGrpNormal" -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_javatarGoingUp3",-- nombre del frame, NULL para ninguno
+	imgAvatarGoingUp,-- objeto imagen para el dibujado del cuadro
+	"javatarNormal",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	"javGrpNormal" -- nombre del grupo de frames al que pertenece
+	),
+
+	-- PLAYER IS FALLING
+	createFrame(
+	"javatarGoingDown",-- nombre del frame, NULL para ninguno
+	imgAvatarGoingDown,-- objeto imagen para el dibujado del cuadro
+	"_javatarGoingDown2",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	"javGrpNormal" -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_javatarGoingDown2",-- nombre del frame, NULL para ninguno
+	imgAvatarGoingDown2,-- objeto imagen para el dibujado del cuadro
+	"_javatarGoingDown3",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	"javGrpNormal" -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_javatarGoingDown3",-- nombre del frame, NULL para ninguno
+	imgAvatarGoingDown,-- objeto imagen para el dibujado del cuadro
+	"javatarNormal",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	"javGrpNormal" -- nombre del grupo de frames al que pertenece
+	),
+
+	-- SHOOTING PLAYER
+	createFrame(
+	"javatarShoot",-- nombre del frame, NULL para ninguno
+	imgAvatarShooting1,-- objeto imagen para el dibujado del cuadro
+	"_javatarShoot2",-- siguiente frame, NULL para ninguno
+	0.1,-- segundos para el siguiente cuadro
+	"eventAvatar_shoot",-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_javatarShoot2",-- nombre del frame, NULL para ninguno
+	imgAvatarShooting2,-- objeto imagen para el dibujado del cuadro
+	"_javatarShoot2b",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	"eventAvatar_weaponReadyAgain",-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_javatarShoot2b",-- nombre del frame, NULL para ninguno
+	imgAvatarShooting1,-- objeto imagen para el dibujado del cuadro
+	"_javatarShoot3",-- siguiente frame, NULL para ninguno
+	0.1,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_javatarShoot3",-- nombre del frame, NULL para ninguno
+	imgAvatarShooting3,-- objeto imagen para el dibujado del cuadro
+	"_javatarShoot4",-- siguiente frame, NULL para ninguno
+	0.1,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_javatarShoot4",-- nombre del frame, NULL para ninguno
+	imgAvatarShooting4,-- objeto imagen para el dibujado del cuadro
+	"javatarNormal",-- siguiente frame, NULL para ninguno
+	0.1,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- TOUCHED PLAYER
+	createFrame(
+	"javatarTouched",-- nombre del frame, NULL para ninguno
+	imgAvatarTouched,-- objeto imagen para el dibujado del cuadro
+	"_javatarTouched2",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_javatarTouched2",-- nombre del frame, NULL para ninguno
+	imgAvatarTouched2,-- objeto imagen para el dibujado del cuadro
+	"_javatarTouched3",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_javatarTouched3",-- nombre del frame, NULL para ninguno
+	imgAvatarTouched,-- objeto imagen para el dibujado del cuadro
+	NULL,-- siguiente frame, NULL para ninguno
+	NULL,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- DYING PLAYER
+	createFrame(
+	"javatarDeath",-- nombre del frame, NULL para ninguno
+	imgAvatarTouched,-- objeto imagen para el dibujado del cuadro
+	"_javatarDeath2",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_javatarDeath2",-- nombre del frame, NULL para ninguno
+	imgAvatarTouched2,-- objeto imagen para el dibujado del cuadro
+	NULL,-- siguiente frame, NULL para ninguno
+	NULL,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	)
+}-- frplJAvatar
+
+
+frenSheepCarrier={
+	-- SHEEP CARRIER FLYING ALONE
+	createFrame(
+	"sheepCarrierNormal",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierFlying1,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierNormal2",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_sheepCarrierNormal2",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierFlying2,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierNormal3",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_sheepCarrierNormal3",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierFlying3,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierNormal4",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_sheepCarrierNormal4",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierFlying2,-- objeto imagen para el dibujado del cuadro
+	"sheepCarrierNormal",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- SHEEP CARRIER BEING TOUCHED
+	createFrame(
+	"sheepCarrierTouched",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierJustCarrying1,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierTouched2",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_sheepCarrierTouched2",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierJustCarrying2,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierEscaping1",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- SHEEP CARRIER ESCAPING
+	createFrame(
+	"_sheepCarrierEscaping1",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierNowEscaping1,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierEscaping2",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_sheepCarrierEscaping2",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierNowEscaping2,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierEscaping3",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_sheepCarrierEscaping3",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierNowEscaping3,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierEscaping4",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_sheepCarrierEscaping4",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierNowEscaping2,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierEscaping1",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- SHEEP CARRIER CARRYING A SHEEP
+	createFrame(
+	"sheepCarrierCarryingSheep",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierWithSheepComingFromATube,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierCarryingSheep1",-- siguiente frame, NULL para ninguno
+	0.9,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_sheepCarrierCarryingSheep1",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierWithSheep1,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierCarryingSheep2",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_sheepCarrierCarryingSheep2",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierWithSheep2,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierCarryingSheep3",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_sheepCarrierCarryingSheep3",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierWithSheep3,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierCarryingSheep4",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_sheepCarrierCarryingSheep4",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierWithSheep2,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierCarryingSheep1",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- SHEEP CARRIER CARRYING A BODY
+	createFrame(
+	"sheepCarrierCarryingBody",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierWithBodyComingFromATube,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierCarryingBody1",-- siguiente frame, NULL para ninguno
+	0.1,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_sheepCarrierCarryingBody1",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierWithBody1,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierCarryingBody2",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_sheepCarrierCarryingBody2",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierWithBody2,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierCarryingBody3",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_sheepCarrierCarryingBody3",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierWithBody3,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierCarryingBody4",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_sheepCarrierCarryingBody4",-- nombre del frame, NULL para ninguno
+	imgSheepCarrierWithBody2,-- objeto imagen para el dibujado del cuadro
+	"_sheepCarrierCarryingBody1",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	)
+
+}-- frenSheepCarrier
+
+
+
+frenHumanHead={
+	-- HUMAN HEAD AT GROUND
+	createFrame(
+	"humanHeadNormal",-- nombre del frame, NULL para ninguno
+	imgHeadFront,-- objeto imagen para el dibujado del cuadro
+	NULL,-- siguiente frame, NULL para ninguno
+	NULL,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"humanHeadCarriedByHeadCarrier",-- nombre del frame, NULL para ninguno
+	imgHeadInvisible,-- objeto imagen para el dibujado del cuadro
+	NULL,-- siguiente frame, NULL para ninguno
+	NULL,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	-- HUMAN HEAD CARRIED BY SHEEP
+	createFrame(
+	"humanHeadCarriedBySheep",-- nombre del frame, NULL para ninguno
+	imgHeadInvisible,-- objeto imagen para el dibujado del cuadro
+	NULL,-- siguiente frame, NULL para ninguno
+	NULL,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	-- HUMAN HEAD CARRIED BY BODY
+	createFrame(
+	"humanHeadCarriedByBody",-- nombre del frame, NULL para ninguno
+	imgHeadInvisible,-- objeto imagen para el dibujado del cuadro
+	NULL,-- siguiente frame, NULL para ninguno
+	NULL,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	-- HUMAN HEAD FALLING
+	createFrame(
+	"humanHeadFalling",-- nombre del frame, NULL para ninguno
+	imgHeadFront,-- objeto imagen para el dibujado del cuadro
+	"_humanHeadFalling2",-- siguiente frame, NULL para ninguno
+	0.12,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_humanHeadFalling2",-- nombre del frame, NULL para ninguno
+	imgHeadRotating1,-- objeto imagen para el dibujado del cuadro
+	"_humanHeadFalling3",-- siguiente frame, NULL para ninguno
+	0.12,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_humanHeadFalling3",-- nombre del frame, NULL para ninguno
+	imgHeadRotating2,-- objeto imagen para el dibujado del cuadro
+	"_humanHeadFalling4",-- siguiente frame, NULL para ninguno
+	0.12,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_humanHeadFalling4",-- nombre del frame, NULL para ninguno
+	imgHeadRotating3,-- objeto imagen para el dibujado del cuadro
+	"_humanHeadFalling5",-- siguiente frame, NULL para ninguno
+	0.12,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_humanHeadFalling5",-- nombre del frame, NULL para ninguno
+	imgHeadRotating4,-- objeto imagen para el dibujado del cuadro
+	"_humanHeadFalling6",-- siguiente frame, NULL para ninguno
+	0.12,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_humanHeadFalling6",-- nombre del frame, NULL para ninguno
+	imgHeadRotating5,-- objeto imagen para el dibujado del cuadro
+	"_humanHeadFalling7",-- siguiente frame, NULL para ninguno
+	0.12,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_humanHeadFalling7",-- nombre del frame, NULL para ninguno
+	imgHeadRotating6,-- objeto imagen para el dibujado del cuadro
+	"_humanHeadFalling8",-- siguiente frame, NULL para ninguno
+	0.12,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_humanHeadFalling8",-- nombre del frame, NULL para ninguno
+	imgHeadRotating7,-- objeto imagen para el dibujado del cuadro
+	"humanHeadFalling",-- siguiente frame, NULL para ninguno
+	0.12,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	)
+}-- frenHumanHead
+
+
+frenHeadCarrier={
+	-- FLYING HEAD CARRIER
+	createFrame(
+	"headCarrierNormal",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierFlying1,-- objeto imagen para el dibujado del cuadro
+	"_headCarrierNormal2",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_headCarrierNormal2",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierFlying2,-- objeto imagen para el dibujado del cuadro
+	"_headCarrierNormal3",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_headCarrierNormal3",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierFlying3,-- objeto imagen para el dibujado del cuadro
+	"_headCarrierNormal4",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_headCarrierNormal4",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierFlying4,-- objeto imagen para el dibujado del cuadro
+	"_headCarrierNormal5",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_headCarrierNormal5",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierFlying5,-- objeto imagen para el dibujado del cuadro
+	"headCarrierNormal",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- CARRYING HEAD CARRIER
+	createFrame(
+	"headCarrierCarrying",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierCarryingHeadComingFromATube,-- objeto imagen para el dibujado del cuadro
+	"_headCarrierCarrying1",-- siguiente frame, NULL para ninguno
+	0.1,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_headCarrierCarrying1",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierCarryingHead1,-- objeto imagen para el dibujado del cuadro
+	"_headCarrierCarrying2",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_headCarrierCarrying2",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierCarryingHead2,-- objeto imagen para el dibujado del cuadro
+	"_headCarrierCarrying3",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_headCarrierCarrying3",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierCarryingHead3,-- objeto imagen para el dibujado del cuadro
+	"_headCarrierCarrying4",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_headCarrierCarrying4",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierCarryingHead4,-- objeto imagen para el dibujado del cuadro
+	"_headCarrierCarrying5",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_headCarrierCarrying5",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierCarryingHead5,-- objeto imagen para el dibujado del cuadro
+	"_headCarrierCarrying1",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- TOUCHED HEAD CARRIER
+	createFrame(
+	"headCarrierTouched",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierTouched1,-- objeto imagen para el dibujado del cuadro
+	"_headCarrierTouched2",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_headCarrierTouched2",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierTouched2,-- objeto imagen para el dibujado del cuadro
+	"_headCarrierTouched3",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_headCarrierTouched3",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierTouched3,-- objeto imagen para el dibujado del cuadro
+	"_headCarrierEscaping1",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- HEAD CARRIER ESCAPING
+	createFrame(
+	"_headCarrierEscaping1",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierEscaping1,-- objeto imagen para el dibujado del cuadro
+	"_headCarrierEscaping2",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_headCarrierEscaping2",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierEscaping2,-- objeto imagen para el dibujado del cuadro
+	"_headCarrierEscaping3",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_headCarrierEscaping3",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierEscaping3,-- objeto imagen para el dibujado del cuadro
+	"_headCarrierEscaping4",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_headCarrierEscaping4",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierEscaping4,-- objeto imagen para el dibujado del cuadro
+	"_headCarrierEscaping5",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_headCarrierEscaping5",-- nombre del frame, NULL para ninguno
+	imgHeadCarrierEscaping5,-- objeto imagen para el dibujado del cuadro
+	"_headCarrierEscaping1",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	)
+}-- frenHeadCarrier
+
+
+
+
+frenWhiteSheep={
+	-- BEING CARRIED SHEEP
+	createFrame(
+	"whiteSheepCarried",-- nombre del frame, NULL para ninguno
+	imgSheepInvisible,-- objeto imagen para el dibujado del cuadro
+	NULL,-- siguiente frame, NULL para ninguno
+	NULL,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- BEING DROPPED SHEEP
+	createFrame(
+	"whiteSheepDropped",-- nombre del frame, NULL para ninguno
+	imgSheepBeingCarried,-- objeto imagen para el dibujado del cuadro
+	"_whiteSheepDropped2",-- siguiente frame, NULL para ninguno
+	0.3,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_whiteSheepDropped2",-- nombre del frame, NULL para ninguno
+	imgSheepFalling1,-- objeto imagen para el dibujado del cuadro
+	"_whiteSheepDropped3",-- siguiente frame, NULL para ninguno
+	0.1,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_whiteSheepDropped3",-- nombre del frame, NULL para ninguno
+	imgSheepFalling2,-- objeto imagen para el dibujado del cuadro
+	"_whiteSheepDropped2",-- siguiente frame, NULL para ninguno
+	0.1,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- AT GROUND SHEEP
+	createFrame(
+	"whiteSheepAtGround",-- nombre del frame, NULL para ninguno
+	imgSheepAtGround1,-- objeto imagen para el dibujado del cuadro
+	"_whiteSheepAtGround2",-- siguiente frame, NULL para ninguno
+	0.3,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_whiteSheepAtGround2",-- nombre del frame, NULL para ninguno
+	imgSheepAtGround2,-- objeto imagen para el dibujado del cuadro
+	"_whiteSheepAtGround3",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_whiteSheepAtGround3",-- nombre del frame, NULL para ninguno
+	imgSheepAtGround3,-- objeto imagen para el dibujado del cuadro
+	"_whiteSheepAtGround4",-- siguiente frame, NULL para ninguno
+	0.2,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_whiteSheepAtGround4",-- nombre del frame, NULL para ninguno
+	imgSheepAtGround4,-- objeto imagen para el dibujado del cuadro
+	"_whiteSheepAtGround5",-- siguiente frame, NULL para ninguno
+	0.15,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_whiteSheepAtGround5",-- nombre del frame, NULL para ninguno
+	imgSheepAtGround5,-- objeto imagen para el dibujado del cuadro
+	"_whiteSheepAtGround7",-- siguiente frame, NULL para ninguno
+	0.15,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_whiteSheepAtGround7",-- nombre del frame, NULL para ninguno
+	imgSheepAtGround4,-- objeto imagen para el dibujado del cuadro
+	"_whiteSheepAtGround8",-- siguiente frame, NULL para ninguno
+	0.15,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_whiteSheepAtGround8",-- nombre del frame, NULL para ninguno
+	imgSheepAtGround5,-- objeto imagen para el dibujado del cuadro
+	"_whiteSheepAtGround9",-- siguiente frame, NULL para ninguno
+	0.15,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_whiteSheepAtGround9",-- nombre del frame, NULL para ninguno
+	imgSheepStartingToWalk1,-- objeto imagen para el dibujado del cuadro
+	"whiteSheepWalking",-- siguiente frame, NULL para ninguno
+	0.15,-- segundos para el siguiente cuadro
+	"eventWSheep_startWalking",-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- WALKING SHEEP
+	createFrame(
+	"whiteSheepWalking",-- nombre del frame, NULL para ninguno
+	imgSheepWalking1,-- objeto imagen para el dibujado del cuadro
+	"_whiteSheepWalking2",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_whiteSheepWalking2",-- nombre del frame, NULL para ninguno
+	imgSheepWalking2,-- objeto imagen para el dibujado del cuadro
+	"_whiteSheepWalking3",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_whiteSheepWalking3",-- nombre del frame, NULL para ninguno
+	imgSheepWalking3,-- objeto imagen para el dibujado del cuadro
+	"_whiteSheepWalking4",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_whiteSheepWalking4",-- nombre del frame, NULL para ninguno
+	imgSheepWalking4,-- objeto imagen para el dibujado del cuadro
+	"_whiteSheepWalking5",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_whiteSheepWalking5",-- nombre del frame, NULL para ninguno
+	imgSheepWalking5,-- objeto imagen para el dibujado del cuadro
+	"whiteSheepWalking",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- TAKING A HEAD SHEEP
+	createFrame(
+	"whiteSheepGettingAHead",-- nombre del frame, NULL para ninguno
+	imgSheepTakingHead1,-- objeto imagen para el dibujado del cuadro
+	"whiteSheepWalkingWithHead",-- siguiente frame, NULL para ninguno
+	0.5,-- segundos para el siguiente cuadro
+	"eventWSheep_startWalking",-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- WALKING WITH A HEAD SHEEP
+	createFrame(
+	"whiteSheepWalkingWithHead",-- nombre del frame, NULL para ninguno
+	imgSheepWalkingWithHead1,-- objeto imagen para el dibujado del cuadro
+	"_whiteSheepWalkingWithHead2",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_whiteSheepWalkingWithHead2",-- nombre del frame, NULL para ninguno
+	imgSheepWalkingWithHead2,-- objeto imagen para el dibujado del cuadro
+	"_whiteSheepWalkingWithHead3",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_whiteSheepWalkingWithHead3",-- nombre del frame, NULL para ninguno
+	imgSheepWalkingWithHead3,-- objeto imagen para el dibujado del cuadro
+	"_whiteSheepWalkingWithHead4",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_whiteSheepWalkingWithHead4",-- nombre del frame, NULL para ninguno
+	imgSheepWalkingWithHead4,-- objeto imagen para el dibujado del cuadro
+	"_whiteSheepWalkingWithHead5",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_whiteSheepWalkingWithHead5",-- nombre del frame, NULL para ninguno
+	imgSheepWalkingWithHead5,-- objeto imagen para el dibujado del cuadro
+	"whiteSheepWalkingWithHead",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	)
+
+}-- frenWhiteSheep
+
+
+
+
+-- BODY
+frenBlackSheep={
+	-- BEING CARRIED BODY
+	createFrame(
+	"blackSheepCarried",-- nombre del frame, NULL para ninguno
+	imgBodyInvisible,-- objeto imagen para el dibujado del cuadro
+	NULL,-- siguiente frame, NULL para ninguno
+	NULL,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- BEING DROPPED BODY
+	createFrame(
+	"blackSheepDropped",-- nombre del frame, NULL para ninguno
+	imgBodyFalling1,-- objeto imagen para el dibujado del cuadro
+	NULL,-- siguiente frame, NULL para ninguno
+	NULL,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- AT GROUND BODY
+	createFrame(
+	"blackSheepAtGround",-- nombre del frame, NULL para ninguno
+	imgBodyFalling1,-- objeto imagen para el dibujado del cuadro
+	"blackSheepWalking",-- siguiente frame, NULL para ninguno
+	0.3,-- segundos para el siguiente cuadro
+	"eventBSheep_startWalking",-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- WALKING BODY
+	createFrame(
+	"blackSheepWalking",-- nombre del frame, NULL para ninguno
+	imgBodyWalking1,-- objeto imagen para el dibujado del cuadro
+	"_blackSheepWalking2",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_blackSheepWalking2",-- nombre del frame, NULL para ninguno
+	imgBodyWalking2,-- objeto imagen para el dibujado del cuadro
+	"_blackSheepWalking3",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_blackSheepWalking3",-- nombre del frame, NULL para ninguno
+	imgBodyWalking3,-- objeto imagen para el dibujado del cuadro
+	"_blackSheepWalking4",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_blackSheepWalking4",-- nombre del frame, NULL para ninguno
+	imgBodyWalking4,-- objeto imagen para el dibujado del cuadro
+	"_blackSheepWalking5",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_blackSheepWalking5",-- nombre del frame, NULL para ninguno
+	imgBodyWalking5,-- objeto imagen para el dibujado del cuadro
+	"_blackSheepWalking6",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_blackSheepWalking6",-- nombre del frame, NULL para ninguno
+	imgBodyWalking6,-- objeto imagen para el dibujado del cuadro
+	"blackSheepWalking",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- TAKING A HEAD BODY
+	createFrame(
+	"blackSheepGettingAHead",-- nombre del frame, NULL para ninguno
+	imgBodyTakingAHead,-- objeto imagen para el dibujado del cuadro
+	"blackSheepWalkingWithHead",-- siguiente frame, NULL para ninguno
+	0.5,-- segundos para el siguiente cuadro
+	"eventBSheep_startWalking",-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- WALKING WITH A HEAD BODY
+	createFrame(
+	"blackSheepWalkingWithHead",-- nombre del frame, NULL para ninguno
+	imgBodyWalkingWithHead1,-- objeto imagen para el dibujado del cuadro
+	"_blackSheepWalkingWithHead2",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_blackSheepWalkingWithHead2",-- nombre del frame, NULL para ninguno
+	imgBodyWalkingWithHead2,-- objeto imagen para el dibujado del cuadro
+	"_blackSheepWalkingWithHead3",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_blackSheepWalkingWithHead3",-- nombre del frame, NULL para ninguno
+	imgBodyWalkingWithHead3,-- objeto imagen para el dibujado del cuadro
+	"_blackSheepWalkingWithHead4",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_blackSheepWalkingWithHead4",-- nombre del frame, NULL para ninguno
+	imgBodyWalkingWithHead4,-- objeto imagen para el dibujado del cuadro
+	"_blackSheepWalkingWithHead5",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_blackSheepWalkingWithHead5",-- nombre del frame, NULL para ninguno
+	imgBodyWalkingWithHead5,-- objeto imagen para el dibujado del cuadro
+	"_blackSheepWalkingWithHead6",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_blackSheepWalkingWithHead6",-- nombre del frame, NULL para ninguno
+	imgBodyWalkingWithHead6,-- objeto imagen para el dibujado del cuadro
+	"blackSheepWalkingWithHead",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	)
+
+}-- frenBlackSheep
+
+
+-- DOGS (ex flames)
+frblPlayerFlame={
+	-- BEING DROPPED BULLET
+	createFrame(
+	"flameBulletAppearing",-- nombre del frame, NULL para ninguno
+	imgDogGoing1,-- objeto imagen para el dibujado del cuadro
+	"_flameBulletAppearing2",-- siguiente frame, NULL para ninguno
+	0.20,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_flameBulletAppearing2",-- nombre del frame, NULL para ninguno
+	imgDogGoing2,-- objeto imagen para el dibujado del cuadro
+	"_flameBulletAppearing3",-- siguiente frame, NULL para ninguno
+	0.12,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_flameBulletAppearing3",-- nombre del frame, NULL para ninguno
+	imgDogGoing3,-- objeto imagen para el dibujado del cuadro
+	"_flameBulletAppearing4",-- siguiente frame, NULL para ninguno
+	0.12,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_flameBulletAppearing4",-- nombre del frame, NULL para ninguno
+	imgDogMutating1,-- objeto imagen para el dibujado del cuadro
+	"_flameBulletAppearing5",-- siguiente frame, NULL para ninguno
+	0.12,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_flameBulletAppearing5",-- nombre del frame, NULL para ninguno
+	imgDogMutating2,-- objeto imagen para el dibujado del cuadro
+	"_flameBulletAppearing6",-- siguiente frame, NULL para ninguno
+	0.12,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_flameBulletAppearing6",-- nombre del frame, NULL para ninguno
+	imgDogMutating3,-- objeto imagen para el dibujado del cuadro
+	NULL,-- siguiente frame, NULL para ninguno
+	NULL,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+
+	-- IN CONTACT BULLET
+	createFrame(
+	"flameBulletExploding",-- nombre del frame, NULL para ninguno
+	imgDogMutating4,-- objeto imagen para el dibujado del cuadro
+	"_flameBulletExploding2",-- siguiente frame, NULL para ninguno
+	0.3,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_flameBulletExploding2",-- nombre del frame, NULL para ninguno
+	imgDogMutating3,-- objeto imagen para el dibujado del cuadro
+	"_flameBulletExploding3",-- siguiente frame, NULL para ninguno
+	0.03,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_flameBulletExploding3",-- nombre del frame, NULL para ninguno
+	imgDogMutating2,-- objeto imagen para el dibujado del cuadro
+	"_flameBulletExploding4",-- siguiente frame, NULL para ninguno
+	0.03,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_flameBulletExploding4",-- nombre del frame, NULL para ninguno
+	imgDogMutating1,-- objeto imagen para el dibujado del cuadro
+	"_flameBulletExploding5",-- siguiente frame, NULL para ninguno
+	0.03,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_flameBulletExploding5",-- nombre del frame, NULL para ninguno
+	imgDogGoing3,-- objeto imagen para el dibujado del cuadro
+	"_flameBulletExploding6",-- siguiente frame, NULL para ninguno
+	0.03,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_flameBulletExploding6",-- nombre del frame, NULL para ninguno
+	imgDogGoing2,-- objeto imagen para el dibujado del cuadro
+	"_flameBulletExploding7",-- siguiente frame, NULL para ninguno
+	0.03,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	),
+	createFrame(
+	"_flameBulletExploding7",-- nombre del frame, NULL para ninguno
+	imgDogGoing1,-- objeto imagen para el dibujado del cuadro
+	NULL,-- siguiente frame, NULL para ninguno
+	NULL,-- segundos para el siguiente cuadro
+	NULL,-- nombre del evento, NULL para ninguno
+	NULL -- nombre del grupo de frames al que pertenece
+	)
+}-- frblPlayerFlame
+
+
+
+
+
+
+
+
+
+-- DESCRIPCIONES VIEJAS DE FRAMES
+-- ------------------------------
+
+
+
+-- FRAMES TO BE USED FOR BULLET TYPES
+-- fr bl = bullet frame
+-- FILE_GAMEDATA_BULLET_PLAYERFLAME 3
+frblPlayerFlameEx={
+	-- Appearing animation
+	-- frame 0, appearing 1
+	createFullFrame(
+	"flameBulletAppearing",-- name of the frame, null for none
+	"srfbulPlayerFlame",-- name of the surface where the frame is stored
+	29, 275, 37, 20,-- x, y, w, h (absolute coordinates)
+	29, 275, 37, 20,-- cX, cY, cW, cH (absolute)
+	65, 285,-- handlerX, handlerY (absolute)
+	0, 0,-- spawnBulletsX, spawnBulletsY (absolute)
+	0, 0,-- adherenceX, adherenceY (absolute)
+	1,-- autoNextFrame (next frame to be executed)
+	0.07,-- autoShowVirtualTime (how much time a frame will stay on screen)
+	NULL-- name of the event to execute before going to the next frame, null for none
+	),
+	-- frame 1, appearing 2
+	createFullFrame(
+	NULL,-- name of the frame, null for none
+	"srfbulPlayerFlame",-- name of the surface where the frame is stored
+	29, 239, 45, 25,-- x, y, w, h (absolute coordinates)
+	29, 239, 45, 25,-- cX, cY, cW, cH (absolute)
+	72, 251,-- handlerX, handlerY (absolute)
+	0, 0,-- spawnBulletsX, spawnBulletsY (absolute)
+	0, 0,-- adherenceX, adherenceY (absolute)
+	2,-- autoNextFrame (next frame to be executed)
+	0.07,-- autoShowVirtualTime (how much time a frame will stay on screen)
+	NULL-- name of the event to execute before going to the next frame, null for none
+	),
+	-- frame 2, appearing 3
+	createFullFrame(
+	NULL,-- name of the frame, null for none
+	"srfbulPlayerFlame",-- name of the surface where the frame is stored
+	24, 187, 61, 31,-- x, y, w, h (absolute coordinates)
+	24, 187, 61, 31,-- cX, cY, cW, cH (absolute)
+	84, 203,-- handlerX, handlerY (absolute)
+	0, 0,-- spawnBulletsX, spawnBulletsY (absolute)
+	0, 0,-- adherenceX, adherenceY (absolute)
+	3,-- autoNextFrame (next frame to be executed)
+	0.07,-- autoShowVirtualTime (how much time a frame will stay on screen)
+	NULL-- name of the event to execute before going to the next frame, null for none
+	),
+	-- frame 3, appearing 4
+	createFullFrame(
+	NULL,-- name of the frame, null for none
+	"srfbulPlayerFlame",-- name of the surface where the frame is stored
+	14, 20, 77, 40,-- x, y, w, h (absolute coordinates)
+	14, 20, 77, 40,-- cX, cY, cW, cH (absolute)
+	90, 40,-- handlerX, handlerY (absolute)
+	0, 0,-- spawnBulletsX, spawnBulletsY (absolute)
+	0, 0,-- adherenceX, adherenceY (absolute)
+	0,-- autoNextFrame (next frame to be executed)
+	0,-- autoShowVirtualTime (how much time a frame will stay on screen)
+	NULL-- name of the event to execute before going to the next frame, null for none
+	),
+	-- Exploding animation
+	-- frame 4, exploding 1
+	createFullFrame(
+	"flameBulletExploding",-- name of the frame, null for none
+	"srfbulPlayerFlame",-- name of the surface where the frame is stored
+	31, 86, 60, 66,-- x, y, w, h (absolute coordinates)
+	41, 96, 50, 52,-- cX, cY, cW, cH (absolute)
+	90, 119,-- handlerX, handlerY (absolute)
+	0, 0,-- spawnBulletsX, spawnBulletsY (absolute)
+	0, 0,-- adherenceX, adherenceY (absolute)
+	5,-- autoNextFrame (next frame to be executed)
+	-- (the exploding time has to be lower than the one of untouchable
+	-- in enemies, in the sum of the times of the frames that have
+	-- any collision points!)
+	0.15,-- autoShowVirtualTime (how much time a frame will stay on screen)
+	NULL-- name of the event to execute before going to the next frame, null for none
+	),
+	-- frame 5, exploding 2
+	createFullFrame(
+	NULL,-- name of the frame, null for none
+	"srfbulPlayerFlame",-- name of the surface where the frame is stored
+	10,	304, 44, 47,-- x, y, w, h (absolute coordinates)
+	0, 0, 0, 0,-- cX, cY, cW, cH (absolute)
+	52, 327,-- handlerX, handlerY (absolute)
+	0, 0,-- spawnBulletsX, spawnBulletsY (absolute)
+	0, 0,-- adherenceX, adherenceY (absolute)
+	6,-- autoNextFrame (next frame to be executed)
+	0.07,-- autoShowVirtualTime (how much time a frame will stay on screen)
+	NULL-- name of the event to execute before going to the next frame, null for none
+	),
+	-- frame 6, exploding 3
+	createFullFrame(
+	NULL,-- name of the frame, null for none
+	"srfbulPlayerFlame",-- name of the surface where the frame is stored
+	67, 312, 26, 27,-- x, y, w, h (absolute coordinates)
+	0, 0, 0, 0,-- cX, cY, cW, cH (absolute)
+	92, 326,-- handlerX, handlerY (absolute)
+	0, 0,-- spawnBulletsX, spawnBulletsY (absolute)
+	0, 0,-- adherenceX, adherenceY (absolute)
+	7,-- autoNextFrame (next frame to be executed)
+	0.07,-- autoShowVirtualTime (how much time a frame will stay on screen)
+	NULL-- name of the event to execute before going to the next frame, null for none
+	),
+	-- frame 7, exploding 4
+	createFullFrame(
+	NULL,-- name of the frame, null for none
+	"srfbulPlayerFlame",-- name of the surface where the frame is stored
+	79, 356, 12, 14,-- x, y, w, h (absolute coordinates)
+	0, 0, 0, 0,-- cX, cY, cW, cH (absolute)
+	90, 363,-- handlerX, handlerY (absolute)
+	0, 0,-- spawnBulletsX, spawnBulletsY (absolute)
+	0, 0,-- adherenceX, adherenceY (absolute)
+	-1,-- autoNextFrame (next frame to be executed)
+	0.07,-- autoShowVirtualTime (how much time a frame will stay on screen)
+	NULL-- name of the event to execute before going to the next frame, null for none
+	)
+}-- frblPlayerFlame
+-- FRAMES TO BE USED FOR WAVE GENERATORS TYPES
+-- fr wg = wave gen frame
+-- FILE_GAMEDATA_WAVEGEN_WHITESHEEPS 1
+frwgWhiteSheeps={
+	createFullFrame(
+	"waveGenWSheepsStart",-- name of the frame, null for none
+	"srfClassicLevelFg",-- name of the surface where the frame is stored
+	627, 474, 177, 79,-- x, y, w, h (absolute coordinates)
+	627+11, 474, 177-11, 79,-- cX, cY, cW, cH (absolute), collision is spawning rect in wgs
+	627, 474,-- handlerX, handlerY (absolute)
+	0, 0,-- spawnBulletsX, spawnBulletsY (absolute)
+	0, 0,-- adherenceX, adherenceY (absolute)
+	0,-- autoNextFrame (next frame to be executed)
+	0,-- autoShowVirtualTime (how much time a frame will stay on screen)
+	NULL-- name of the event to execute before going to the next frame, null for none
+	)
+}-- frwgWhiteSheeps
+-- FILE_GAMEDATA_WAVEGEN_BLACKSHEEPS 2
+frwgBlackSheeps={
+	-- frame 0
+	createFullFrame(
+	"waveGenBSheepsStart",-- name of the frame, null for none
+	"srfClassicLevelFg",-- name of the surface where the frame is stored
+	651, 15, 153, 114,-- x, y, w, h (absolute coordinates)
+	651+14, 15, 153-14, 114,-- cX, cY, cW, cH (absolute), collision is spawning rect in wgs
+	651, 15,-- handlerX, handlerY (absolute)
+	0, 0,-- spawnBulletsX, spawnBulletsY (absolute)
+	0, 0,-- adherenceX, adherenceY (absolute)
+	0,-- autoNextFrame (next frame to be executed)
+	0,-- autoShowVirtualTime (how much time a frame will stay on screen)
+	NULL-- name of the event to execute before going to the next frame, null for none
+	)
+}-- frwgBlackSheeps
+-- FILE_GAMEDATA_WAVEGEN_HUMANHEADS 3
+frwgHumanHeads={
+	-- frame 0
+	createFullFrame(
+	"waveGenHeadsStart",-- name of the frame, null for none
+	"srfClassicLevelFg",-- name of the surface where the frame is stored
+	626, 154, 176, 124,-- x, y, w, h (absolute coordinates)
+	626+35, 154, 176-35, 124,-- cX, cY, cW, cH (absolute), collision is spawning rect in wgs
+	626, 154,-- handlerX, handlerY (absolute)
+	0, 0,-- spawnBulletsX, spawnBulletsY (absolute)
+	0, 0,-- adherenceX, adherenceY (absolute)
+	0,-- autoNextFrame (next frame to be executed)
+	0,-- autoShowVirtualTime (how much time a frame will stay on screen)
+	NULL-- name of the event to execute before going to the next frame, null for none
+	)
+}-- frwgHumanHeads
+
+-- FILE_GAMEDATA_WAVEGEN_SHEEPSOUT 4
+frwgSheepsOut={
+	createFullFrame(
+	"waveGenSheepsOutStart",-- name of the frame, null for none
+	"srfClassicLevelFg",-- name of the surface where the frame is stored
+	0, 426, 153, 108,-- x, y, w, h (absolute coordinates)
+	0, 426, 153-33, 108,-- cX, cY, cW, cH (absolute), collision is spawning rect in wgs
+	0, 426,-- handlerX, handlerY (absolute)
+	0, 0,-- spawnBulletsX, spawnBulletsY (absolute)
+	0, 0,-- adherenceX, adherenceY (absolute)
+	0,-- autoNextFrame (next frame to be executed)
+	0,-- autoShowVirtualTime (how much time a frame will stay on screen)
+	NULL-- name of the event to execute before going to the next frame, null for none
+	)
+}-- frwgSheepsOut
+

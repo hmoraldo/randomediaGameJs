@@ -1,0 +1,435 @@
+-- Copyright (c) 2007 Horacio Hernan Moraldo
+--
+-- This software is provided 'as-is', without any express or
+-- implied warranty. In no event will the authors be held liable
+-- for any damages arising from the use of this software.
+--
+-- Permission is granted to anyone to use this software for any
+-- purpose, including commercial applications, and to alter it and
+-- redistribute it freely, subject to the following restrictions:
+--
+-- 1. The origin of this software must not be misrepresented; you
+-- must not claim that you wrote the original software. If you use
+-- this software in a product, an acknowledgment in the product
+-- documentation would be appreciated but is not required.
+--
+-- 2. Altered source versions must be plainly marked as such, and
+-- must not be misrepresented as being the original software.
+--
+-- 3. This notice may not be removed or altered from any source
+-- distribution.
+--
+
+-- DATA LISTS FOR THE STORY MENU
+
+-- STORY MENU BUTTONS
+storyMenuButtons={
+	createMenuControl(
+		"txtTitle", -- name
+		nil, -- surface
+		nil, nil, -- xSrc, ySrc
+		23, 25, 176, 40, -- x, y, w, h
+		langText("HISTORIA", "STORY MENU"), -- text
+		"ediaBigFont", -- fontName
+		23, 25, 176, 40, -- xF, yF, wF, hF
+		"center", "center", -- h_align, v_align
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onClickEvent
+		function (v) end, -- onOverEvent
+		function (v) end, -- onOverOutEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnText1", -- name
+		34, 90+51*0, -- x, y
+		"srfBackIntroButton3", -- surfaceNormal
+		0, 51, 150, 51, -- xS, yS, wS, hS
+		langText("La invasión", "The invasion"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton3", -- surfaceSelected
+		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Muestra la primer parte de la historia del juego",
+			"Shows the first chapter of the game's story"), -- toolTipText
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) r_drawFunctionContents = storyContent_text1 end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnDestiny", -- name
+		34, 90+51*1, -- x, y
+		"srfBackIntroButton3", -- surfaceNormal
+		0, 51, 150, 51, -- xS, yS, wS, hS
+		langText("El destino humano", "Human destiny"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton3", -- surfaceSelected
+		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Muestra la segunda parte de la historia del juego",
+			"Shows the second chapter of the game's story"), -- toolTipText
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) r_drawFunctionContents = storyContent_text2 end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnCAttack", -- name
+		34, 90+51*2, -- x, y
+		"srfBackIntroButton3", -- surfaceNormal
+		0, 51, 150, 51, -- xS, yS, wS, hS
+		langText("El contraataque", "The counterattack"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton3", -- surfaceSelected
+		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Muestra la tercer parte de la historia del juego",
+			"Shows the third chapter of the game's story"), -- toolTipText
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) r_drawFunctionContents = storyContent_text3 end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnCRedia", -- name
+		34, 90+51*3, -- x, y
+		"srfBackIntroButton3", -- surfaceNormal
+		0, 51, 150, 51, -- xS, yS, wS, hS
+		langText("Concepto Randomedia", "Randomedia Concept"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton3", -- surfaceSelected
+		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Muestra la cuarta parte de la historia del juego",
+			"Shows the fourth chapter of the game's story"), -- toolTipText
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) r_drawFunctionContents = storyContent_text4 end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnJAvatar", -- name
+		34, 90+51*4, -- x, y
+		"srfBackIntroButton3", -- surfaceNormal
+		0, 51, 150, 51, -- xS, yS, wS, hS
+		"Juan Avatar", -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton3", -- surfaceSelected
+		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Muestra la quinta parte de la historia del juego",
+			"Shows the fifth chapter of the game's story"), -- toolTipText
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) r_drawFunctionContents = storyContent_text5 end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnBack", -- name
+		34, 90+51*5, -- x, y
+		"srfBackIntroButton3", -- surfaceNormal
+		0, 51, 150, 51, -- xS, yS, wS, hS
+		langText("Volver", "Back"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton3", -- surfaceSelected
+		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Vuelve al menú principal", -- toolTipText
+			"Goes back to the main menu"),
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) switchingToMenu="mainMenu" end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableToolTip(
+		"storyMenuToolTip", -- name
+		nil, -- surface
+		23, 567, 766, 21, -- x, y, w, h
+		0, 0, -- xS, yS
+		"dahFont", -- fontName
+		23, 567, 766, 21, -- xF, yF, wF, hF
+		"center", "center", -- h_align, v_align
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableContentSwitcher(
+		"switcherText", -- name
+		"r_drawFunctionContents", -- drawFunctionVarName
+		222, 24, 556, 531, -- x, y, w, h
+		function (v) -- onInitMenu
+			r_drawFunctionContents = storyContent_text1; -- drawFunction
+		end,-- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onClickEvent
+		function (v) end -- onTickEvent
+		)
+}-- storyMenuButtons
+
+-- STORY MENU
+storyMenu=createLightableMenu(
+	"storyMenu", -- name
+	"srfMenuBackground3", -- backSurface
+	"cursorImage", -- cursorSurface
+	"musWavMenuMusic", -- soundMusic
+	"Choose your destiny", -- toolTipText
+	"r_toolTipText", -- toolTipVarName
+	function (v) end, -- onInitMenu
+	function (v) end, -- onCloseMenu
+	function (v) end, -- onClickEvent
+	function (v) end, -- onTickEvent
+	storyMenuButtons -- controlsList
+	)
+
+
+
+
+-- STORY FUNCTIONS
+
+-- the invasion text
+function storyContent_text1 (v)
+	local lclText;
+
+	lclText=
+
+selectText(
+
+"LA INVASIÓN: Ocurrió todo durante el ciclo de siete años que empezó en 2010. Una tortuga de dimensiones cósmicas hizo aparición en el horizonte astronómico de la Tierra, depositando en ésta una veintena de gigantescas tortugas que permanecieron clavadas en su superficie, apenas con su cabeza sobresaliendo de ésta, durante el transcurso de dos largos años." ..
+
+"\n\n" ..
+
+"Al tercer año, las veinte tortugas despertaron en absoluta sincronía, y comenzaron el lanzamiento de un grupo de millones de guerreros aparentemente invulnerables a todas las armas conocidas, que procedieron a capturar y llevarse consigo a un elevado porcentaje de la población terrestre, calculado en quince millones de personas y diez millones de ovejas blancas, al interior de las tortugas gigantes." ..
+
+"\n\n" ..
+
+"Y tan facilmente como todo comenzó, comenzó también el fin de la historia. Con un excelente botín en materia de gente y ovejas, los guerreros iniciaron su veloz éxodo hacia la gigantesca nave madre que los esperaba desde el espacio. Para el mundo entero todo parecía estar perdido... salvo por el Concepto Randomedia." ..
+
+"",
+
+"THE INVASION: It all happened in the seven years period starting on 2010. A cosmic giant turtle came to Earth, and installed on ground about twenty much smaller turtles which then kept waiting, still and apparently asleep, on the Earth's surface. Only their giant head was visible, everything else burrowed in ground, and even so it was a disturbing spectacle for humans." ..
+
+"\n\n" ..
+
+"The third year after that, the twenty turtles awoke at once, and they started releasing millions of alien warriors from their ears. These then proceeded to capture people and sheeps, and at the end of the assault 15 millions of humans were prisoners of the aliens, together with 10 millions of white sheeps. Prisoners were carried inside the turtles, by the warriors, which also appeared to be invulnerable to all the weapons known to man." ..
+
+"\n\n" ..
+
+"And after a while, the story just ended. Warriors started going outside of the turtles, again; but then they weren't attacking, they were just escaping back to the cosmical mother ship. They were escaping with the taken people and sheeps, and it all seemed to be lost... if it wasn't for the Randomedia Concept." ..
+
+"");
+
+	menuDrawText("dahFont", lclText,
+		v.x+20, v.y+10, v.w-40, v.h-20,
+		"left", "center");
+end
+
+-- the human destiny text
+function storyContent_text2 (v)
+	local lclText;
+
+	lclText=
+
+selectText(
+
+"EL DESTINO DE LA HUMANIDAD: Poco después del inicio del éxodo, se comprendió la razón del masivo secuestro de los terrestres. Se trataba, simplemente, de que aquello que los guerreros cargaban de vuelta a su nave madre no era precisamente la misma gente y los mismos ovinos que alguna vez habían sido llevados por la fuerza a las tortugas semi-enterradas en la tierra: habían sido modificados." ..
+
+"\n\n" ..
+
+"Los resultados de la modificación eran evidentes. Las ovejas eran más inteligentes, al punto de haberse vuelto seres racionales y parlantes; y los humanos habían sido convertidos en... una verdadera rareza. Todos ellos habían sido mutados en una copia física exacta de uno de los científicos más extravagantes de la época: el Profesor Sirius Randomedia." ..
+
+"\n\n" ..
+
+"Según se supo, lo que los invasores habían hecho, era construir un poderosísimo ejército intelectual con el fin de llevar a cabo un más eficaz planeamiento estratégico en su guerra con otra potencia del cosmos. Simplemente no quedaba nada que hacer para evitar el masivo secuestro de habitantes." ..
+
+"",
+
+"THE HUMAN DESTINY: Soon after the exodus began, humans discovered the reasons behind the alien attack. For a first, they found out that the people that the aliens took from Earth was being modified by the captors." ..
+
+"\n\n" ..
+
+"The results of such modification were quite evident: sheeps were much smarter after it, even becoming speaking rational beings; and humans had become a real strange thing... They all had been mutated into an exact copy of one of the most famous and extravagant scientists of that time: the Professor Sirius Randomedia." ..
+
+"\n\n" ..
+
+"As it was also known, aliens were constructing a huge intelectual army with all these copies of the professor Randomedia. The extraterrestrial beings happened to be in a great war against another terrible cosmic world, so they were needing the best strategic planning they could got, and in this case it meant creating a big colony of clones of the Earth's biggest genius. On the other side, earthlings simply could do nothing to avoid all this happening." ..
+
+"");
+
+	menuDrawText("dahFont", lclText,
+		v.x+20, v.y+10, v.w-40, v.h-20,
+		"left", "center");
+end
+
+-- the counterattack text
+function storyContent_text3 (v)
+	local lclText;
+
+	lclText=
+
+selectText(
+
+"EL CONTRAATAQUE: Por supuesto que ante los terribles acontecimientos la respuesta de los humanos no se hizo esperar. La nave madre, y las enormes tortugas recibieron el ataque directo de miles de bombas de todo tipo, incluyendo algunas atómicas. Pero las armas y estrategias clásicas no hicieron el menor efecto sobre las gigantescas naves madre del invasor." ..
+
+"\n\n" ..
+
+"Sí se encontraron formas de hacer mella en los guerreros, mucho más pequeños y menos resistentes. Pero estas requerían el uso de las más poderosas armas de las potencias mundiales, que provocaban feroces daños al ecosistema y no hacían demasiados cambios en un ejército en el que las unidades se contaban por millones." ..
+
+"\n\n" ..
+
+"Sólo se encontró una forma de enfrentar a los guerreros sin las funestas consecuencias para la humanidad, y esto era haciendo uso de perros, a los que por alguna razón desconocida, los alienígenas le tenían el más completo terror. Pero ni siquiera este hallazgo evitó que, finalmente, las potencias de todo el mundo decidieran abandonar la lucha." ..
+
+"",
+
+"THE COUNTERATTACK: Of course, humans didn't keep still at the sight of such happenings. The mother ship, and the twenty giant turtles received all kinds of nuclear impacts as soon as humans started fearing something wrong could be happening. But classic weapons and strategies didn't work at all; the greatest weapons didn't affect the mother ship, and while warriors could be destroyed with these, it wasn't a good idea to radiate the entire planet to kill the millions of warriors there." ..
+
+"\n\n" ..
+
+"Finally, an only practical way of attacking the warriors was found, and it was making use of dogs. For a unknown reason, warriors were incredibly afraid of dogs; however, not even the availability of such a strange weapon could be used to do a real difference in the invader army." ..
+
+"\n\n" ..
+
+"After a while, the world leaders decided not to continue the war against the invader, so it was a matter of time to have the planet on peace again (as soon as aliens had finished their exodus). Aliens kept escaping carrying with the humans and the sheeps with them, and nobody didn't seem to care anymore." ..
+
+"");
+
+	menuDrawText("dahFont", lclText,
+		v.x+20, v.y+10, v.w-40, v.h-20,
+		"left", "center");
+end
+
+-- the randomedia concept text
+function storyContent_text4 (v)
+	local lclText;
+
+	lclText=
+
+selectText(
+
+"CONCEPTO RANDOMEDIA: Al Profesor Sirius Randomedia no le sorprendió en lo más mínimo el que los alienígenas lo hubieran tomado de ejemplo para la construcción del ejército de genios. Después de todo, seguía pensándose como uno de los más grandes científicos del planeta. Sobre todo desde los últimos avances de su nueva teoría, el Concepto Randomedia." ..
+
+"\n\n" ..
+
+"Esta teoría, considerada por sus pares científicos como completamente desquiciada, resultaría según Sirius en un avance fundamental en el conocimiento humano. Pero él estaba sólo en esta apreciación, y sin la colaboración de unos cuantos miles de expertos del área, la teoría podría no llegar a terminarse nunca." ..
+
+"\n\n" ..
+
+"Esta falta de colaboración en su trabajo lo llevó a diseñar un plan alternativo para el desarrollo de su investigación. Liberaría a algunos miles de los humanos atrapados y mutados por los invasores, y los reclutaría para su equipo de investigación. Después de todo, no podría tener un mejor equipo de trabajo que una multitud de sí mismo." ..
+
+"",
+
+"RANDOMEDIA CONCEPT: Professor Sirius Randomedia didn't get surprised at all for becoming the human chosen as the model for the millions of clones. After all, he always thought he was one of the greatest scientists on the planet. And after the latest advancements on his newest theory, the Randomedia Concept, he just couldn't imagine that being false anymore." ..
+
+"\n\n" ..
+
+"The theory, considered by his peers on science as completely insane, was for Sirius important enough as to result in fundamental advances for human knowledge in a matter of time. But he was alone in such appreciation, and without the collaboration of some thousands of experts in the subject, the theory could never get finished at all." ..
+
+"\n\n" ..
+
+"Such lack of collaboration in his work leaded him to design an alternative plan for the development of his investigation. He would free some thousands of the trapped humans, and he would take them for his research team. After the mutations they suffered, the team would be the most ideal team Sirius could ever imagine: a plain multitude of himself." ..
+
+"");
+
+	menuDrawText("dahFont", lclText,
+		v.x+20, v.y+10, v.w-40, v.h-20,
+		"left", "center");
+end
+
+-- the juan avatar text
+function storyContent_text5 (v)
+	local lclText;
+
+	lclText=
+
+selectText(
+
+"JUAN AVATAR: Uno de los colaboradores de Sirius Randomedia, de nombre Juan Avatar, tomó el desafío, y se propuso liberar varios miles de clones, con un equipo de desarrollo propio, que le permitía volar y lo hacía invulnerable a los ataques enemigos, y que incluía un arma lanza perros con la que atacar a los guerreros." ..
+
+"\n\n" ..
+
+"Con el tiempo, Juan desarrolló una verdadera fascinación por la actividad, y comenzó a practicarla casi como un deporte. En particular, su énfasis en la excelencia resultó muy favorable para los planes del profesor Randomedia, quien veía a su sueño del equipo de trabajo ideal más real con cada avance en la técnica de Juan Avatar." ..
+
+"\n\n" ..
+
+"Detalles varios, como que los humanos eran trasladados en dos partes por sus captores, con sus cabezas separadas de sus cuerpos, hacían el trabajo de Juan más difícil, pero también más disfrutable. Después de todo, eran esas circunstancias especiales justamente las que le permitían elaborar las más sofisticadas e interesantes estrategias." ..
+
+"",
+
+"JUAN AVATAR: One of the very few collaborators of Sirius Randomedia, named Juan Avatar, took the challenge and decided to free some thousands of clones, using for that some special equipment developed by himself. That equipment let him fly, and made him invulnerable to the enemy attacks; it also included an interesting weapon to throw dogs to the warriors. With that at hand, someday he just went to a near giant turtle and started the battle, which soon became part of his daily routine." ..
+
+"\n\n" ..
+
+"Over the time, Juan become a real fan of such hunting activity, and started practising that almost as a sport. Specially, his emphasis on excellence resulted very positive for Randomedia's plans, who saw his dream of having an ideal team was every day nearer, as the technique of Juan Avatar was becoming better." ..
+
+"\n\n" ..
+
+"Some interesting details, as that humans were translated in two halves by their captors, with their heads being apart of their bodies, made Juan's work much harder, but also much more enjoyable. After all, these special circunstances were letting him ellaborate the most complex and interesting strategies." ..
+
+"");
+
+	menuDrawText("dahFont", lclText,
+		v.x+20, v.y+10, v.w-40, v.h-20,
+		"left", "center");
+end

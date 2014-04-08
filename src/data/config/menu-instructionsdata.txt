@@ -1,0 +1,587 @@
+-- Copyright (c) 2007 Horacio Hernan Moraldo
+--
+-- This software is provided 'as-is', without any express or
+-- implied warranty. In no event will the authors be held liable
+-- for any damages arising from the use of this software.
+--
+-- Permission is granted to anyone to use this software for any
+-- purpose, including commercial applications, and to alter it and
+-- redistribute it freely, subject to the following restrictions:
+--
+-- 1. The origin of this software must not be misrepresented; you
+-- must not claim that you wrote the original software. If you use
+-- this software in a product, an acknowledgment in the product
+-- documentation would be appreciated but is not required.
+--
+-- 2. Altered source versions must be plainly marked as such, and
+-- must not be misrepresented as being the original software.
+--
+-- 3. This notice may not be removed or altered from any source
+-- distribution.
+--
+-- DATA LISTS FOR THE INSTRUCTIONS MENU
+
+-- INSTRUCTIONS MENU BUTTONS
+instructionsMenuButtons={
+	createMenuControl(
+		"txtTitle", -- name
+		nil, -- surface
+		nil, nil, -- xSrc, ySrc
+		23, 25, 176, 40, -- x, y, w, h
+		langText("INSTRUCCIONES", "INSTRUCTIONS MENU"), -- text
+		"ediaBigFont", -- fontName
+		23, 25, 176, 40, -- xF, yF, wF, hF
+		"center", "center", -- h_align, v_align
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onClickEvent
+		function (v) end, -- onOverEvent
+		function (v) end, -- onOverOutEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnGenerales", -- name
+		34, 90+51*0, -- x, y
+		"srfBackIntroButton3", -- surfaceNormal
+		0, 51, 150, 51, -- xS, yS, wS, hS
+		langText("Generales", "General instructions"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton3", -- surfaceSelected
+		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Muestra las instrucciones generales", -- toolTipText
+			"Shows the general instructions"),
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) r_drawFunctionContents = instructionsContent_text1 end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnText2", -- name
+		34, 90+51*1, -- x, y
+		"srfBackIntroButton3", -- surfaceNormal
+		0, 51, 150, 51, -- xS, yS, wS, hS
+		langText("Instalación y ejecución", "Installation and execution"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton3", -- surfaceSelected
+		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText( -- toolTipText
+			"Muestra las instrucciones de la instalación y ejecución del programa",
+			"Shows the installation and execution instructions"),
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) r_drawFunctionContents = instructionsContent_text2 end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnText3", -- name
+		34, 90+51*2, -- x, y
+		"srfBackIntroButton3", -- surfaceNormal
+		0, 51, 150, 51, -- xS, yS, wS, hS
+		langText("Controles", "Controls"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton3", -- surfaceSelected
+		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText( -- toolTipText
+			"Muestra las instrucciones referidas a los controles necesarios " ..
+			"para el uso del juego",
+			"Shows the instructions about the controls used in this program"),
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) r_drawFunctionContents = instructionsContent_text3 end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnText4", -- name
+		34, 90+51*3, -- x, y
+		"srfBackIntroButton3", -- surfaceNormal
+		0, 51, 150, 51, -- xS, yS, wS, hS
+		langText("Objetivos", "Objectives"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton3", -- surfaceSelected
+		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText( -- toolTipText
+			"Muestra una pantalla que explica los objetivos del juego",
+			"Shows a screen that explains the game objectives"),
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) r_drawFunctionContents = instructionsContent_text4 end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnText5", -- name
+		34, 90+51*4, -- x, y
+		"srfBackIntroButton3", -- surfaceNormal
+		0, 51, 150, 51, -- xS, yS, wS, hS
+		langText("Mecánica de juego", "Game mechanics"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton3", -- surfaceSelected
+		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText( -- toolTipText
+			"Muestra una pantalla que explica la mecánica del juego, " ..
+			"es decir la forma en que se logran los objetivos en el mismo",
+			"Shows a screen explaining the game mechanics"),
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) r_drawFunctionContents = instructionsContent_text5 end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableButton(
+		"btnBack", -- name
+		34, 90+51*5, -- x, y
+		"srfBackIntroButton3", -- surfaceNormal
+		0, 51, 150, 51, -- xS, yS, wS, hS
+		langText("Volver", "Back"), -- textDesel
+		"dahFont", -- fontNameDesel
+		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
+		"center", "center", -- h_alignDesel, v_alignDesel
+		nil, nil, -- xSel, ySel
+		"srfBackIntroButton3", -- surfaceSelected
+		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
+		nil, -- textSel
+		"dahFont", -- fontNameSel
+		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
+		"center", "center", -- h_alignSel, v_alignSel
+		"musWavMenuFx4", -- soundSelection
+		langText("Vuelve al menú principal", -- toolTipText
+			"Goes back to the main menu"),
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onSelEvent
+		function (v) end, -- onDeselEvent
+		function (v) switchingToMenu="mainMenu" end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableToolTip(
+		"instructionsMenuToolTip", -- name
+		nil, -- surface
+		23, 567, 766, 21, -- x, y, w, h
+		0, 0, -- xS, yS
+		"dahFont", -- fontName
+		23, 567, 766, 21, -- xF, yF, wF, hF
+		"center", "center", -- h_align, v_align
+		"r_toolTipText", -- toolTipVarName
+		function (v) end, -- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onClickEvent
+		function (v) end -- onTickEvent
+		),
+	createLightableContentSwitcher(
+		"switcherText", -- name
+		"r_drawFunctionContents", -- drawFunctionVarName
+		222, 24, 556, 531, -- x, y, w, h
+		function (v) -- onInitMenu
+			r_drawFunctionContents = instructionsContent_text1; -- drawFunction
+		end,-- onInitMenu
+		function (v) end, -- onCloseMenu
+		function (v) end, -- onClickEvent
+		function (v) end -- onTickEvent
+		)
+}-- instructionsMenuButtons
+
+-- INSTRUCTIONS MENU
+instructionsMenu=createLightableMenu(
+	"instructionsMenu", -- name
+	"srfMenuBackground3", -- backSurface
+	"cursorImage", -- cursorSurface
+	"musWavMenuMusic", -- soundMusic
+	"Choose your destiny", -- toolTipText
+	"r_toolTipText", -- toolTipVarName
+	function (v) end, -- onInitMenu
+	function (v) end, -- onCloseMenu
+	function (v) end, -- onClickEvent
+	function (v) end, -- onTickEvent
+	instructionsMenuButtons -- controlsList
+	)
+
+
+
+
+-- INSTRUCTIONS FUNCTIONS
+-- general instructions
+function instructionsContent_text1 (v)
+	local lclText;
+
+	lclText=
+
+selectText(
+"-- INSTRUCCIONES GENERALES --" ..
+
+"\n\n" ..
+
+"El siguiente es un resumen de las instrucciones detalladas que se presentan al presionar los botones de la barra izquierda. Haga click sobre ellos para acceder a los detalles de los temas respectivos." ..
+
+"\n\n" ..
+
+"- Para instalar el juego debe ejecutar el archivo RediaSetup.exe, y seguir las instrucciones del mismo. Luego podrá ejecutarlo desde el menú inicio, y según lo que haya elegido, el escritorio y la barra de ejecuciones rápidas." ..
+
+"\n\n" ..
+
+"- Los controles usados en los menúes son: el mouse y las teclas de flecha, y Enter, o el botón izquierdo del mouse. Durante el juego deberá utilizar las cuatro teclas de flecha para desplazarse, y la tecla Control para disparar." ..
+
+"\n\n" ..
+
+"- El objetivo del juego es conseguir hacer la mayor cantidad de puntos. Eso es todo... pero es más que suficiente para hacer de éste un juego muy atrapante. El usuario no deberá conformarse con jugar una única y larguísima sesión del juego, eso no existe aquí. Deberá progresar a través de una gran cantidad de brevísimas sesiones de juego." ..
+
+"\n\n" ..
+
+"- Para conseguir esos puntos, el usuario deberá desarrollar estrategias a partir de unos pocos conceptos básicos que componen la mecánica del juego. Muy por encima, podemos decir que el jugador debe liberar la mayor cantidad de ovejas, cuerpos y cabezas posible; preocupándose mayormente de liberar cuerpos con cabezas, y cuando esto no sea posible, eligiendo en cada ocasión los personajes que que resulta más conveniente liberar." ..
+
+"", 
+
+"-- GENERAL INSTRUCTIONS --" ..
+
+"\n\n" ..
+
+"The following is the summary of the detailed game instructions that can be read after pressing the buttons in the left menu. Click on them to see the details on the respective subjects." ..
+
+"\n\n" ..
+
+"- To install the game you have to execute the file RediaSetup.exe, and to follow the instructions that program presents. After that, you'll be able to run the game from the Start menu of the operative system, and depending on the options choosen, also from the desktop and the fast program launch bar." ..
+
+"\n\n" ..
+
+"- The controls used for the menues are: the mouse and the arrow keys, Enter and the left button of the mouse. During the game you'll have to use the four arrow keys for moving the avatar, and the Control key for shooting." ..
+
+"\n\n" ..
+
+"- The objective of the game is to get the highest score. That's all, but that's more than enough for making this one a very compelling game. The user won't be playing in an only large game session, that's not what this game has to offer. Here the user will have to progress through a big amount of very short game sessions." ..
+
+"\n\n" ..
+
+"- The user will be developing strategies to let him get higher and higher scores. There are a few basic concepts on this game that the player will have to learn from the game mechanics. Making a long story short, the player will have to free as much sheeps, heads and bodies as possible; his worry will have to free bodies with heads when possible, and other characters when it's not." ..
+
+"");
+
+	menuDrawText("dahFont", lclText,
+		v.x+35, v.y, v.w-70, v.h,
+		"left", "center");
+end
+
+-- installing and using the program
+function instructionsContent_text2 (v)
+	local lclText;
+
+	lclText=
+
+selectText(
+
+"-- INSTALACIÓN Y EJECUCIÓN --" ..
+
+"\n\n" ..
+
+"Aunque suponemos que si ha llegado a esta pantalla del juego ya habrá logrado instalarlo, recordamos aquí el proceso de instalación. El usuario debe simplemente ejecutar el programa RediaSetup.exe, y seguir sus instrucciones a lo largo de una breve serie de pantallas." ..
+
+"\n\n" ..
+
+"Cuando ese proceso haya terminado, tendrá al juego disponible para su ejecución en el menú Inicio de su sistema operativo, en la sección Programas, o en la ubicación que se haya elegido durante la instalación si ésta ha sido cambiada." ..
+
+"\n\n" ..
+
+"Según las opciones que haya elegido podría también tener accesos directos en el escritorio y barra de acceso rápido de su sistema que le permitan ejecutar el programa de manera más sencilla." ..
+
+"\n\n" ..
+
+"Si acaba de instalar el programa, ¡esperamos que lo disfrute! Concepto Randomedia es fruto de un intenso trabajo, como comprobará leyendo los textos de la sección Créditos del menú principal, y es mucho más que un pequeño juego, como comprobará leyendo los textos de la sección Conceptos del menú principal." ..
+
+"\n\n" ..
+
+"Haga click sobre el botón Comenzar del menú principal (al que puede acceder haciendo click en Volver en la presente pantalla) para comenzar a jugar." ..
+
+"",
+
+"-- SETUP AND USE --" ..
+
+"\n\n" ..
+
+"Although we imagine if the user is reading this, he already knows how to install the game, we remind him the setup process here. The user only has to execute the RediaSetup.exe program, and to follow the instructions given in the next setup windows." ..
+
+"\n\n" ..
+
+"When that process is over, the game will be available for its execution in the Start menu of his OS, in the Programs section, or in the path he has chosen during the setup if he chose any." ..
+
+"\n\n" ..
+
+"Depending on the setup options chosen, there will also be icons for the game in the desktop and in the Start menu bar, to let the user use the program even more easily." ..
+
+"\n\n" ..
+
+"If you have just installed the game, we hope you enjoy it! Randomedia Concept is the result of a lot of work, as you might discover reading the texts of the Credits section of the main menu, and it's much more than a small game, as you'll see reading the Concepts section of the main menu too." ..
+
+"\n\n" ..
+
+"Click on the Start button on the main menu (where you can go by clicking the Back button in the current menu screen) to start playing this game." ..
+
+"");
+
+	menuDrawText("dahFont", lclText,
+		v.x+35, v.y, v.w-70, v.h,
+		"left", "center");
+end
+
+-- control instructions
+function instructionsContent_text3 (v)
+	local lclText;
+
+	lclText=
+
+selectText(
+
+"-- CONTROLES --" ..
+
+"\n\n" ..
+
+"- En cualquier momento, puede utilizarse la tecla F12 para abandonar de inmediato el juego (la clásica Boss Key). Si hace esto durante el juego no tendrá oportunidad de guardar su último puntaje. En todo caso se recomienda utilizar siempre los menúes para salir del juego." ..
+
+"\n\n" ..
+
+"- Al comenzar, si quiere comenzar a jugar de inmediato, puede saltearse la intro presionando la tecla Espacio. Esto impedirá que se aburra viendo los 'carteles' del juego." ..
+
+"\n\n" ..
+
+"- En los menúes, puede utilizar el mouse o el teclado, según prefiera. Si usa el teclado, debe presionar las teclas de flecha para desplazar su selección entre los diferentes botones, y ejecutar los mismos presionando las teclas Enter, Control o Espacio del teclado, según prefiera.." ..
+
+"\n\n" ..
+
+"- Durante las sesiones de juego, debe utilizar los siguientes controles:" ..
+
+"\n\n" ..
+
+"   * Las teclas de flecha en sus cuatro direcciones (arriba, abajo, izquierda, derecha), para desplazar al protagonista por la pantalla." ..
+
+"\n\n" ..
+
+"   * La tecla Espacio para hacer que el protagonista dispare un perro. Puede usar también la tecla Control para esto (que es lo recomendado), y mantenerla presionada para que el protagonista dispare de manera continua." ..
+
+"\n\n" ..
+
+"   * La tecla Escape, para salir de la sesión de juego y volver al menú principal. En general esto no es lo recomendado, pero a veces resulta útil." ..
+
+"",
+
+"-- CONTROLS --" ..
+
+"\n\n" ..
+
+"- At any moment, the F12 key can be used to exit the game immediately (the classic Boss Key). If you do this during the game you won't be allowed to save your last score. So we always recommend to use the game menus to exit the program." ..
+
+"\n\n" ..
+
+"- If you want to start playing as fast as possible after starting the program, you can press the Space key to skip the intro." ..
+
+"\n\n" ..
+
+"- In the menus, you can use the mouse or the keyboard, as you prefer. If you use the keyboard, you have to press the arrow keys to move your selection between the different buttons, and you can execute those by pressing the Enter, Control or Space keys." ..
+
+"\n\n" ..
+
+"- During the game sessions, the following controls are available:" ..
+
+"\n\n" ..
+
+"   * The arrow keys (up, down, left, right), to move the avatar through the screen." ..
+
+"\n\n" ..
+
+"   * The Space key to make the main character throw a dog. You can also use the Control key for this (and that's the recommended way), and you can keep it pressed to make the dogs flow be continual (that is, the protagonist will be throwing dogs as fast as possible)." ..
+
+"\n\n" ..
+
+"   * The Escape key, to exit a game session, so going back to the main menu. Exiting the game this way isn't recommended, as we prefer the user keeping playing to the end, but it might be useful sometimes." ..
+
+"");
+
+	menuDrawText("dahFont", lclText,
+		v.x+35, v.y, v.w-70, v.h,
+		"left", "center");
+end
+
+
+-- objectives
+function instructionsContent_text4 (v)
+	local lclText;
+
+	lclText=
+
+selectText(
+
+"-- OBJETIVOS --" ..
+
+"\n\n" ..
+
+"Concepto Randomedia es un juego que tiene como importante particularidad que presenta al usuario un desafío que no se resuelve a lo largo de una única sesión de juego, sino a lo largo de la secuencia que componen las múltiples sesiones de un mismo jugador." ..
+
+"\n\n" ..
+
+"Este desafío, que es a su vez el objetivo primario del jugador, puede resumirse en unas pocas palabras: 'hacer el mayor puntaje posible'. No se necesita más para disfrutar del juego, simplemente hay que orientar todos los esfuerzos en pos de la resolución de ese desafío en particular." ..
+
+"\n\n" ..
+
+"Queda advertido: sólo si se persigue el objetivo correcto se está jugando el juego tal como se lo diseñó originalmente. Jugar Concepto Randomedia pretendiendo 'pasar de nivel' o 'terminarlo', objetivos erróneos para el caso, sólo conduciría a frustraciones, puesto que el juego no tiene final ni tiene elementos nuevos de juego que no sean los que el jugador ve todo el tiempo para explorar." ..
+
+"\n\n" ..
+
+"Porque se trata, no de que el usuario juegue a explorar el juego (como sucede en la mayoría de los juegos que involucran seguir una historia e ir pasando de nivel), si no de que el usuario juegue a explorar la evolución de sus propias capacidades con el uso de este simple juego." ..
+
+"\n\n" ..
+
+"En definitiva, el objetivo es tan simple como el siguiente: 'CONSEGUIR EL MAYOR PUNTAJE POSIBLE'. Y eso es todo lo que se necesita perseguir en este juego para encontrarse con la verdadera intención de Concepto Randomedia." ..
+
+"",
+
+"-- OBJECTIVES --" ..
+
+"\n\n" ..
+
+"Randomedia Concept is a game that has the interesting peculiarity of presenting the user a challenge that isn't resolved in an only game session, as its usual, but through the entire sequence that is composed by the multiple game sessions of a game user." ..
+
+"\n\n" ..
+
+"This challenge, that is as well the player's main objective, can be summed up in a few words: 'to do the highest possible score'. Nothing else is needed to enjoy the game, the user only has to focus on beating the challenge up." ..
+
+"\n\n" ..
+
+"You are warned: only if you follow the right objective you are playing this game as it was originally designed. Playing Randomedia Concept pretending to 'go to the next stage' or to 'finish it', wrong objectives in this case, will only follow to frustration, as the game has no ending neither it has any other game elements to explore than the ones it's usual to see in an only game session." ..
+
+"\n\n" ..
+
+"That's because the game is about not having the user exploring it, but having him exploring the evolution of his own capabilities with the use of Randomedia Concept. This is very unusual compared with the majority of games that involve being part of a story that makes the player curious enough to keep playing just to see 'what's next'." ..
+
+"\n\n" ..
+
+"In definitive, the objective is as simple as the next one: 'TO GET THE HIGHEST POSSIBLE SCORE'. And that's all you need to know to play Randomedia Concept as it should be played." ..
+
+"");
+
+	menuDrawText("dahFont", lclText,
+		v.x+35, v.y, v.w-70, v.h,
+		"left", "center");
+end
+
+-- game mechanics
+function instructionsContent_text5 (v)
+	local lclText;
+
+	lclText=
+
+selectText(
+
+"-- MECÁNICA DEL JUEGO --" ..
+
+"\n\n" ..
+
+"El siguiente texto sirve como una mínima introducción a las nociones requeridas para alcanzar un óptimo puntaje: un conocimiento más acabado de la mecánica del juego sólo puede adquirirse con la práctica, a través del uso insistente de este juego." ..
+
+"\n\n" ..
+
+"En principio, el puntaje nunca se incrementa en relación directa con las acciones del usuario. El usuario controla un personaje al que desplaza por la pantalla y obliga a disparar perros cuando esto resulta necesario. Estos perros pueden encontrarse con los diferentes tipos de aliens, y en caso de hacerlo, el encuentro resulta en que el alien atacado abandona el campo de juego, liberando un prisionero en caso de estar cargando alguno." ..
+
+"\n\n" ..
+
+"Este prisionero puede ser una oveja, un cuerpo acéfalo, o una cabeza (ver la sección de Historia para más detalles). Las cabezas, al ser liberadas, simplemente caen y quedan inmóviles en el suelo. Los cuerpos y las ovejas, en cambio, al llegar al suelo comienzan un breve trayecto a pie hacia la nave del protagonista, en el cual pueden llegar a llevar consigo hasta una cabeza que encuentren a su paso." ..
+
+"\n\n" ..
+
+"El puntaje del usuario sólo se incrementa cuando alguno de estos personajes ingresa a la nave. La relación entre personajes y puntajes obtenidos se muestra a continuación:" ..
+
+"\n\n" ..
+
+"- Cuerpos con cabeza (ambos útiles sólo en pareja): "
+	.. tostring(bSheepScoreWithHead) .. "\n" ..
+	iif (wSheepScoreWithHead==wSheepScore,
+		"- Ovejas, con o sin cabeza:" .. tostring(wSheepScore) .. "\n",
+		"- Ovejas cargando cabeza:" .. tostring(wSheepScoreWithHead) .. "\n" ..
+		"- Ovejas solas:" .. tostring(wSheepScore) .. "\n") ..
+"- Cuerpos solos: " .. tostring(bSheepScore) .. "\n" ..
+
+"",
+
+"-- GAME MECHANICS --" ..
+
+"\n\n" ..
+
+"The following text goes as a minimal introduction to the required notions for reaching an optimal score: a more detailed knowledge on the game mechanics can only be reached with practice, through the repeated use of this game." ..
+
+"\n\n" ..
+
+"First, the score is never incremented as the direct consequence of the user actions. The user controls a character that moves through the screen throwing dogs whenever it's necessary. These dogs can sometimes collide with the different alien characters, and in such a case, they make the aliens escape to the space, liberating a prisioner if it was carrying anyone." ..
+
+"\n\n" ..
+
+"The prisioner can be a sheep, a beheaded body, or a head (see the Story section for more details). The heads, whenever liberated, simply fall to the ground, and keep still there. Sheeps and bodies, when reaching the ground start walking to the player's ship. If they find a head during their way to home, they get it and keep walking, carrying the head with themselves." ..
+
+"\n\n" ..
+
+"The user score is only incremented whenever any of these characters get into the ship. The relation between the characters and scores is shown in the following table:" ..
+
+"\n\n" ..
+
+"- Bodies with head (both useful only when together): "
+	.. tostring(bSheepScoreWithHead) .. "\n" ..
+	iif (wSheepScoreWithHead==wSheepScore,
+		"- Sheeps, with or without head:" .. tostring(wSheepScore) .. "\n",
+		"- Sheeps with a head: " .. tostring(wSheepScoreWithHead) .. "\n" ..
+		"- Sheeps with no head: " .. tostring(wSheepScore) .. "\n") ..
+"- Bodies with no head: " .. tostring(bSheepScore) .. "\n" ..
+
+"");
+
+	menuDrawText("dahFont", lclText,
+		v.x+35, v.y, v.w-70, v.h,
+		"left", "center");
+end
