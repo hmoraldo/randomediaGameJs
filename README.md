@@ -8,6 +8,9 @@ What is this
 
 Randomedia was a game I developed sometime between 2001 and 2003. It was originally a game for DirectX; this is the SDL port, and the Javascript port using Emscripten.
 
+- Javascript version: try it [here](http://hmoraldo.github.io/randomedia/randomedia.html)
+- SDL version: build to test
+
 Known issues
 ------------
 
