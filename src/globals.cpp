@@ -88,7 +88,7 @@ timeWrapperClass timeWrapper;// interesting: emscripten won't work if this is na
 // This value is the amount of frames that have to be executed
 // every second (executeFrame), without caring about the real amount of
 // frames (drawFrame) drawn.
-const int desiredFramesPerSecond=20;
+const int desiredFramesPerSecond=200;
 
 // These consts store the max amount of frames which can be executed
 // without drawing a frame on screen. ByTime is used together with
@@ -343,19 +343,7 @@ bool closeAll(char* errorText)
 
 	if (errorText!=NULL) logger.logLine(errorText);
 
-	// save the time and end it
-	if (optionsFileObject.isReady() && timeWrapper.isReady()) {
-		optionsFileObject.getOptionsPointer()->usedTimeSeconds+=
-			(timeWrapper.getTime()/1000);
-	}
 	timeWrapper.end();
-
-	// save the game options and leave
-	if (optionsFileObject.isReady()) {
-		if (!optionsFileObject.save())
-			logger.logLine("Couldn't execute optionsFileObject.save");
-		optionsFileObject.end();
-	}
 
 	// game stuff...
 	playerList.end();

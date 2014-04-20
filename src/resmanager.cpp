@@ -26,8 +26,6 @@ distribution.
 #include "win-constants.h"// for defining those common types, like DWORD, etc
 #include "globals.h"// for using the program objects
 #include "gameglobals.h"// for using the game objects
-/*#include "filenames.h"// for defining the file names
-#include "resfonts.h"// for accessing to the font resources*/
 #include "programzones.h"// for accessing to the code which manages the program zones and the switching between them
 
 // Functions used by the Resources Manager

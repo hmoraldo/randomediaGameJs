@@ -280,6 +280,15 @@ bool diKeyboardClass::getKeys(bool* isLost)
 	memcpy(latestKeys, keys, sizeof(FILE_DIWRAP_KEYS_TYPE)*maxNumKeysUsed);// latestKeys=keys
 	memcpy(keys, tmpKeys, sizeof(FILE_DIWRAP_KEYS_TYPE)*maxNumKeysUsed);// keys=tmpKeys
 
+	#ifdef EMSCRIPTEN
+	keys[SDLK_LEFT] = keys['a'] || keys['A'];
+	keys[SDLK_RIGHT] = keys['d'] || keys['D'];
+	keys[SDLK_UP] = keys['w'] || keys['W'];
+	keys[SDLK_DOWN] = keys['s'] || keys['S'];
+	keys[KMOD_LCTRL] = keys[SDLK_SPACE];
+	keys[KMOD_RCTRL] = keys[SDLK_SPACE];
+	#endif
+
 	return true;// all ok
 }
 

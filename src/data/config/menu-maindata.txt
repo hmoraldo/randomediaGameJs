@@ -51,66 +51,8 @@ mainMenuButtons={
 		function (v) end -- onTickEvent
 		),
 	createLightableButton(
-		"btnInstructions", -- name
-		186, 213, -- x, y
-		"srfBackIntroButton", -- surfaceNormal
-		0, 51, 215, 51, -- xS, yS, wS, hS
-		langText("Instrucciones", "Instructions"), -- textDesel
-		"dahFont", -- fontNameDesel
-		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
-		"center", "center", -- h_alignDesel, v_alignDesel
-		nil, nil, -- xSel, ySel
-		"srfBackIntroButton", -- surfaceSelected
-		0, 0, 215, 51, -- xSSel, ySSel, wSSel, hSSel 
-		nil, -- textSel
-		"dahFont", -- fontNameSel
-		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
-		"center", "center", -- h_alignSel, v_alignSel
-		"musWavMenuFx4", -- soundSelection
-		langText("Ingresa a la pantalla de instrucciones."
-			, "Enters the instructions screen."), -- toolTipText
-		"r_toolTipText", -- toolTipVarName
-		function (v) end, -- onInitMenu
-		function (v) end, -- onCloseMenu
-		function (v) end, -- onSelEvent
-		function (v) end, -- onDeselEvent
-		function (v) -- onClickEvent
-			switchingToMenu="instructionsMenu"
-		end,
-		function (v) end -- onTickEvent
-		),
-	createLightableButton(
-		"btnStory", -- name
-		186, 264, -- x, y
-		"srfBackIntroButton", -- surfaceNormal
-		0, 51, 215, 51, -- xS, yS, wS, hS
-		langText("Historia", "Story"), -- textDesel
-		"dahFont", -- fontNameDesel
-		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
-		"center", "center", -- h_alignDesel, v_alignDesel
-		nil, nil, -- xSel, ySel
-		"srfBackIntroButton", -- surfaceSelected
-		0, 0, 215, 51, -- xSSel, ySSel, wSSel, hSSel 
-		nil, -- textSel
-		"dahFont", -- fontNameSel
-		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
-		"center", "center", -- h_alignSel, v_alignSel
-		"musWavMenuFx4", -- soundSelection
-		langText("Ingresa a la pantalla que muestra la historia del juego."
-			, "Enters a screen that tells the story of the game."), -- toolTipText
-		"r_toolTipText", -- toolTipVarName
-		function (v) end, -- onInitMenu
-		function (v) end, -- onCloseMenu
-		function (v) end, -- onSelEvent
-		function (v) end, -- onDeselEvent
-		function (v) -- onClickEvent
-			switchingToMenu="storyMenu"
-		end,
-		function (v) end -- onTickEvent
-		),
-	createLightableButton(
 		"btnOptions", -- name
-		186, 315, -- x, y
+		186, 213, -- x, y
 		"srfBackIntroButton", -- surfaceNormal
 		0, 51, 215, 51, -- xS, yS, wS, hS
 		langText("Opciones", "Options"), -- textDesel
@@ -138,38 +80,8 @@ mainMenuButtons={
 		function (v) end -- onTickEvent
 		),
 	createLightableButton(
-		"btnConcept", -- name
-		186, 366, -- x, y
-		"srfBackIntroButton", -- surfaceNormal
-		0, 51, 215, 51, -- xS, yS, wS, hS
-		langText("Concepto", "Concept"), -- textDesel
-		"dahFont", -- fontNameDesel
-		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
-		"center", "center", -- h_alignDesel, v_alignDesel
-		nil, nil, -- xSel, ySel
-		"srfBackIntroButton", -- surfaceSelected
-		0, 0, 215, 51, -- xSSel, ySSel, wSSel, hSSel 
-		nil, -- textSel
-		"dahFont", -- fontNameSel
-		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
-		"center", "center", -- h_alignSel, v_alignSel
-		"musWavMenuFx4", -- soundSelection
-		langText( -- toolTipText
-			"Ingresa a la pantalla de explicación del Concepto Randomedia.",
-			"Enters a screen explaining the truth about the Randomedia Concept."),
-		"r_toolTipText", -- toolTipVarName
-		function (v) end, -- onInitMenu
-		function (v) end, -- onCloseMenu
-		function (v) end, -- onSelEvent
-		function (v) end, -- onDeselEvent
-		function (v) -- onClickEvent
-			switchingToMenu="conceptMenu"
-		end,
-		function (v) end -- onTickEvent
-		),
-	createLightableButton(
 		"btnCredits", -- name
-		186, 417, -- x, y
+		186, 264, -- x, y
 		"srfBackIntroButton", -- surfaceNormal
 		0, 51, 215, 51, -- xS, yS, wS, hS
 		langText("Créditos", "Credits"), -- textDesel
@@ -194,32 +106,6 @@ mainMenuButtons={
 		function (v) -- onClickEvent
 			switchingToMenu="creditsMenu"
 		end,
-		function (v) end -- onTickEvent
-		),
-	createLightableButton(
-		"btnExit", -- name
-		186, 471, -- x, y
-		"srfBackIntroButton", -- surfaceNormal
-		0, 51, 215, 51, -- xS, yS, wS, hS
-		langText("Salir", "Exit"), -- textDesel
-		"dahFont", -- fontNameDesel
-		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
-		"center", "center", -- h_alignDesel, v_alignDesel
-		nil, nil, -- xSel, ySel
-		"srfBackIntroButton", -- surfaceSelected
-		0, 0, 215, 51, -- xSSel, ySSel, wSSel, hSSel 
-		nil, -- textSel
-		"dahFont", -- fontNameSel
-		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
-		"center", "center", -- h_alignSel, v_alignSel
-		"musWavMenuFx4", -- soundSelection
-		langText("Sale del programa", "Exits the program"), -- toolTipText
-		"r_toolTipText", -- toolTipVarName
-		function (v) end, -- onInitMenu
-		function (v) end, -- onCloseMenu
-		function (v) end, -- onSelEvent
-		function (v) end, -- onDeselEvent
-		function (v) switchingToMenu="exitingMenu" end, -- onClickEvent
 		function (v) end -- onTickEvent
 		),
 	createLightableToolTip(

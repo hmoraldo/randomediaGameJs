@@ -28,7 +28,6 @@ distribution.
 #include "globals.h"// for using the program objects
 #include "gameglobals.h"// for using the game objects
 #include "virtualwalls.h"// for obtaining information about the virtual walls that limit units movement
-#include "gamesound.h"// for accessing the functions that convert game events to sound executions
 
 
 

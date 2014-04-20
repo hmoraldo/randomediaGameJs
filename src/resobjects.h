@@ -39,7 +39,6 @@ ddSpriteClass, midiMusicClass, or waveFileClass object.
 
 // some useful header files
 #include "ddwrap.h"
-/*#include "audiowrap.h"*/
 
 // These are the possible types for a resourceClass object.
 enum resourceTypeEnum {
@@ -114,71 +113,5 @@ public:
 	virtual bool unload();// unloads the resource
 };// graphicResourceClass
 
-/*
-// WAVE RESOURCE CLASS
-// This is the class for wave sound objects
-class waveResourceClass:public resourceClass{
-private:
-	waveFileClass waveFile;
-
-	// Information for loading
-	char* fileName;// file from where we'll take the wave when loading
-	char* fileOgg;// name for the file in ogg version
-	char* fileTemp;// name for the file in its temporary version... (ogg decoding)
-	char hardOrSoft;// a char telling where sounds will go, options are FILE_AUDIOWRAP_WAVE_DEFER, FILE_AUDIOWRAP_WAVE_HARDWARE and FILE_AUDIOWRAP_WAVE_SOFTWARE
-
-	// Some auxiliary functions
-	virtual bool rawLoad();// load the resource itself, and nothing more
-protected:
-public:
-	// Constructors / destructor
-	waveResourceClass(char* resName, char* fileName, char hardOrSoft);
-	waveResourceClass(char* resName, char* oggFileName, char* fileName, char* fileTemp, char hardOrSoft);
-	virtual ~waveResourceClass() {unload();}
-
-	// Some functions to tell what the file names are...
-	char* getFileName() {return fileName;}// get the name of the file...
-	char* getFileTemp() {return fileTemp;}// get the name of the file...
-	char* getOggFileName() {return fileOgg;}// get the name of the file in ogg version...
-
-	// Some basic interfaces
-	virtual bool needsToBeReloaded() {return waveFile.isLost();}// tells whether it should be reloaded before using
-	virtual bool isLoaded() {return waveFile.isReady();};// tells whether the object is currently loaded or not
-	virtual resourceTypeEnum getType() {return FILE_RESOBJECTS_WAVE;}// tells the type of this resource
-	waveFileClass* getObjectPointer() {return &waveFile;}// get a pointer to the surface object this resource contains
-
-	// Basic object manipulation
-	virtual bool load();// loads the resource
-	virtual bool reload();// reloads the resource
-	virtual bool unload();// unloads the resource
-};// waveResourceClass
-
-
-// MIDI RESOURCE CLASS
-// This is the class for midi music objects
-class midiResourceClass:public resourceClass{
-private:
-	midiMusicClass midiMusic;
-
-	// Information for loading
-	char* fileName;// file from where we'll take the midi when loading
-protected:
-public:
-	// Constructor / destructor
-	midiResourceClass(char* resName, char* fileName);
-	virtual ~midiResourceClass() {unload();}
-
-	// Some basic interfaces
-	virtual bool needsToBeReloaded() {return false;}// tells whether it should be reloaded before using
-	virtual bool isLoaded() {return midiMusic.isReady();};// tells whether the object is currently loaded or not
-	virtual resourceTypeEnum getType() {return FILE_RESOBJECTS_MIDI;}// tells the type of this resource
-	midiMusicClass* getObjectPointer() {return &midiMusic;}// get a pointer to the midi music object this resource contains
-
-	// Basic object manipulation
-	virtual bool load();// loads the resource
-	virtual bool reload() {return isLoaded();}// reloads the resource
-	virtual bool unload();// unloads the resource
-};// midiResourceClass
-*/
 
 #endif// FILE_RESOBJECTS_INCLUDED

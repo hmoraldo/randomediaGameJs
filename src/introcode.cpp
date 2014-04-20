@@ -29,8 +29,7 @@ distribution.
 #include "programzones.h"// for accessing to the code which manages the program zones and the switching between them
 #include <SDL.h>
 #include <string.h>
-/*#include "optionsfile.h"// for the management of the files where the game options are saved
-#include "soundman.h"// for using the functions related to sound management*/
+//#include "soundman.h"// for using the functions related to sound management
 
 // *****************************
 // MAIN FUNCTIONS

@@ -26,7 +26,6 @@ distribution.
 #include "gameglobals.h"// for using the game objects
 /*#include "generalmaths.h"// for mathematical functions*/
 #include "programzones.h"// for accessing to the code which manages the program zones and the switching between them
-#include "optionsfile.h"// for the management of the files where the game options are saved
 #include "ddwrap.h"
 /*#include "diwrap.h"
 #include "audiowrap.h"*/
@@ -63,11 +62,6 @@ int luaResetHighScores(lua_State* lstate)
 {
 	int paramNum=lua_gettop(lstate);
 
-	// now just reset the high scores list
-	if (!optionsFileObject.highScoresOneManager->resetList())
-		return false;
-	optionsFileObject.save();
-
 	// log it
 	logger.logLine("High scores list has been reset");
 
@@ -79,30 +73,6 @@ int luaResetHighScores(lua_State* lstate)
 // as needed
 int luaSetSoundEnabled(lua_State* lstate)
 {
-/*	int paramNum=lua_gettop(lstate);
-	bool enabled;// should we use sound?
-
-	// we get the parameter out of the stack
-	enabled=(lua_toboolean(lstate, 1)==1?true:false);
-
-	// now just do the change
-	programSoundEnabled=enabled;
-	optionsFileObject.getOptionsPointer()->programSoundEnabled=
-		programSoundEnabled;
-	optionsFileObject.save();
-
-	// set the current sound state in lua
-	scriptMan.setSoundEnabledInLua(
-		programSoundEnabled, programSoundActive);
-
-	// if called with 'soundEnabled' false, we need to stop all the
-	// sounds now
-	if (!enabled) stopAllSoundResources();
-
-	// log it
-	logger.logLine("Sound has been switched %s", true, false, true,
-		(enabled?"on":"off"));
-*/
 	return 0;// there are no return values
 }// luaSetSoundEnabled
 
@@ -161,7 +131,6 @@ int luaStopSoundResource(lua_State* lstate)
 // lua side
 int luaUpdateHighScoresList(lua_State* lstate)
 {
-	highScoreStruct* hScore;
 	int paramNum=lua_gettop(lstate);
 	int i;
 
@@ -184,26 +153,7 @@ int luaUpdateHighScoresList(lua_State* lstate)
 		// save it in the gt object too
 		lua_rawset(lstate, -3);
 	}// for// 2010 TODO
-/*	for (hScore=optionsFileObject.highScoresOneManager->
-		getFirstNodeHSF(), i=1;
-	hScore!=NULL;
-	hScore=optionsFileObject.highScoresOneManager->
-		getNextNodeHSF(hScore), i++)
-	{
-		// i
-		lua_pushnumber(lstate, i);
-		// gt[i].name=name, gt[i].score=score
-		lua_newtable(lstate);// (this will be gt[i])
-		lua_pushstring(lstate, "name");
-		lua_pushstring(lstate, hScore->name);
-		lua_rawset(lstate, -3);
-		lua_pushstring(lstate, "score");
-		lua_pushnumber(lstate, hScore->score);
-		lua_rawset(lstate, -3);
-		// save it in the gt object too
-		lua_rawset(lstate, -3);
-	}
-*/
+
 	// finally, we do highScoresList=gt
 	lua_setglobal(lstate, "highScoresList");
 
@@ -231,11 +181,6 @@ int luaSetCurrentLanguage(lua_State* lstate)
 
 	// set the language in lua
 	scriptMan.setCurrentLanguageInLua(currentLanguage);
-
-	// save the change in the options file
-	optionsFileObject.getOptionsPointer()->selectedLanguage=
-		currentLanguage;
-	optionsFileObject.save();
 
 	// log it
 	logger.logLine("Language been switched to %s", true, false, true,
@@ -495,32 +440,27 @@ bool MenuLoopCode::executeFrame(DWORD frameNumber)
 	bool keyClickPressed=false;
 	bool mouseClickPressed=false;
 
-/*	// CHECK FOR KEYS
+	// CHECK FOR KEYS
 	// check if it's time to change the currently selected menu option
 	// Go up...
-	if ((KEYDOWN(keyboard.keys, DIK_UP) ||
-		KEYDOWN(keyboard.keys, DIK_LEFT))
-		&& !isCurrentlyTypingNameHS && !showConsole) {
+	if ((KEYDOWN(keyboard.keys, SDLK_UP) || KEYDOWN(keyboard.keys, SDLK_LEFT)) && !showConsole) {
 
 		keyPreviousPressed=true;
 	}
 	// Go down...
-	if ((KEYDOWN(keyboard.keys, DIK_DOWN) ||
-		KEYDOWN(keyboard.keys, DIK_RIGHT))
-		&& !isCurrentlyTypingNameHS && !showConsole) {
+	if ((KEYDOWN(keyboard.keys, SDLK_DOWN) || KEYDOWN(keyboard.keys, SDLK_RIGHT)) && !showConsole) {
 
 		keyNextPressed=true;
 	}
-	// Check for selected buttons or mouse buttons
+/*	// Check for selected buttons or mouse buttons
 	if ((KEYDOWN(keyboard.keys, DIK_SPACE) ||// space key
 		KEYDOWN(keyboard.keys, DIK_LCONTROL) ||// left control key
-		KEYDOWN(keyboard.keys, DIK_RETURN))// return key
-		&& !isCurrentlyTypingNameHS && !showConsole) {
+		KEYDOWN(keyboard.keys, DIK_ENTER))// return key
+		&& !showConsole) {
 
 		keyClickPressed=true;
-	}// if*/
-	if ((MOUSEDOWN(mouse.mouseData, MOUSE_BUTTON_LEFT))// left mouse button
-		&& !isCurrentlyTypingNameHS) {
+	}*/
+	if (MOUSEDOWN(mouse.mouseData, MOUSE_BUTTON_LEFT)) {
 
 		// mouse click
 		mouseClickPressed=true;
@@ -628,21 +568,9 @@ bool MenuLoopCode::beforeLoop()
 		return false;
 	}
 
-	// Now switch to a valid menu, first let's see which one to switch
-	// to...
-	if (isCurrentlyTypingNameHS) {
-		// We are typing a high score entry, time to go to the hs
-		// entry menu
-		menuToSwitch="highScoresMenu";
-	}else{
-#ifdef PROGMODE_SCREENSHOTS_DEMO_YES// is this a screenshots demo or not?
-		// Time to go to the screenshots menu
-		menuToSwitch="screenshotsMenu";
-#else // that is, PROGMODE_SCREENSHOTS_DEMO_NO
-		// Time to go to the main menu
-		menuToSwitch="mainMenu";
-#endif// that is, PROGMODE_SCREENSHOTS_DEMO_NO
-	}
+	// Time to go to the main menu
+	menuToSwitch="mainMenu";
+
 	// EXECUTE THE LUA SWITCH TO MENU
 	// execute the lua code that manages the menu switching
 	lstate=scriptMan.getLuaObject();
@@ -671,10 +599,6 @@ bool MenuLoopCode::afterLoop()
 	lua_State* lstate;
 	int errCode;
 
-	// the player cannot be typing his name still
-	isCurrentlyTypingNameHS=false;// tells whether the player is currently typing his name for the high score list or not
-	highScoreToTypeIn=NULL;// pointer to the node in the high scores list where to type in
-
 	// EXECUTE THE LUA AFTER LOOP
 	// execute the lua code that manages the after loop
 	lstate=scriptMan.getLuaObject();
@@ -701,64 +625,6 @@ bool MenuLoopCode::afterLoop()
 // it go to the name of the high scores list currently under edition.
 bool executeHighScoreTyping(char key)
 {
-	char* currentChar;
-	lua_State* lstate;
-	int errCode;
-
-	// calculate the position for the next character
-	currentChar=highScoreToTypeIn->name+
-		strlen(highScoreToTypeIn->name);
-
-	// check for backspace
-	if (key=='\b') {
-		if (strlen(highScoreToTypeIn->name)<=1) return true;// all ok
-		*(currentChar-2)='_';
-		*(currentChar-1)=0;
-		return true;// all ok
-	}
-
-	// check for enter
-	if (key=='\r') {
-		// no more name typing
-		isCurrentlyTypingNameHS=false;// tells whether the player is currently typing his name for the high score list or not
-		*(currentChar-1)=0;// remove the '_'
-		logger.logLine("Last high score name: %s", true, false, true,
-			highScoreToTypeIn->name);
-		if (!optionsFileObject.save())
-			logger.logLine("Couldn't save high score");
-
-		// there is no need to manually go to the main menu...
-		// it will go anyway
-
-		return true;// all ok
-	}
-
-	// Any other key, just type it in.
-	// Don't let the text grow too much:
-	// (Consider there is a _ letter occupying a space)
-	if (strlen(highScoreToTypeIn->name)>=
-		FILE_HSCORES_SCORES_ONE_VIRTUAL_NAMELEN) return true;// all ok
-	// type it in
-	*(currentChar-1)=key;
-	*(currentChar)='_';
-	*(currentChar+1)=0;
-
-
-	// EXECUTE THE LUA UPDATE HIGH SCORES LIST
-	// execute the lua code that makes the system update its
-	// high scores list
-	lstate=scriptMan.getLuaObject();
-	lua_getglobal(lstate, "errorManager");
-	lua_getglobal(lstate, "updateHighScoresList");
-	errCode=lua_pcall(lstate, 0, 0, -2);
-	lua_pop(lstate, 1);// take errorManager off the stack
-	if (errCode!=0) {
-		lua_pop(lstate,1);// there is an extra value there...
-		logger.logLine("Error calling pcall over updateHighScoresList");
-		return false;
-	}
-
-	// all ok
 	return true;
 }// executeHighScoreTyping
 

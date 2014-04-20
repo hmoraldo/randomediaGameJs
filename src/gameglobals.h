@@ -44,11 +44,8 @@ the game.
 #include "fixedfontwrap.h"// for creating and displaying fixed bitmapped fonts
 #include "resobjects.h"// for accessing to the resource objects (graphics, sounds, etc)
 #include "programzones.h"// for accessing to the code which manages the program zones and the switching between them
-#include "optionsfile.h"// for the management of the files where the game options are saved
 #include "gamedata.h"
 #include "vectorlist.h"
-/*#include "audiowrap.h"
-*/
 
 // THIS GAME ONLY DATA
 // Our game world data...
@@ -63,11 +60,6 @@ extern bool dbgClipSprites;// Tells whether sprites are clipped out of the game 
 // This variables tell what's going to be the next ID for an game
 // object unit (enemy, bullet, player objects, etc)...
 extern DWORD nextGameObjectID;
-
-// Variables used for options and high scores management
-extern optionsFileClass optionsFileObject;// object used for managing the game and program options
-extern bool isCurrentlyTypingNameHS;// tells whether the player is currently typing his name for the high score list or not
-extern highScoreStruct* highScoreToTypeIn;// pointer to the node in the high scores list where to type in
 
 // Variables related to program modes, ie those switched from the
 // console.

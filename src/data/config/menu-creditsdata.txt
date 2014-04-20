@@ -27,10 +27,10 @@ creditsMenuButtons={
 		"txtTitle", -- name
 		nil, -- surface
 		nil, nil, -- xSrc, ySrc
-		23, 25, 176, 40, -- x, y, w, h
+		20, 25, 760, 40, -- x, y, w, h
 		langText("CREDITOS", "CREDITS"), -- text
 		"ediaBigFont", -- fontName
-		23, 25, 176, 40, -- xF, yF, wF, hF
+		20, 25, 760, 40, -- xF, yF, wF, hF
 		"center", "center", -- h_align, v_align
 		function (v) end, -- onInitMenu
 		function (v) end, -- onCloseMenu
@@ -40,146 +40,8 @@ creditsMenuButtons={
 		function (v) end -- onTickEvent
 		),
 	createLightableButton(
-		"btnCredits", -- name
-		34, 90+51*0, -- x, y
-		"srfBackIntroButton3", -- surfaceNormal
-		0, 51, 150, 51, -- xS, yS, wS, hS
-		"Créditos", -- textDesel
-		"dahFont", -- fontNameDesel
-		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
-		"center", "center", -- h_alignDesel, v_alignDesel
-		nil, nil, -- xSel, ySel
-		"srfBackIntroButton3", -- surfaceSelected
-		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
-		nil, -- textSel
-		"dahFont", -- fontNameSel
-		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
-		"center", "center", -- h_alignSel, v_alignSel
-		"musWavMenuFx4", -- soundSelection
-		langText("Muestra los créditos generales del juego", -- toolTipText
-			"Shows the general credits of this game"),
-		"r_toolTipText", -- toolTipVarName
-		function (v) end, -- onInitMenu
-		function (v) end, -- onCloseMenu
-		function (v) end, -- onSelEvent
-		function (v) end, -- onDeselEvent
-		function (v) r_drawFunctionContents = creditsContent_text1 end, -- onClickEvent
-		function (v) end -- onTickEvent
-		),
-	createLightableButton(
-		"btnHHM", -- name
-		34, 90+51*1, -- x, y
-		"srfBackIntroButton3", -- surfaceNormal
-		0, 51, 150, 51, -- xS, yS, wS, hS
-		"H. Hernán Moraldo", -- textDesel
-		"dahFont", -- fontNameDesel
-		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
-		"center", "center", -- h_alignDesel, v_alignDesel
-		nil, nil, -- xSel, ySel
-		"srfBackIntroButton3", -- surfaceSelected
-		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
-		nil, -- textSel
-		"dahFont", -- fontNameSel
-		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
-		"center", "center", -- h_alignSel, v_alignSel
-		"musWavMenuFx4", -- soundSelection
-		langText("Muestra una pantalla presentando al creador de este juego", -- toolTipText
-			"Shows a screen presenting the creator of this game"),
-		"r_toolTipText", -- toolTipVarName
-		function (v) end, -- onInitMenu
-		function (v) end, -- onCloseMenu
-		function (v) end, -- onSelEvent
-		function (v) end, -- onDeselEvent
-		function (v) r_drawFunctionContents = creditsContent_text2 end, -- onClickEvent
-		function (v) end -- onTickEvent
-		),
-	createLightableButton(
-		"btnFalasch", -- name
-		34, 90+51*2, -- x, y
-		"srfBackIntroButton3", -- surfaceNormal
-		0, 51, 150, 51, -- xS, yS, wS, hS
-		"Leonardo Falaschini", -- textDesel
-		"dahFont", -- fontNameDesel
-		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
-		"center", "center", -- h_alignDesel, v_alignDesel
-		nil, nil, -- xSel, ySel
-		"srfBackIntroButton3", -- surfaceSelected
-		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
-		nil, -- textSel
-		"dahFont", -- fontNameSel
-		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
-		"center", "center", -- h_alignSel, v_alignSel
-		"musWavMenuFx4", -- soundSelection
-		langText(-- toolTipText
-			"Muestra una pantalla presentando al artista gráfico de este juego",
-			"Shows a screen presenting the person who made the graphic art of this game"), 
-		"r_toolTipText", -- toolTipVarName
-		function (v) end, -- onInitMenu
-		function (v) end, -- onCloseMenu
-		function (v) end, -- onSelEvent
-		function (v) end, -- onDeselEvent
-		function (v) r_drawFunctionContents = creditsContent_text3 end, -- onClickEvent
-		function (v) end -- onTickEvent
-		),
-	createLightableButton(
-		"btnRobert", -- name
-		34, 90+51*3, -- x, y
-		"srfBackIntroButton3", -- surfaceNormal
-		0, 51, 150, 51, -- xS, yS, wS, hS
-		"Roberto DiStefano", -- textDesel
-		"dahFont", -- fontNameDesel
-		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
-		"center", "center", -- h_alignDesel, v_alignDesel
-		nil, nil, -- xSel, ySel
-		"srfBackIntroButton3", -- surfaceSelected
-		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
-		nil, -- textSel
-		"dahFont", -- fontNameSel
-		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
-		"center", "center", -- h_alignSel, v_alignSel
-		"musWavMenuFx4", -- soundSelection
-		langText( -- toolTipText
-			"Muestra una pantalla presentando al músico y sonidista de este juego",
-			"Shows a screen presenting the creator of the music and sound of this game"),
-		"r_toolTipText", -- toolTipVarName
-		function (v) end, -- onInitMenu
-		function (v) end, -- onCloseMenu
-		function (v) end, -- onSelEvent
-		function (v) end, -- onDeselEvent
-		function (v) r_drawFunctionContents = creditsContent_text4 end, -- onClickEvent
-		function (v) end -- onTickEvent
-		),
-	createLightableButton(
-		"btnMoraldoGames", -- name
-		34, 90+51*4, -- x, y
-		"srfBackIntroButton3", -- surfaceNormal
-		0, 51, 150, 51, -- xS, yS, wS, hS
-		"Moraldo Games", -- textDesel
-		"dahFont", -- fontNameDesel
-		nil, nil, nil, nil, -- xFDesel, yFDesel, wFDesel, hFDesel,
-		"center", "center", -- h_alignDesel, v_alignDesel
-		nil, nil, -- xSel, ySel
-		"srfBackIntroButton3", -- surfaceSelected
-		0, 0, 150, 51, -- xSSel, ySSel, wSSel, hSSel 
-		nil, -- textSel
-		"dahFont", -- fontNameSel
-		nil, nil, nil, nil, -- xFSel, yFSel, wFSel, hFSel
-		"center", "center", -- h_alignSel, v_alignSel
-		"musWavMenuFx4", -- soundSelection
-		langText( -- toolTipText
-			"Muestra una pantalla presentando a la empresa desarrolladora de este juego",
-			"Shows a screen presenting the company that developed this game"),
-		"r_toolTipText", -- toolTipVarName
-		function (v) end, -- onInitMenu
-		function (v) end, -- onCloseMenu
-		function (v) end, -- onSelEvent
-		function (v) end, -- onDeselEvent
-		function (v) r_drawFunctionContents = creditsContent_text5 end, -- onClickEvent
-		function (v) end -- onTickEvent
-		),
-	createLightableButton(
 		"btnBack", -- name
-		34, 90+51*5, -- x, y
+		630, 540, -- x, y
 		"srfBackIntroButton3", -- surfaceNormal
 		0, 51, 150, 51, -- xS, yS, wS, hS
 		langText("Volver", "Back"), -- textDesel
@@ -221,8 +83,7 @@ creditsMenuButtons={
 	createLightableContentSwitcher(
 		"switcherText", -- name
 		"r_drawFunctionContents", -- drawFunctionVarName
---		222, 24, 556, 531, -- x, y, w, h
-		222-12, 24+4-1, 556, 531-4-18+1, -- x, y, w, h
+		40, 24+4-1, 720, 531-4-18+1, -- x, y, w, h
 		function (v) -- onInitMenu
 			r_drawFunctionContents = creditsContent_text1; -- drawFunction
 		end,-- onInitMenu
@@ -235,7 +96,7 @@ creditsMenuButtons={
 -- CREDITS MENU
 creditsMenu=createLightableMenu(
 	"creditsMenu", -- name
-	"srfMenuBackground3", -- backSurface
+	"srfMenuBackground2", -- backSurface
 	"cursorImage", -- cursorSurface
 	"musWavMenuMusic", -- soundMusic
 	"Choose your destiny", -- toolTipText
@@ -308,7 +169,7 @@ selectText(
 ""),
 
 
-	v.x+160, v.y+10, v.w-170, v.h-40, "center", "top");
+	v.x, v.y+80, v.w, v.h-40, "center", "top");
 
 	menuDrawText("dahFont",
 
@@ -321,8 +182,6 @@ selectText(
 
 "\n\n" ..
 
-"Otros agradecimientos: Flias Moraldo, Falaschini y Di Stefano, ADVA, Sebastián Bottero, Eliana Figini, Sandra Vicenzi, Cristian Pagano, Henny Stingl, Gabriel Baum, Pablo Márquez, Francisco Carbonari, Gabriel Videla, Horacio Peña, Marcos Lambolay, Andrés Chilkowski, Fernando Mato y Enrique Monzón" ..
-
 "",
 
 "Other collaborations: Ernesto Moraldo, Susana Moraldo, María Cristina Fernández, Ilya Palopezhentsev, Andrés Moraldo and Diego Moraldo" ..
@@ -333,256 +192,9 @@ selectText(
 
 "\n\n" ..
 
-"Thanks: Families of Moraldo, Falaschini and Di Stefano, ADVA, Sebastián Bottero, Eliana Figini, Sandra Vicenzi, Cristian Pagano, Henny Stingl, Gabriel Baum, Pablo Márquez, Francisco Carbonari, Gabriel Videla, Horacio Peña, Marcos Lambolay, Andrés Chilkowski, Fernando Mato and Enrique Monzón" ..
-
 ""),
 
-	v.x+160, v.y+20, v.w-170, v.h-40, "left", "bottom");
-
-	-- draw the photo at a side
-	menuBltImage("srfMenuCreditsPhotos",
-		v.x, v.y,-- dest coord
---		150*4, 0, 150, 531,-- source coord
-		150*4, 3, 150, 531-20,-- source coord
-		false);-- transparency
+	v.x+30, v.y+80, v.w-60, v.h-130, "left", "bottom");
 end
 
--- hhm text
-function creditsContent_text2 (v)
-	menuDrawText("dahFont",
 
-selectText(
-
-"H. Hernán Moraldo es el desarrollador de videojuegos que creó Concepto Randomedia, trabajando en conjunto con Leonardo Falaschini y Roberto Di Stefano. Hernán pretende nada menos que revolucionar el mundo de los videojuegos con sus creaciones en el área, básicamente haciendo que cada uno de sus desarrollos sea el ejemplo concreto de una nueva teoría o concepto innovador de creación propia." ..
-
-"\n\n" ..
-
-"Hernán es actualmente dueño de la empresa productora de este juego, Moraldo Games, que es a su vez una división de The Moraldo Company, una empresa de mayores dimensiones dedicada a la tecnología. También es miembro de la Comisión Directiva de la Asociación de Desarrolladores de Videojuegos Argentina (ADVA, www.adva.com.ar), y estudia en la Universidad Nacional de La Plata, donde también colabora con una cátedra de programación funcional y lleva a cabo una investigación matemática de los videojuegos dentro de un grupo liderado por el reconocido matemático Gabriel Baum." ..
-
-"",
-
-"H. Hernán Moraldo is the game developer who created Randomedia Concept, working together with Leonardo Falaschini and Roberto Di Stefano. Hernán wants nothing less than to revolutionize the games world with his own creations on the subject, basically making each of his developments as a concrete example of a new theory or innovative concept of his own." ..
-
-"\n\n" ..
-
-"Hernán is currently the owner of the company that produced this game, Moraldo Games, which is a division of the much higher The Moraldo Company, an enterprise working in many fields of technology. He's also a member of the board of directors in the Argentina Games Development Association (ADVA, www.adva.com.ar), and he studies in the Universidad Nacional de La Plata, where he also collaborates by teaching functional programming, and he works in a mathematical investigation on games in a group whose leader is the great mathematician Gabriel Baum." ..
-
-""),
-
-
-	v.x+160, v.y+20, v.w-170, v.h-40, "left", "top");
-
-	menuDrawText("dahFont",
-
-selectText(
-
-"Información de contacto:" ..
-"\n\n" ..
-"H. Hernán Moraldo\n" ..
-"Moraldo Games - The Moraldo Company\n" ..
-"hernan@moraldo.com.ar\n" ..
-"games.moraldo.com.ar" ..
-
-"",
-
-"Contact Information:" ..
-"\n\n" ..
-"H. Hernán Moraldo\n" ..
-"Moraldo Games - The Moraldo Company\n" ..
-"hernan@moraldo.com.ar\n" ..
-"games.moraldo.com.ar" ..
-
-""),
-
-
-	v.x+160, v.y+20, v.w-170, v.h-40, "center", "bottom");
-
-	-- draw the photo at a side
-	menuBltImage("srfMenuCreditsPhotos",
-		v.x, v.y,-- dest coord
---		150*1, 0, 150, 531,-- source coord
-		150*1, 3, 150, 531-20,-- source coord
-		false);-- transparency
-end
-
--- leo falaschini text
-function creditsContent_text3 (v)
-	menuDrawText("dahFont",
-
-selectText(
-
-"Leonardo M. Falaschini es el artista que desarrolló todos los gráficos de este videojuego, con la excepción de algunas pocas imágenes en esta versión del programa. Leonardo es un artista de una gran versatilidad, técnica y creatividad; y es sin duda una de las joyas más brillantes en el mundo de los artistas gráficos dedicados al desarrollo de videojuegos en Argentina." ..
-
-"\n\n" ..
-
-"Tras ser encomendado para la creación de los conceptos visuales en los que se basaría la gráfica de Concepto Randomedia, Leonardo demostró su increíble capacidad creativa dando origen al puñado de personajes que ahora pueblan el juego. Más tarde expuso su excelencia técnica en la elaboración de las ilustraciones del escenario y las animaciones de los personajes, y su versatilidad al brindar excelentes resultados aún en las difíciles condiciones del trabajo a distancia y con deadlines sumamente ajustadas." ..
-
-"",
-
-"Leonardo M. Falaschini is the artist who developed all the graphics on this game, with the only exception of a few images in this version of the program. Leonardo is a very versatile and creative artist, very skilled technically as well, and is with no doubt one of the most brilliant gifts on the graphical world of Argentina game development." ..
-
-"\n\n" ..
-
-"After being called to work on the creation of the visual concepts Randomedia Concept would be based on, Leonardo showed us his incredible creative potential by giving birth to the rare characters that now are present in the game. The results are here for the public to appreciate; the great background, animations and pixel art, done in the hard conditions of working through the distance with tight deadlines." ..
-
-""),
-
-
-	v.x+160, v.y+20, v.w-170, v.h-40, "left", "top");
-
-	menuDrawText("dahFont",
-
-selectText(
-
-"Información de contacto:" ..
-"\n\n" ..
-"Leonardo M. Falaschini\n" ..
-"leof@playagrande.com\n" ..
-"www.playagrande.com/art" ..
-
-"",
-
-"Contact Information:" ..
-"\n\n" ..
-"Leonardo M. Falaschini\n" ..
-"leof@playagrande.com\n" ..
-"www.playagrande.com/art" ..
-
-""),
-
-
-	v.x+160, v.y+20, v.w-170, v.h-40, "center", "bottom");
-
-	-- draw the photo at a side
-	menuBltImage("srfMenuCreditsPhotos",
-		v.x, v.y,-- dest coord
---		150*2, 0, 150, 531,-- source coord
-		150*2, 3, 150, 531-20,-- source coord
-		false);-- transparency
-end
-
--- roberto distefano text
-function creditsContent_text4 (v)
-	menuDrawText("dahFont",
-
-selectText(
-
-"Roberto Di Stefano es la persona que hizo el desarrollo de toda la música y sonido de este juego. Roberto es un brillante músico de extensa trayectoria, que ha cosechado premios en todo el mundo, incluyendo galardones varios en el XXI Festival de la Canción Latinoamericana de California, y que ha editado una gran cantidad de títulos, entre ellos el más reciente, 'Detrás de Dios'." ..
-
-"\n\n" ..
-
-"Actualmente Roberto Di Stefano es un reconocido empresario radial, y desde ese ámbito tiene la oportunidad de explorar la creación musical desde una nueva perspectiva. Y con Concepto Randomedia, Roberto da inicio a su trabajo en la musicalización y desarrollo de efectos sonoros para videojuegos y multimedios en general." ..
-
-"",
-
-"Roberto Di Stefano is the person who did the development of all the sound and music on this game. Roberto is a brilliant music with an extense background, who got prizes from all around the world, including a variety from the XXI Festival de la Canción Latinoamericana de California. He also edited a great amount of musical titles, including the most recent one in CD, 'Detrás de Dios'." ..
-
-"\n\n" ..
-
-"Currently, Roberto Di Stefano is a very successful radiophonic business man, and from that ambit he has great chance of exploring the musical creation from a new perspective. With Randomedia Concept, Roberto is beginning his work in the musicalization and sound FX development for games and general multimedia." ..
-
-""),
-
-
-	v.x+160, v.y+20, v.w-170, v.h-40, "left", "top");
-
-	menuDrawText("dahFont",
-
-selectText(
-
-"Información de contacto:" ..
-"\n\n" ..
-"Roberto Di Stefano\n" ..
-"fmespacio@hotmail.com\n" ..
-"www.robertodistefano.com.ar" ..
-
-"",
-
-"Contact Information:" ..
-"\n\n" ..
-"Roberto Di Stefano\n" ..
-"fmespacio@hotmail.com\n" ..
-"www.robertodistefano.com.ar" ..
-
-""),
-
-
-	v.x+160, v.y+20, v.w-170, v.h-40, "center", "bottom");
-
-
-	-- draw the photo at a side
-	menuBltImage("srfMenuCreditsPhotos",
-		v.x, v.y,-- dest coord
---		150*3, 0, 150, 531,-- source coord
-		150*3, 3, 150, 531-20,-- source coord
-		false);-- transparency
-end
-
--- moraldo games text
-function creditsContent_text5 (v)
-	menuDrawText("dahFont",
-
-selectText(
-
-"Moraldo Games es una empresa dedicada al desarrollo de videojuegos, que se propone expandir las fronteras del conocimiento de los mismos a través de la creación de conceptos innovadores en el mundo del entretenimiento." ..
-
-"\n\n" ..
-
-"Concepto Randomedia es un primer paso en esa dirección, un juego desarrollado siguiendo procesos de innovación creativa muy innovadores en sí mismos, que brinda un alto nivel de diversión durante las sesiones de juego basadas en una dinámica altamente original." ..
-
-"\n\n" ..
-
-"Moraldo Games es una empresa del grupo The Moraldo Company, cuyos miembros tienen el compromiso  de mantener un impecable standard de calidad en el desarrollo de sus productos y servicios, y el más absoluto respeto por sus respectivos usuarios y clientes." ..
-
-"",
-
-"Moraldo Games is a company which works in the field of games development, and whose goal is to expand the frontiers of their knowledge through the creation of innovative concepts in the entertainment world." ..
-
-"\n\n" ..
-
-"Randomedia Concept is a first step towards that goal, a game developed following some very innovative process of creative innovation, which brings a big amount of fun during its game sessions, based on a very original game mechanics." ..
-
-"\n\n" ..
-
-"Moraldo Games is a division of the group The Moraldo Company, whose members keep an impeccable quality standard in the development of their products and services, and are recognized for having the greatest respect for their users and clients." ..
-
-""),
-
-
-	v.x+160, v.y+20, v.w-170, v.h-40, "left", "top");
-
-
-	menuDrawText("dahFont",
-
-selectText(
-
-"Moraldo Games - The Moraldo Company\n" ..
-"Corporative Information\n" ..
-"Oro 2366 (C1425COH)\n" ..
-"Buenos Aires - Argentina\n" ..
-"games@moraldo.com.ar\n" ..
-"games.moraldo.com.ar\n" ..
-"Tel. (54-11) 4391-1269" ..
-
-"",
-
-"Moraldo Games - The Moraldo Company\n" ..
-"Corporative Information\n" ..
-"Oro 2366 (C1425COH)\n" ..
-"Buenos Aires - Argentina\n" ..
-"games@moraldo.com.ar\n" ..
-"games.moraldo.com.ar\n" ..
-"Tel. (54-11) 4391-1269" ..
-
-""),
-
-
-	v.x+160, v.y+20, v.w-170, v.h-40, "center", "bottom");
-
-	-- draw the photo at a side
-	menuBltImage("srfMenuCreditsPhotos",
-		v.x, v.y,-- dest coord
---		150*0, 0, 150, 531,-- source coord
-		150*0, 3, 150, 531-20,-- source coord
-		false);-- transparency
-end

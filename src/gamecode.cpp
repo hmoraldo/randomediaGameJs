@@ -37,7 +37,6 @@ distribution.
 #include "wavegens.h"// for managing the wave generators
 #include "virtualwalls.h"// for obtaining information about the virtual walls that limit units movement
 #include "staging.h"// for the management of stages, levels, and the switching between these
-#include "optionsfile.h"// for the management of the files where the game options are saved
 #include <string.h>
 #include <stdlib.h>
 
@@ -726,7 +725,6 @@ bool GameLoopCode::beforeLoop()
 bool GameLoopCode::afterLoop()
 {
 	vectorListNodeStruct<playerUnitStruct>* nodeP;
-	highScoreStruct* highScore;
 
 	// let's log the results...
 	logger.logLine("Maximum enemies on screen: %i", true, true, true,
@@ -754,27 +752,6 @@ bool GameLoopCode::afterLoop()
 			playerList.getIndex(nodeP)+1,// player number
 			int(nodeP->data.score),// score
 			int(nodeP->data.energyLeft));// energy
-
-		// if needed, add the score to the list of high scores
-		highScore=
-			optionsFileObject.highScoresOneManager->getLastNodeHSF();
-		if (highScore==NULL) {
-			// error!
-			logger.logLine(
-				"Error in highScores.getLast");
-			return false;
-		}
-		if (nodeP->data.score>=highScore->score) {
-			// the player will have to type his name now
-			isCurrentlyTypingNameHS=true;// tells whether the player is currently typing his name for the high score list or not
-			highScoreToTypeIn=highScore;// pointer to the node in the high scores list where to type in
-
-			// update the list!
-			strcpy(highScore->name, "_");
-			highScore->score=int(nodeP->data.score);
-			if (!optionsFileObject.save())
-				logger.logLine("Couldn't save high score to disk");
-		}
 	}
 
 	// close the current zone
