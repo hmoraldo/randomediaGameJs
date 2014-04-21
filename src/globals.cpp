@@ -414,21 +414,6 @@ bool globalSetActiveState(bool actived) {
 // time strings to be added there.
 bool logDateAndTime(char* stringToUse)
 {
-	// log the date and time*/
-/*	#define DATETIME_BUFFERSIZE 200
-	char dateStr[DATETIME_BUFFERSIZE];
-	char timeStr[DATETIME_BUFFERSIZE];
-
-	if (!WinUtilCode::getTimeString(timeStr, DATETIME_BUFFERSIZE) ||
-		!WinUtilCode::getDateString(true, dateStr, DATETIME_BUFFERSIZE))
-		return false;
-
-	logger.logLine(stringToUse, true, true, true,
-		dateStr, timeStr);
-*/
-	logger.logLine("[DATE]-[TIME]:");// NEW 2010
-	logger.logLine(stringToUse, true, true, true, "--", "--");// NEW 2010
-
 	return true;// all ok
 }// logDateAndTime
 

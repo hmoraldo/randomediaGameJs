@@ -229,155 +229,41 @@ bool ddSurfaceClass::obscuredBltFrom(
 	int lightness,// value of lightness, ranging from 0 to 255, 0 being the darkest
 	bool transparent)// transparent background? false by default... that is: do we use the transparent color?
 {
-	return bltFrom(srfSrc, xD, yD, true, transparent);
-/*	DWORD pitchDest, pitchSrc;// pitch of the surfaces in bytes
-	WORD* ptrDest;// pointers to the surfaces
-	WORD* ptrSrc;
-	ddSurfaceClass& srfDest=(*this);// it isn't necessary at all
-	register int heightSrc, widthSrc;// size of the source surface
-	register int x, y;// temporary variables for our calculations
-	register int rr, gg, bb;// temporary variables for our color calculations
-	// Some variables used for optimization
-	// First, the numbers to increment when going to pass to the next
-	// line
-	register int distBetweenLinesDest, distBetweenLinesSrc;
-	// This value is used for obscuring every color component.
-	register float colorMultiplier;
-	// Used for cacheing the latest colors modified, so we can avoid
-	// calculating all again.
-	// cachedColor: original color
-	// modifiedColor: cachedColor after light is applied
-	register WORD cachedColor1, modifiedColor1;
-	register WORD cachedColor2, modifiedColor2;
-	register WORD wordForSwapping;
+	double factor = lightness / 255.;
+	Uint32 black = SDL_MapRGB(srfOffScreen->format, 0, 0, 0);
+	SDL_Rect rect = {xD, yD, srfSrc.getWidth(), srfSrc.getHeight()};
 
-	if (!srfDest.isReady() || !srfSrc.isReady()) return false;
+	if (SDL_FillRect(srfOffScreen, &rect, black) != 0) return false;
 
-	// check that transparent blt isn't selected when a transparent
-	// color hasn't already been selected
-	if (transparent && !srfSrc.transparent) return false;
+	int squareSize = 20;
+	int w, h;
 
-	// check the bits per pixel, this method only works in 16 bits
-	if (bpp!=16) return false;
-
-	// load the size of the source surface
-	widthSrc=srfSrc.getWidth();
-	heightSrc=srfSrc.getHeight();
-
-	// do some checks
-	// If we are out of the drawing area, don't ever try drawing
-	// the image
-	if (xD<0 || yD<0 ||
-		xD+widthSrc>srfDest.getWidth() ||
-		yD+heightSrc>srfDest.getHeight()) {
-		// failed! tried to draw outside the destination rectangle
-		return false;
-	}
-	// If lightness=0, just draw a blank rectangle, but only if we
-	// haven't to consider transparency
-	if (lightness==0 && !transparent) {
-		srfDest.fillRect(0, 0, 0, xD, yD, widthSrc, heightSrc);
-		return true;// all ok
-	}
-	// If lightness=255, just draw the image normally
-	if (lightness==255) {
-		srfDest.bltFrom(srfSrc, xD, yD, false, transparent);
-		return true;// all ok
+	for (int x = 0; x < srfSrc.getWidth(); x += squareSize) {
+		for (int y = 0; y < srfSrc.getHeight(); y += squareSize) {
+			w = squareSize * factor;
+			h = squareSize * factor;
+			if (x + w > srfSrc.getWidth()) {
+				w = srfSrc.getWidth() - x;
+			}
+			if (y + h > srfSrc.getHeight()) {
+				h = srfSrc.getHeight() - x;
+			}
+			if (!bltFrom(srfSrc, xD + x, yD + y, x, y, w, h, true, transparent)) {
+				return false;
+			}
+		}
 	}
 
-	// lock the destination surface, as write only
-	if (!srfDest.lock(false, true, &pitchDest, (LPVOID*)(&ptrDest))) {
-		// it failed...
-		return false;
-	}
-	// lock the source surface, as read only
-	if (!srfSrc.lock(true, false, &pitchSrc, (LPVOID*)(&ptrSrc))) {
-		// it failed...
-		srfDest.unlock();// unlock the other one before going away
-		return false;
-	}
+/*bool ddSurfaceClass::bltFrom(
+	ddSurfaceClass& srf,// src surface
+	int xD, int yD,// dest coordinates
+	int xS, int yS,// src coordinates
+	int wS, int hS,// src size ([w]idth, [h]eight)
+	bool clip,// clip before blt? true by default
+	bool transparent)// transparent blt? false by default
 
-	// Displace ptrDest to make it be in the selected position.
-	// In bytes, that'd be ptrDest+=((pitchDest*yD)+(2*xD)).
-	ptrDest=(WORD*)(((BYTE*)(ptrDest))+(pitchDest*yD)+(2*xD));
-
-	// load some values used for optimization
-	// Optimization: increment for next line
-	distBetweenLinesDest=pitchDest-(widthSrc*2);
-	distBetweenLinesSrc=pitchSrc-(widthSrc*2);
-	// Optimization: factor for all the color components
-	colorMultiplier=(float)(lightness<=255?lightness:255)/float(255);
-	// Optimization: load default values for the cached colors.
-	cachedColor1=0; modifiedColor1=0;
-	cachedColor2=0; modifiedColor2=0;
-
-	for (y=0; y<heightSrc; y++) {
-		for (x=0; x<widthSrc; x++) {
-			if (transparent && (*ptrSrc)==srfSrc.transparentDword) {
-				// transparent color... do nothing
-			}else{
-				// non transparent color, obscure this pixel color.
-				// look for this color in our first cache
-				if ((*ptrSrc)==cachedColor1) {
-					(*ptrDest)=modifiedColor1;// it worked
-				}else{
-					// it wasn't there, look for the color in our second
-					// cache
-					if ((*ptrSrc)==cachedColor2) {
-						(*ptrDest)=modifiedColor2;// it worked
-
-						// now swap colors, let the latest color used be
-						// in the first cache
-						// SWAP(cachedColor1, cachedColor2)
-						wordForSwapping=cachedColor1;
-						cachedColor1=cachedColor2;
-						cachedColor2=wordForSwapping;
-						// SWAP(modifiedColor1, modifiedColor2)
-						wordForSwapping=modifiedColor1;
-						modifiedColor1=modifiedColor2;
-						modifiedColor2=wordForSwapping;
-					}else{
-						// color is not in cache memories
-						// Get the three color components
-						rr=getRedFromDword((*DDObject), (*ptrSrc));
-						gg=getGreenFromDword((*DDObject), (*ptrSrc));
-						bb=getBlueFromDword((*DDObject), (*ptrSrc));
-
-						// Modify every color component
-						rr=int(rr*colorMultiplier);
-						gg=int(gg*colorMultiplier);
-						bb=int(bb*colorMultiplier);
-
-						// Move cache 1 to cache 2
-						cachedColor2=cachedColor1;
-						modifiedColor2=modifiedColor1;
-
-						// Compose the color back, directly to the cache
-						cachedColor1=(*ptrSrc);
-						modifiedColor1=
-							getDwordFromRGBFast((*DDObject), rr, gg, bb);
-
-						(*ptrDest)=modifiedColor1;
-					}// if cache 2
-				}// if cache 1
-			}// if transparent
-
-			// go to the next pixel
-			// let's increment both pointers
-			ptrSrc++;
-			ptrDest++;
-		}// for x
-
-		// advance to the next line
-		ptrSrc=(WORD*)(((BYTE*)(ptrSrc))+distBetweenLinesSrc);
-		ptrDest=(WORD*)(((BYTE*)(ptrDest))+distBetweenLinesDest);
-	}// for y
-
-	// it's ready, unlock both surfaces and go away
-	srfDest.unlock();
-	srfSrc.unlock();
-*/
-	return true;// all ok
+	return bltFrom(srfSrc, xD, yD, true, transparent);*/
+	return true;
 }// obscuredBltFrom
 
 // This method blts an image blended with the destination surface,

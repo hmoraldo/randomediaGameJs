@@ -23,11 +23,30 @@ distribution.
 */
 
 #include "massDeallocator.h"// for accessing to the massDeallocator object, useful for massive deallocations
+#include "gamedata.h"
 
 // MASS DEALLOCATOR METHODS
 // ************************
 
 // PRIVATE ONES
+
+void deleteData(void* memory, bool oneOrMany, MemoryType memType) {
+	if (oneOrMany) {
+		// one
+		if (memType == MEMTYPE_FRAMEDATA) {
+			delete (frameDataStruct*) memory;
+		} else {
+			delete (char*) memory;
+		}
+	}else{
+		// many
+		if (memType == MEMTYPE_FRAMEDATA) {
+			delete[] (frameDataStruct*) memory;
+		} else {
+			delete[] (char*) memory;
+		}
+	}
+}
 
 // genericRemoveMemAllocation *******
 // This method removes a memory allocation from the internal list,
@@ -62,13 +81,7 @@ bool massDeallocatorClass::genericRemoveMemAllocation(
 
 	// deallocate it if needed
 	if (deallocate) {
-		if (node->oneOrMany) {
-			// one
-			delete (node->memory);
-		}else{
-			// many
-			delete[] (node->memory);
-		}
+		deleteData(node->memory, node->oneOrMany, node->memType);
 	}
 
 	// and deallocate the node information, always
@@ -117,6 +130,7 @@ bool massDeallocatorClass::close()
 // the caller.
 bool massDeallocatorClass::addMemAllocation(
 	void* memory,// memory position of the memory object to add
+	MemoryType memType,
 	bool oneOrMany)// that is: true for an mem obj that should be later deallocated with delete; false, with delete[]
 {
 	allocatedNodeStruct* node;
@@ -128,6 +142,7 @@ bool massDeallocatorClass::addMemAllocation(
 	node->memory=memory;
 	node->oneOrMany=oneOrMany;
 	node->previousNode=NULL;
+	node->memType = memType;
 
 	// add the node at the beginning of the linked list
 	node->nextNode=memoryList;
@@ -168,13 +183,7 @@ bool massDeallocatorClass::massDeallocate()
 	node=nextNode)// node=tempNode means node++
 	{
 		// deallocate that object
-		if (node->oneOrMany) {
-			// one
-			delete (node->memory);
-		}else{
-			// many
-			delete[] (node->memory);
-		}
+		deleteData(node->memory, node->oneOrMany, node->memType);
 
 		// remove the current node from memory, and remember which
 		// one will be the next node

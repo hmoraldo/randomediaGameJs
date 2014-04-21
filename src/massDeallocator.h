@@ -43,9 +43,12 @@ memory allocations.
 
 #include "win-constants.h"
 
+enum MemoryType {MEMTYPE_FRAMEDATA, MEMTYPE_CHAR};
+
 // ALLOCATED NODE STRUCT
 struct allocatedNodeStruct{
 	void* memory;// pointer to the memory data to deallocate
+	MemoryType memType;
 	bool oneOrMany;// that is: true for deallocating with delete; false, with delete[]
 
 	allocatedNodeStruct* nextNode;// pointer to the next node
@@ -72,7 +75,7 @@ public:
 	virtual bool close();
 
 	// list management
-	virtual bool addMemAllocation(void* memory, bool oneOrMany=true);
+	virtual bool addMemAllocation(void* memory, MemoryType memType, bool oneOrMany=true);
 	virtual bool removeMemAllocation(void* memory);
 
 	// memory management

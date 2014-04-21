@@ -145,31 +145,6 @@ resObjectDataStruct resObjectsList[]={
 		// reallocate always?
 		true
 	},
-	// INTRO IMAGES
-	// Resource: srfIntroTmgLogo
-	{
-		// resource
-		new graphicResourceClass(
-			"srfIntroTmgLogo",// resname
-			"data/graphics/introtmg.png",// filename, null for empty resource
-			true,// automatic video or system memory deciding?
-			true,// videomem
-			true, NULL,// file or resource, resource type
-			false,// bmp or pcx
-			false,// is transparent
-			false,// uses transparent color components?
-			0, 0, 0,// transparent color RGB components
-			0, 0,// transparent color coordinates
-			0, 0),// size (w,h) for the image if empty (filename=NULL)
-		// used in zones, finishes with pgzon_invalidZone
-		{pgzon_gameIntro, pgzon_invalidZone},
-		// is the resource necessary?
-		true,
-		// never deallocate?
-		false,
-		// reallocate always?
-		true
-	},
 	// Resource: srfIntroRediaLogo
 	{
 		// resource

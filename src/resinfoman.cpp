@@ -80,7 +80,7 @@ bool initializeResInfo()
 		// let's see the size of the table
 		size=lua_rawlen(lstate, -1);
 		frData=new frameDataStruct[size+1];
-		resMemory.addMemAllocation(frData, false);
+		resMemory.addMemAllocation(frData, MEMTYPE_FRAMEDATA, false);
 		// we add the empty node at the end of the table (position size
 		// in a size+1 list)
 		memset(&(frData[size]), 0, sizeof(frData[0]));
@@ -111,7 +111,7 @@ bool initializeResInfo()
 				const char* str=lua_tostring(lstate, -1);
 				framename=new char[strlen(str)+1];
 				strcpy(framename, str);
-				resMemory.addMemAllocation(framename, false);
+				resMemory.addMemAllocation(framename, MEMTYPE_CHAR, false);
 			}
 			lua_pop(lstate, 1);
 			// resname
@@ -123,7 +123,7 @@ bool initializeResInfo()
 				const char* str=lua_tostring(lstate, -1);
 				resname=new char[strlen(str)+1];
 				strcpy(resname, str);
-				resMemory.addMemAllocation(resname, false);
+				resMemory.addMemAllocation(resname, MEMTYPE_CHAR, false);
 			}
 			lua_pop(lstate, 1);
 			// eventname
@@ -135,7 +135,7 @@ bool initializeResInfo()
 				const char* str=lua_tostring(lstate, -1);
 				eventname=new char[strlen(str)+1];
 				strcpy(eventname, str);
-				resMemory.addMemAllocation(eventname, false);
+				resMemory.addMemAllocation(eventname, MEMTYPE_CHAR, false);
 			}
 			lua_pop(lstate, 1);
 			// groupname
@@ -147,7 +147,7 @@ bool initializeResInfo()
 				const char* str=lua_tostring(lstate, -1);
 				groupname=new char[strlen(str)+1];
 				strcpy(groupname, str);
-				resMemory.addMemAllocation(groupname, false);
+				resMemory.addMemAllocation(groupname, MEMTYPE_CHAR, false);
 			}
 			lua_pop(lstate, 1);
 			// x

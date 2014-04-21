@@ -174,7 +174,7 @@ bool fileStringClass::close()
 // This method returns a pointer to the data in memory
 void* fileStringClass::getDataPointer()
 {
-	if (!isReady()) return false;// should be initialized first
+	if (!isReady()) return NULL;// should be initialized first
 
 	return memory;
 }// getDataPointer

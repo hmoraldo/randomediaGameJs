@@ -1,3 +1,6 @@
+License for code only (not art or sound):
+
+
 Copyright (c) 2003 - 2014 Horacio Hernan Moraldo
 
 This software is provided 'as-is', without any express or

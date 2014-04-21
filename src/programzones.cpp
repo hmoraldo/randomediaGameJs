@@ -93,6 +93,8 @@ bool switchToProgramZone(
 	case pgzon_gameMenues:// program menues are currently being executed
 		if (!MenuLoopCode::beforeLoop()) return false;
 		break;
+	default:
+		break;
 	}
 
 	// let the timer object continue working now

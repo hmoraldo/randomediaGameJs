@@ -105,7 +105,7 @@ public:
 	// Some simple methods...
 	DWORD getMaxNodesUntilNow() {return maxNodesUntilNow;}
 	DWORD vectorSize() {return nodesInList;}
-	bool isValidIndex(DWORD index) {return index>=0 && index<vectorSize();}
+	bool isValidIndex(DWORD index) {return index<vectorSize();}
 	bool isReady() {return initialized;}
 
 	// constructor / destructor

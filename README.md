@@ -15,9 +15,7 @@ Known issues
 ------------
 
 - The web version works better with WASD than with arrow keys, so the arrow keys are disabled for web
-- Startup is slow; you can skip the intro using space, but the menu takes some seconds to get responsive again
-- The old intro and menu don't make a lot of sense for the web world
-- Sound and music and other pieces of code have been removed
+- Sound and music and other pieces of code (like some menues) have been removed
 - Code is very old, and very ugly (which I hope means my coding taste evolved in the last 10 years)
 
 

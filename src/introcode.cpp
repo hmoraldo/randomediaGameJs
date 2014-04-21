@@ -24,12 +24,10 @@ distribution.
 
 #include "introcode.h"// for accesing to the methods related to the program zone corresponding to the intro
 #include "gameglobals.h"// for using the game objects
-/*#include "generalmaths.h"// for mathematical functions*/
 #include "globals.h"// for using the program objects
 #include "programzones.h"// for accessing to the code which manages the program zones and the switching between them
 #include <SDL.h>
 #include <string.h>
-//#include "soundman.h"// for using the functions related to sound management
 
 // *****************************
 // MAIN FUNCTIONS
@@ -57,7 +55,7 @@ static double lightingSpeedFinal;// how much to light per frame
 static double obscuringSpeedFinal;// how much to obscure per frame
 static int framesToWaitPres;// how much to wait there
 static int framesToWaitFinal;// how much to wait there
-static enum {nowObscuringPres, nowWaitingPres, nowLightingPres, nowObscuringFinal, nowWaitingFinal, nowLightingFinal}
+static enum {nowObscuringFinal, nowWaitingFinal, nowLightingFinal}
 	actionInProcess;
 static int framesWaitingLeft;
 
@@ -91,30 +89,10 @@ bool IntroLoopCode::drawFrame()
 		DWORD color;
 		ddSurfaceClass* srf;
 
-		switch(actionInProcess) {
-		case nowLightingPres:
-		case nowWaitingPres:
-		case nowObscuringPres:
-			srf=getSurfaceByResourceName("srfIntroTmgLogo");
+		srf=getSurfaceByResourceName("srfIntroRediaLogo");
 
-			// draw a white blackground
-			buffer->getDwordFromRGB(255, 255, 255, color);
-			buffer->fillAllDword(color);
-
-			// draw the The Moraldo Games logo
-			buffer->bltFrom(*srf,
-				(buffer->getWidth()-srf->getWidth())/2,
-				(buffer->getHeight()-srf->getHeight())/2);
-			break;
-		case nowLightingFinal:
-		case nowWaitingFinal:
-		case nowObscuringFinal:
-			srf=getSurfaceByResourceName("srfIntroRediaLogo");
-
-			// draw the Randomedia logo
-			buffer->bltFrom(*srf, 0, 0);
-			break;
-		}
+		// draw the Randomedia logo
+		buffer->bltFrom(*srf, 0, 0);
 	}
 
 	// now blt the buffer to the screen, obscured
@@ -161,37 +139,6 @@ bool IntroLoopCode::executeFrame(DWORD frameNumber)
 {
 	// do whatever is needed now
 	switch(actionInProcess) {
-	case nowLightingPres:
-		// start lighting the text
-		textLightness+=lightingSpeedPres;
-
-		// check when it's done
-		if (textLightness>=255) {
-			textLightness=255;
-
-			// go to the waiting stage
-			actionInProcess=nowWaitingPres;
-			framesWaitingLeft=framesToWaitPres;
-		}
-		break;
-	case nowWaitingPres:
-		// wait some time
-		framesWaitingLeft--;
-		if (framesWaitingLeft==0) actionInProcess=nowObscuringPres;
-		break;
-	case nowObscuringPres:
-		// obscure it
-		textLightness-=obscuringSpeedPres;
-
-		// when it's done, go to the final stage
-		if (textLightness<=0) {
-			textLightness=0;
-			textToShow=LAN_SEL(finalText_sp, finalText_en);
-
-			// go to the waiting stage
-			actionInProcess=nowLightingFinal;
-		}
-		break;
 	case nowLightingFinal:
 		// start lighting the text
 		textLightness+=lightingSpeedFinal;
@@ -228,8 +175,8 @@ bool IntroLoopCode::executeFrame(DWORD frameNumber)
 	// Check for keys...
 	// Space and escape go to menues
 	if (!showConsole  &&
-		KEYEVENTDOWN(keyboard.keys, keyboard.latestKeys, SDLK_SPACE) ||
-		KEYEVENTDOWN(keyboard.keys, keyboard.latestKeys, SDLK_ESCAPE)) {
+		((KEYEVENTDOWN(keyboard.keys, keyboard.latestKeys, SDLK_SPACE) ||
+		KEYEVENTDOWN(keyboard.keys, keyboard.latestKeys, SDLK_ESCAPE)))) {
 
 		// go to the menues
 		if (!switchToProgramZone(pgzon_gameMenues, 0, 0, true))
@@ -251,10 +198,6 @@ bool IntroLoopCode::beforeLoop()
 	double waitFinal=6.0-(secLightPres+waitPres+secObsPres+secLightFinal);
 	double secObsFinal=9.0-(secLightPres+waitPres+secObsPres+secLightFinal+waitFinal);
 
-	// before starting, stop all the playing sounds (belonging to other
-	// program zones)
-/*	if (!stopAllSoundResources()) return false;*/
-
 	// calculate the speeds for pres
 	// obscure all in secObsPres seconds
 	obscuringSpeedPres=(255/double(desiredFramesPerSecond))/secObsPres;
@@ -274,10 +217,7 @@ bool IntroLoopCode::beforeLoop()
 	// reset the lightness information
 	textLightness=0;
 	textToShow=LAN_SEL(presText_sp,presText_en);
-	actionInProcess=nowLightingPres;
-
-	// start playing the intro sound now
-/*	playSoundResource("sndWavIntroSnd");*/
+	actionInProcess=nowLightingFinal;
 
 	return true;// all ok
 }// beforeLoop

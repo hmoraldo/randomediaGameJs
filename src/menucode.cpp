@@ -145,10 +145,10 @@ int luaUpdateHighScoresList(lua_State* lstate)
 		// gt[i].name=name, gt[i].score=score
 		lua_newtable(lstate);// (this will be gt[i])
 		lua_pushstring(lstate, "name");
-		lua_pushstring(lstate, "abc");
+		lua_pushstring(lstate, "Anonymous");
 		lua_rawset(lstate, -3);
 		lua_pushstring(lstate, "score");
-		lua_pushnumber(lstate, (10-i)*3);
+		lua_pushnumber(lstate, (10-i)*30);
 		lua_rawset(lstate, -3);
 		// save it in the gt object too
 		lua_rawset(lstate, -3);
