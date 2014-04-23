@@ -30,11 +30,9 @@ distribution.
 #include "postinstall.h"// for using the functions related to post-installation tasks
 #include "resfonts.h"// for accessing to the font resources
 #include "virtualwalls.h"// for obtaining information about the virtual walls that limit units movement
-/*#include "resmanager.h"// for using the functions which manage the resources and operate their loading and unloading
-#include "filenames.h"// for defining the file names
-#include "winutil.h"// for accessing to some useful functions related to low level windows specific code
-#include "vorbis2wav.h"// for converting ogg vorbis files to wav*/
 #include "resinfoman.h"// for managing the information related with the use of resources, ie: animation scripts
+#include <time.h>
+#include <stdlib.h>
 
 // The definitions...
 
@@ -143,10 +141,10 @@ bool initializeFirst()
 	if (!programSoundActive) logger.logLine("Sound disabled");
 	// Log the date and time...
 	logDateAndTime("New execution at %s, %s");
-/*
+
 	// Initialize the random number generator
-	srand((unsigned int)(GetTickCount()));
-*/
+	srand(time(NULL));
+
 	// Initialize the game script manager
 	if (!scriptMan.init()) {
 		closeAll("Script manager initialization failed");
